@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Scientist | Energy, Climate & Sustainability</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+
+
+    </style>
+</head>
+
+<body class="text-white h-screen flex flex-col bg-black font-sans">
+
+    <header class="fixed top-0 left-0 w-full z-50 bg-opacity-80 backdrop-blur-md text-white shadow-md">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center"  id = "header">
+            <h1 class="text-2xl font-bold">Raghul Babu</h1>
+            <nav class="space-x-6">
+                <a href="/#aboutSection" class="hover:text-green-300 transition">About</a>
+                <a href="/#projectsSection" class="hover:text-green-300 transition">Projects</a>
+                <a href="/#skillsSection" class="hover:text-green-300 transition">Skills</a>
+                <a href="/#contactSection" class="hover:text-green-300 transition">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class = "h-screen overflow-auto">
+    <div class = "flex p-16 grid grid-cols-[25%_25%_50%]  h-screen">
+      <div id="skillGrid" class = "text-center items-center justify-center flex flex-wrap border h-full shadow gap-4 rounded:md">
+
+      </div>
+      
+      
+      <div id = "skillsDragover" class = "w-full full border">
+
+      </div>
+      
+
+      <div id = "skillRadar" class = "w-full h-full border">
+
+      </div>
+
+    </div>
+    
+    </main>
+    <footer class="text-white text-center py-2 ">
+      <p>&copy; 2025 Raghul Babu. All rights reserved.</p>
+    </footer>
+
+    <script>
+      const iconStaticPath = "static/icon_images/";
+      const iconIdSources= {
+          english: {
+              name: "English",
+              description: "ML library for classical algorithms. ML library for classical algorithms.",
+              score: 9.5,
+              source: "div"
+          },
+          german: {
+              name: "German",
+              description: "ML library for classical algorithms.",
+              score: 9,
+              source: "div"
+          },
+          tamil: {
+              name: "Tamil",
+              description: "ML library for classical algorithms.",
+              score: 7,
+              source: "div"
+          },
+          spanish: {
+              name: "Spanish",
+              description: "ML library for classical algorithms.",
+              score: 7,
+              source: "div"
+          },
+          python: {
+              name: "Python",
+              description: "ML library for classical algorithms. ML library for classical algorithms.",
+              score: 9.5,
+              source: iconStaticPath + "python_icon.svg"
+          },
+          vba: {
+              name: "Excel - VBA",
+              description: "ML library for classical algorithms.",
+              score: 9,
+              source: "static/icon_images/vba_icon.jpg"
+          },
+          php: {
+              name: "PHP",
+              description: "ML library for classical algorithms.",
+              score: 7,
+              source: iconStaticPath + "php_icon.svg"
+          },
+          js: {
+              name: "Javascript",
+              description: "ML library for classical algorithms.",
+              score: 7,
+              source: iconStaticPath + "js_icon.svg"
+          },
+          scikit: {
+              name: "Scikit-learn",
+              description: "ML library for classical algorithms. ML library for classical algorithms.",
+              score: 9,
+              source: iconStaticPath + "scikit_icon.svg"
+          },
+          pytorch: {
+              name: "Pytorch",
+              description: "ML library for classical algorithms.",
+              score: 9,
+              source: iconStaticPath + "pytorch_icon.svg"
+          },
+          tensorflow: {
+              name: "Tensorflow",
+              description: "ML library for classical algorithms.",
+              score: 7,
+              source: iconStaticPath + "tensorflow_icon.svg"
+          },
+          keras: {
+              name: "Keras",
+              description: "ML library for classical algorithms.",
+              score: 7,
+              source: iconStaticPath + "keras_icon.svg"
+          },
+          sql: {
+              name: "SQL",
+              description: "ML library for classical algorithms. ML library for classical algorithms.",
+              score: 9,
+              source: iconStaticPath + "sql_icon.svg"
+          },
+          aws: {
+              name: "AWS",
+              description: "ML library for classical algorithms.",
+              score: 7,
+              source: iconStaticPath + "aws_icon.svg"
+          },
+          snowflake: {
+              name: "Snowflake",
+              description: "ML library for classical algorithms.",
+              score: 7,
+              source: "static/icon_images/snowflake_icon.png"
+          },
+          docker: {
+              name: "Docker",
+              description: "ML library for classical algorithms.",
+              score: 8,
+              source: iconStaticPath + "docker_icon.svg"
+          },
+          transformer: {
+              name: "Transformers",
+              description: "ML library for classical algorithms. ML library for classical algorithms.",
+              score: 9,
+              source: "div"
+          },
+          nn: {
+              name: "Neural Networks",
+              description: "ML library for classical algorithms.",
+              score: 9,
+              source: "div"
+          },
+          xgboost: {
+              name: "XG - Boost",
+              description: "ML library for classical algorithms.",
+              score: 9,
+              source: "div"
+          },
+          lstm: {
+              name: "LSTM",
+              description: "ML library for classical algorithms.",
+              score: 9,
+              source: "div"
+          },
+          sap: {
+              name: "SAP",
+              description: "ML library for classical algorithms.",
+              score: 8,
+              source: "static/icon_images/sap_icon.png"
+          },
+          git: {
+              name: "Git",
+              description: "ML library for classical algorithms. ML library for classical algorithms.",
+              score: 9,
+              source: iconStaticPath + "git_icon.svg"
+          },
+          html: {
+              name: "HTML 5",
+              description: "ML library for classical algorithms.",
+              score: 9,
+              source: iconStaticPath + "html_icon.svg"
+          },
+          css: {
+              name: "CSS 3",
+              description: "ML library for classical algorithms.",
+              score: 9,
+              source: iconStaticPath + "css_icon.svg"
+          },
+          flask: {
+              name: "Flask",
+              description: "ML library for classical algorithms.",
+              score: 9,
+              source: iconStaticPath + "flask_icon.svg"
+          },
+          django: {
+              name: "Django",
+              description: "ML library for classical algorithms.",
+              score: 7,
+              source: iconStaticPath + "django_icon.svg"
+          },
+          langchain: {
+              name: "Langchain",
+              description: "ML library for classical algorithms.",
+              score: 8,
+              source: iconStaticPath + "langchain_icon.svg"
+          },
+          ollama: {
+              name: "Ollama",
+              description: "ML library for classical algorithms. ML library for classical algorithms.",
+              score: 9,
+              source: iconStaticPath + "ollama_icon.svg"
+          },
+          langflow: {
+              name: "Langflow",
+              description: "ML library for classical algorithms.",
+              score: 9,
+              source: iconStaticPath + "langflow_icon.svg"
+          },
+          n8n: {
+              name: "n8n",
+              description: "ML library for classical algorithms.",
+              score: 9,
+              source: iconStaticPath + "n8n_icon.svg"
+          },
+          linux: {
+              name: "Linux",
+              description: "ML library for classical algorithms.",
+              score: 9,
+              source: iconStaticPath + "linux_icon.svg"
+          },
+          raspberrypi: {
+              name: "Raspberrypi",
+              description: "ML library for classical algorithms.",
+              score: 7,
+              source: iconStaticPath + "raspberrypi_icon.svg"
+          },
+          powershell: {
+              name: "Powershell",
+              description: "ML library for classical algorithms.",
+              score: 9,
+              source: iconStaticPath + "powershell_icon.svg"
+          },
+          arduino: {
+              name: "Arduino",
+              description: "ML library for classical algorithms.",
+              score: 7,
+              source: iconStaticPath + "arduino_icon.svg"
+          },    
+      };
+
+      const skillGrid = document.getElementById("skillGrid");
+
+      Object.entries(iconIdSources).forEach(([id, {name, description, score, source}]) => {
+        if (source == "div"){
+          const mainDiv = document.createElement("div");
+          const textDiv = document.createElement("div");
+
+          textDiv.textContent = name;
+          textDiv.classList.add(
+            'text-center',
+            'whitespace-normal',
+            'w-full',
+            'h-full',
+            'flex',
+            'items-center',
+            'justify-center',
+            
+          );
+          textDiv.style.overflowWrap = 'break-word';
+          textDiv.style.wordBreak = 'break-word';
+
+          mainDiv.id = id;
+          mainDiv.draggable = true;
+
+          mainDiv.classList.add(
+            'w-16',
+            'h-16',
+            'rounded-lg',
+            'bg-white',
+            'text-black',
+            'hover:scale-110',
+            'text-sm',
+            'border-2',
+            'border-gray-400',
+            'hover:bg-gray-100',
+            'hover:border-gray-500',
+            'group',
+            'relative',
+            'transition-colors',
+            'transition-transform',
+            'shadow-md',
+            'flex',           // Add this to enable flex layout
+            'items-center',   // Vertical centering
+            'justify-center', // Horizontal centering
+            'p-1'
+          );
+
+          mainDiv.appendChild(textDiv);
+          skillGrid.appendChild(mainDiv);
+
+        } 
+        else{
+          const img = document.createElement("img");
+          img.src = source;
+          img.id = "dropped-" + id;
+          img.classList.add('w-16',
+                    'h-16',
+                    'rounded-lg',
+                    'bg-white',
+                    'hover:scale-110',
+                    'transition-transform',
+                    'shadow-md',
+                    'border-2',
+                    'border-gray-400',);
+          skillGrid.appendChild(img)
+
+        } 
+      });
+    </script>
+
+    
+</body>
+</html>
