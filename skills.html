@@ -14,49 +14,63 @@
 </head>
 
 <body class="text-white h-screen flex flex-col bg-black font-sans">
+    
+    <!-- Header -->
+  <header class="fixed top-0 h-16 left-0 w-full z-50 bg-opacity-80 backdrop-blur-md text-white shadow-md">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center" id="header">
+      <h1 class="text-2xl font-bold">Raghul Babu</h1>
+      <nav class="space-x-6">
+        <a href="./index.html" class="hover:text-green-300 transition">Home</a>
+        <a href="./index.html#aboutSection" class="hover:text-green-300 transition">About</a>
+        <a href="./index.html#projectsSection" class="hover:text-green-300 transition">Projects</a>
+        <a href="./index.html#skillsSection" class="hover:text-green-300 transition">Skills</a>
+        <a href="./index.html#contactSection" class="hover:text-green-300 transition">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-    <header class="fixed top-0 left-0 w-full z-50 bg-opacity-80 backdrop-blur-md text-white shadow-md">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center"  id = "header">
-            <h1 class="text-2xl font-bold">Raghul Babu</h1>
-            <nav class="space-x-6">
-                <a href="/#aboutSection" class="hover:text-green-300 transition">About</a>
-                <a href="/#projectsSection" class="hover:text-green-300 transition">Projects</a>
-                <a href="/#skillsSection" class="hover:text-green-300 transition">Skills</a>
-                <a href="/#contactSection" class="hover:text-green-300 transition">Contact</a>
-            </nav>
-        </div>
-    </header>
-
-    <main class = "h-screen overflow-auto">
-    <div class = "flex p-16 grid grid-cols-[25%_25%_50%]  h-screen">
-      <div id="skillGrid" class = "text-center items-center justify-center flex flex-wrap border h-full shadow gap-4 rounded:md">
+  <!-- Main Content -->
+  <main class="pt-16 pb-16 flex-1 overflow-auto min-h-[calc(100vh-4rem-4rem)]">
+    <div class="p-4 grid grid-cols-[25%_25%_50%] h-full max-h-[calc(100vh-4rem-4rem)] gap-4">
+      
+      <!-- Skill Grid -->
+      <div id="skillGrid" class="text-center flex flex-wrap items-start justify-center border h-full shadow gap-4 overflow-y-auto p-4">
 
       </div>
-      
-      
-      <div id = "skillDragOver" class = "flex p-16 grid grid-cols-[50%_25%_25%]  h-screen w-full full border">
-        <div id = "dropZone" class = "w-full p-4 gap-4 text-center mx-center flex flex-wrap justify-center h-full border">
+
+      <!-- Drop + Score + Expected -->
+      <div id="skillDragOver" class="grid grid-cols-[60%_40%] h-full w-full gap-4 ">
+        
+        <!-- Drop Zone with icons -->
+        <div id="dropZone" class="w-full p-4 gap-4 text-center flex flex-col items-center justify-start border overflow-auto">
 
         </div>
-        <div id = "raghulScore" class = "w-full h-full border">
-            
-        </div >
-        <div id = "expectedScore" class = "w-full h-full border">
-            
+
+        <!-- Score
+        <div id="raghulScore" class="w-full h-full border flex flex-col items-center justify-start gap-4 pt-4">
+          <div class="h-16 flex items-center">Score: <span class="ml-2 font-bold">85</span></div>
+          <div class="h-16 flex items-center">Score: <span class="ml-2 font-bold">92</span></div>
+        </div> -->
+
+        <!-- Expected Score -->
+        <div id="expectedScore" class="w-full h-full border text-black flex flex-col items-center justify-start gap-4 pt-4">
+          
         </div>
+
       </div>
-      
 
-      <div id = "skillRadar" class = "w-full h-full border">
-
+      <!-- Radar -->
+      <div id="skillRadar" class="w-full h-full border flex items-center justify-center">
+        <canvas id="radarChart" class="w-full h-full"></canvas>
       </div>
 
     </div>
-    
-    </main>
-    <footer class="text-white text-center py-2 ">
-      <p>&copy; 2025 Raghul Babu. All rights reserved.</p>
-    </footer>
+  </main>
+
+  <!-- Footer -->
+  <footer class="fixed bottom-0 w-full h-16 bg-gray-900 text-white text-center py-4 z-50">
+    <p>&copy; 2025 Raghul Babu. All rights reserved.</p>
+  </footer>
 
     <script>
       const iconStaticPath = "static/icon_images/";
@@ -325,7 +339,7 @@
         else{
           const img = document.createElement("img");
           img.src = source;
-          img.id = "dropped-" + id;
+          img.id = id;
           img.classList.add('w-16',
                     'h-16',
                     'rounded-lg',
@@ -341,93 +355,215 @@
       });
 
 
-        const params = new URLSearchParams(window.location.search);
-        const droppedIconIdsArr = JSON.parse(params.get("droppedIconIds"));
-        console.log(droppedIconIdsArr); // ["apple", "banana", "cherry"]
+      const params = new URLSearchParams(window.location.search);
+      const droppedIconIdsArr = JSON.parse(params.get("droppedIconIds"));
+      
+      let radarChart ;
+      
+      
+      function addSkillsToDragOver(droppedIconId){
+        const source = iconIdSources[droppedIconId].source;
+        const name = iconIdSources[droppedIconId].name;
+        const score = iconIdSources[droppedIconId].score;
         
+
+        if (source == "div"){
+            const mainDiv = document.createElement("div");
+            const textDiv = document.createElement("div");
+
+            textDiv.textContent = name;
+            textDiv.classList.add(
+                'text-center',
+                'whitespace-normal',
+                'w-full',
+                'h-full',
+                'flex',
+                'items-center',
+                'justify-center',
+                
+            );
+            textDiv.style.overflowWrap = 'break-word';
+            textDiv.style.wordBreak = 'break-word';
+
+            mainDiv.id = "dropped-" + droppedIconId;
+            mainDiv.draggable = true;
+
+            mainDiv.classList.add(
+                'w-16',
+                'h-16',
+                'rounded-lg',
+                'bg-white',
+                'text-black',
+                'hover:scale-110',
+                'text-sm',
+                'border-2',
+                'border-gray-400',
+                'hover:bg-gray-100',
+                'hover:border-gray-500',
+                'group',
+                'relative',
+                'transition-colors',
+                'transition-transform',
+                'shadow-md',
+                'flex',           // Add this to enable flex layout
+                'items-center',   // Vertical centering
+                'justify-center', // Horizontal centering
+                'p-1'
+            );
+
+            mainDiv.appendChild(textDiv);
+            dropZone.appendChild(mainDiv);
+
+            } 
+            else{
+                const img = document.createElement("img");
+                img.src = source;
+                img.id = "dropped-" + droppedIconId;
+                img.classList.add('w-14',       // width: 3.5rem (roughly 56px, close to 50px)
+                    'h-14',       // height: 3.5rem (roughly 56px, close to 50px)
+                    'rounded-full', // borderRadius: 50%
+                    'bg-white',     // backgroundColor: white
+                    'p-1',         // padding: 0.25rem (roughly 4px, close to 5px)
+                    'm-1',         // margin: 0.25rem (roughly 4px, close to 5px)
+                    'object-contain' // objectFit: contain
+                    );
+                dropZone.appendChild(img)
+
+            }
+
+        const expectedScoreDiv = document.createElement("div");
+        expectedScoreDiv.classList.add('h-16', 'flex', 'items-center','justify-center');
+        expectedScoreDiv.innerHTML = `<input type="number" value = 5 id = "${droppedIconId}ExpectedScore" class="border items-center justify-center h-8 rounded px-2 py-1 w-16 max-w-full" />`;
+        expectedScore.appendChild(expectedScoreDiv);
+        
+      };
+
+      droppedIconIdsArr.forEach(droppedIconId =>{
+          addSkillsToDragOver(droppedIconId); 
+                     
+      });
+
+      
+      updateRadarChart();
+      
+      const expectedScoreFields = document.querySelectorAll('#expectedScore input');
+      expectedScoreFields.forEach(expectedScoreField => {
+    	expectedScoreField.addEventListener('input', () => {
+          updateRadarChart();
+        });
+      });
+
+      function updateRadarChart(){
+        const droppedIconScores = [];
+        const droppedIconLabels = [];
+        const droppedIconExpectedScores = [];
         droppedIconIdsArr.forEach(droppedIconId =>{
-            const source = iconIdSources[droppedIconId].source;
-            const name = iconIdSources[droppedIconId].name;
-            const score = iconIdSources[droppedIconId].score;
+          const score = iconIdSources[droppedIconId].score;
+          const label = iconIdSources[droppedIconId].name; 
+          const expectedScore = document.getElementById(droppedIconId + 'ExpectedScore').value;         
+          droppedIconScores.push(score);
+          droppedIconLabels.push(label);
+          droppedIconExpectedScores.push(expectedScore);
 
-            if (source == "div"){
-                const mainDiv = document.createElement("div");
-                const textDiv = document.createElement("div");
-
-                textDiv.textContent = name;
-                textDiv.classList.add(
-                    'text-center',
-                    'whitespace-normal',
-                    'w-full',
-                    'h-full',
-                    'flex',
-                    'items-center',
-                    'justify-center',
+        });
+        
+            const ctx = document.getElementById('radarChart').getContext('2d');                     
+            if (radarChart) {
+                radarChart.destroy(); 
+            }
+            radarChart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: droppedIconLabels, 
+                    datasets: [{
+                        label: "Raghul's Skills", 
+                        data: droppedIconScores, 
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)', 
+                        borderColor: 'rgb(255, 255, 255)', 
+                        borderWidth: 2 
+                        
+                    },
+                    {
+                        label: "Expected Skill", 
+                        data: droppedIconExpectedScores, 
+                        backgroundColor: 'rgba(255, 250, 0, 0.2)', 
+                        borderColor: 'rgb(255, 255, 255)', 
+                        borderWidth: 2 
+                        
+                    }]
                     
-                );
-                textDiv.style.overflowWrap = 'break-word';
-                textDiv.style.wordBreak = 'break-word';
-
-                mainDiv.id = "dropped-" + droppedIconId;
-                mainDiv.draggable = true;
-
-                mainDiv.classList.add(
-                    'w-16',
-                    'h-16',
-                    'rounded-lg',
-                    'bg-white',
-                    'text-black',
-                    'hover:scale-110',
-                    'text-sm',
-                    'border-2',
-                    'border-gray-400',
-                    'hover:bg-gray-100',
-                    'hover:border-gray-500',
-                    'group',
-                    'relative',
-                    'transition-colors',
-                    'transition-transform',
-                    'shadow-md',
-                    'flex',           // Add this to enable flex layout
-                    'items-center',   // Vertical centering
-                    'justify-center', // Horizontal centering
-                    'p-1'
-                );
-
-                mainDiv.appendChild(textDiv);
-                dropZone.appendChild(mainDiv);
-
-                } 
-                else{
-                    const img = document.createElement("img");
-                    img.src = source;
-                    img.id = "dropped-" + droppedIconId;
-                    img.classList.add('w-14',       // width: 3.5rem (roughly 56px, close to 50px)
-                        'h-14',       // height: 3.5rem (roughly 56px, close to 50px)
-                        'rounded-full', // borderRadius: 50%
-                        'bg-white',     // backgroundColor: white
-                        'p-1',         // padding: 0.25rem (roughly 4px, close to 5px)
-                        'm-1',         // margin: 0.25rem (roughly 4px, close to 5px)
-                        'object-contain' // objectFit: contain
-                        );
-                    dropZone.appendChild(img)
+                },
+                options: {
+                    scales: {
+                        r: {
+                            beginAtZero: true, // Start the scale from zero
+                            grid: {
+                                color: 'rgba(220, 220, 220, 0.8)' // Light gray grid lines
+                            },
+                            pointLabels: {
+                                font: {
+                                    size: 14, // Increased font size
+                                },
+                                color: '#ffffff' // White label color
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: '#ffffff'  // Color of the legend
+                            }
+                        }
+                    }
 
                 }
-            const raghulScoreDiv = document.createElement("div");
+            });
+        };
 
-            raghulScoreDiv.content = score;
-            raghulScoreDiv.classList.add('bg-white',
-                                            'h-8',
-                                            'w-8'
-            );
-            raghulScore.appendChild(raghulScoreDiv);
+      const icons = document.querySelectorAll('#skillGrid img, #skillGrid div[draggable="true"]');
+      var dropZoneIcons;
+      let draggedIcon = null;
+      
+      let defaultTextRemoved = false;  
 
+      // When you start dragging an icon
+      icons.forEach(icon => {
+      icon.addEventListener('dragstart', (event) => {
+          draggedIcon = event.target; // Store the icon that's being dragged
+      });
+      });
 
+      // When something is dragged over the drop zone
+      dropZone.addEventListener('dragover', (event) => {
+      event.preventDefault(); // This is important to allow dropping!
+      // You can add some visual feedback here, like changing the border color
+      });
 
-        
+      // When you drop something onto the drop zone
+      dropZone.addEventListener('drop', (event) => {
+        event.preventDefault(); // Prevent default browser behavior
+        if (draggedIcon) {
+            console.log(draggedIcon.id , ' dropped into the dropzone'); 
+
+            // Check if the icon has already been dropped
+            if (droppedIconIdsArr.includes(draggedIcon.id)) {
+                console.log('Icon already dropped:', draggedIcon.id);
+                return; // Don't drop it again
+            }
+           
+            addSkillsToDragOver(draggedIcon.id);
+              
+            // Store the ID of the dropped icon
+            droppedIconIdsArr.push(draggedIcon.id);
+            updateRadarChart();
+            
 
             
-        });
+            draggedIcon = null; // Reset draggedIcon
+            // bindDropZoneIconListeners();
+          
+        }
+      });
 
     </script>
 
