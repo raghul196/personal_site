@@ -620,9 +620,9 @@
                                     Compatibility
                                 </div>
                                 <div class="flex gap-2">
-                                    <a href = "compatability_calculator.html" ><button id= "maximizeSkillStats" class="w-8 h-8 flex items-center justify-center bg-white rounded hover:bg-blue-100 text-gray-700 hover:text-blue-600 focus:outline-none" title="Maximize">
+                                    <button id= "maximizeStatsButton" class="w-8 h-8 flex items-center justify-center bg-white rounded hover:bg-blue-100 text-gray-700 hover:text-blue-600 focus:outline-none" title="Maximize">
                                         ☐
-                                    </button></a>
+                                    </button>
                                     <button id= "closeSkillStats" class="w-8 h-8 flex items-center justify-center bg-white rounded hover:bg-red-100 text-gray-700 hover:text-red-500 focus:outline-none" title="Close">
                                         &times;
                                     </button>
@@ -715,7 +715,7 @@
             setTimeout(() => {
                 content.style.opacity = 1;
                 header.style.opacity = 1;
-            }, 1900);
+            }, 1650);
         });
         
         const academicBackgroundButton = document.getElementById('academicBackgroundButton');
@@ -843,7 +843,6 @@
         // When you start dragging an icon
         icons.forEach(icon => {
         icon.addEventListener('dragstart', (event) => {
-            console.log('Dragging started:', event.target.id);
             draggedIcon = event.target; // Store the icon that's being dragged
         });
         });
@@ -858,7 +857,7 @@
         dropZone.addEventListener('drop', (event) => {
         event.preventDefault(); // Prevent default browser behavior
         if (draggedIcon) {
-            console.log('Dropped:', draggedIcon.id); 
+            console.log(draggedIcon.id , ' dropped into the dropzone'); 
 
             // Check if the icon has already been dropped
             if (droppedIconIds.has(draggedIcon.id)) {
@@ -934,10 +933,11 @@
                         };
 
                         // 4. Remove the icon's ID from the Set
-                        console.log(draggedDropZoneIcon.id.split("-")[1]);
+                        
                         droppedIconIds.delete(draggedDropZoneIcon.id.split("-")[1]);
+                        console.log(draggedDropZoneIcon.id.split("-")[1] + ' dragged out of dropzone')
                         updateRadarChart();
-                        draggedIcon = null; // Reset draggedIcon
+                        draggedDropZoneIcon = null; // Reset draggedIcon
                     };
                     
                 });
@@ -949,7 +949,7 @@
         
         function updateRadarChart(){
             const ctx = document.getElementById('radarChart').getContext('2d');
-            const droppedIconIdsArr = Array.from(droppedIconIds)
+            const droppedIconIdsArr = Array.from(droppedIconIds);
             const droppedIconScores = droppedIconIdsArr.map(droppedIconId => {
                 const iconData = tooltipData[droppedIconId];
                 return iconData ? iconData.score : null;
@@ -1182,7 +1182,7 @@
             const tooltip = document.getElementById(`tooltip-${id}`);
             if (hoveredIcon){
                 hoveredIcon.addEventListener("mouseenter", () => {
-                    console.log('Mouse entered' + `tooltip-${id}`);
+                    //console.log('Mouse entered' + `tooltip-${id}`);
                     tooltip.innerHTML = `
                         <div class = "w-48 flex relative flex-col bg-gray-300 rounded-lg shadow-lg border border-gray-400 px-2 py-2">
                             <div class="font-semibold py-2 text-black text-center">${name}</div>
@@ -1195,7 +1195,7 @@
                         `;
                 });
                 hoveredIcon.addEventListener("mouseleave", () => {
-                    console.log('Mouse exited'+`tooltip-${id}`);
+                    //console.log('Mouse exited'+`tooltip-${id}`);
                     tooltip.innerHTML = ` `;
                 });
             }
@@ -1237,7 +1237,7 @@
         playButton.addEventListener('click', () => {
             playButton.classList.add('hidden');
             thumbnail.classList.add('hidden');
-            // about_video.currentTime = 0.1;
+            about_video.currentTime = 0;
             about_video.classList.remove('hidden');
             skipButton.classList.remove('hidden');
             about_video.play();
@@ -1260,6 +1260,14 @@
             skipButton.classList.add('hidden');
         });
 
+        const maximizeStatsButton = document.getElementById('maximizeStatsButton');
+        maximizeStatsButton.addEventListener('click', ()=>{
+            const droppedIconIdsArr = Array.from(droppedIconIds);
+            const params = new URLSearchParams();
+            params.set("droppedIconIds", JSON.stringify(droppedIconIdsArr));
+            window.location.href = `skills.html?${params.toString()}`;
+
+        });
 
 
     </script>

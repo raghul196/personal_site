@@ -34,8 +34,16 @@
       </div>
       
       
-      <div id = "skillsDragover" class = "w-full full border">
+      <div id = "skillDragOver" class = "flex p-16 grid grid-cols-[50%_25%_25%]  h-screen w-full full border">
+        <div id = "dropZone" class = "w-full p-4 gap-4 text-center mx-center flex flex-wrap justify-center h-full border">
 
+        </div>
+        <div id = "raghulScore" class = "w-full h-full border">
+            
+        </div >
+        <div id = "expectedScore" class = "w-full h-full border">
+            
+        </div>
       </div>
       
 
@@ -260,6 +268,10 @@
       };
 
       const skillGrid = document.getElementById("skillGrid");
+      const dropZone = document.getElementById("dropZone");
+      const raghulScore = document.getElementById("raghulScore");
+      const expectedScore = document.getElementById("expectedScore")
+
 
       Object.entries(iconIdSources).forEach(([id, {name, description, score, source}]) => {
         if (source == "div"){
@@ -327,6 +339,96 @@
 
         } 
       });
+
+
+        const params = new URLSearchParams(window.location.search);
+        const droppedIconIdsArr = JSON.parse(params.get("droppedIconIds"));
+        console.log(droppedIconIdsArr); // ["apple", "banana", "cherry"]
+        
+        droppedIconIdsArr.forEach(droppedIconId =>{
+            const source = iconIdSources[droppedIconId].source;
+            const name = iconIdSources[droppedIconId].name;
+            const score = iconIdSources[droppedIconId].score;
+
+            if (source == "div"){
+                const mainDiv = document.createElement("div");
+                const textDiv = document.createElement("div");
+
+                textDiv.textContent = name;
+                textDiv.classList.add(
+                    'text-center',
+                    'whitespace-normal',
+                    'w-full',
+                    'h-full',
+                    'flex',
+                    'items-center',
+                    'justify-center',
+                    
+                );
+                textDiv.style.overflowWrap = 'break-word';
+                textDiv.style.wordBreak = 'break-word';
+
+                mainDiv.id = "dropped-" + droppedIconId;
+                mainDiv.draggable = true;
+
+                mainDiv.classList.add(
+                    'w-16',
+                    'h-16',
+                    'rounded-lg',
+                    'bg-white',
+                    'text-black',
+                    'hover:scale-110',
+                    'text-sm',
+                    'border-2',
+                    'border-gray-400',
+                    'hover:bg-gray-100',
+                    'hover:border-gray-500',
+                    'group',
+                    'relative',
+                    'transition-colors',
+                    'transition-transform',
+                    'shadow-md',
+                    'flex',           // Add this to enable flex layout
+                    'items-center',   // Vertical centering
+                    'justify-center', // Horizontal centering
+                    'p-1'
+                );
+
+                mainDiv.appendChild(textDiv);
+                dropZone.appendChild(mainDiv);
+
+                } 
+                else{
+                    const img = document.createElement("img");
+                    img.src = source;
+                    img.id = "dropped-" + droppedIconId;
+                    img.classList.add('w-14',       // width: 3.5rem (roughly 56px, close to 50px)
+                        'h-14',       // height: 3.5rem (roughly 56px, close to 50px)
+                        'rounded-full', // borderRadius: 50%
+                        'bg-white',     // backgroundColor: white
+                        'p-1',         // padding: 0.25rem (roughly 4px, close to 5px)
+                        'm-1',         // margin: 0.25rem (roughly 4px, close to 5px)
+                        'object-contain' // objectFit: contain
+                        );
+                    dropZone.appendChild(img)
+
+                }
+            const raghulScoreDiv = document.createElement("div");
+
+            raghulScoreDiv.content = score;
+            raghulScoreDiv.classList.add('bg-white',
+                                            'h-8',
+                                            'w-8'
+            );
+            raghulScore.appendChild(raghulScoreDiv);
+
+
+
+        
+
+            
+        });
+
     </script>
 
     
