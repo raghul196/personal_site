@@ -106,20 +106,13 @@
     </style>
 </head>
 
-<body class="text-white font-sans">
+<body class="text-white font-sans bg-black">
     <div class="video-background">
         <video id="video1" autoplay muted playsinline>
-            <source src="static/3045163-hd_1920_1080_25fps(1).mp4" type="video/mp4" />
+            <source src='static/filename="about_video/final/intro_video.mp4' type="video/mp4" />
             Your browser does not support the video tag.
         </video>
     </div>
-
-    <!-- <div class="video-background">
-        <video id="video1" autoplay muted playsinline>
-            <source src='static/about_video/final/intro_video.mp4' type="video/mp4" />
-            Your browser does not support the video tag.
-        </video>
-    </div> -->
 
     <header class="fixed top-0 left-0 w-full z-50 bg-opacity-80 backdrop-blur-md text-white shadow-md">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center"  id = "header">
@@ -137,35 +130,10 @@
         
         <!-- ##################  About Section ################################## -->
         <section id="aboutSection" class="py-6 px-6">
-            <div class="max-auto mx-auto">
-                <h2 class="text-3xl font-semibold mb-4 text-center mx-auto">About Me</h2>
-                
-                <div id="video-container" class="mx-auto p-4 relative h-[500px] w-[850px] flex flex-row  bg-transparent">
-                    
-                    <img id="video-thumbnail" src="static/about_video/final/thumbnail.png" alt="Video Thumbnail"
-                        class="rounded-lg group-hover:scale-110  object-cover w-full h-full relative inset-0 z-0">
-                
-                    
-                    <button id="play-button" class="absolute inset-0 flex items-center text-center justify-center w-full h-full z-10">
-                        <svg class="w-20 h-20 text-white opacity-80 hover:opacity-100" fill="currentColor" viewBox="0 0 84 84">
-                            <circle cx="42" cy="42" r="42" fill="rgba(0,0,0,0.6)"/>
-                            <polygon points="33,24 63,42 33,60" fill="white"/>
-                        </svg>
-                    </button>
-                
-                    
-                    <video id="about_video" class="hidden w-full h-full object-cover rounded-md inset-0 relative z-0" autoplay muted playsinline>
-                        <source src="static/about_video/final/intro_video.mp4" type="video/mp4" />
-                        Your browser does not support the video tag.
-                    </video>
-                
-                    
-                    <button id="skip-button" class="hidden absolute top-4 right-4 bg-white text-black px-4 py-2 rounded">
-                        Stop
-                    </button>
-                </div>
-                
-                <div class="flex flex-col md:flex-row items-center max-w-5xl mx-auto  items-start gap-6">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-3xl font-semibold mb-4">About Me</h2>
+                <!-- <img src="{{url_for('static' , filename = 'about_video/001_1.png')}}"> -->
+                <div class="flex flex-col md:flex-row items-center md:items-start gap-6">
                     <!-- <div>
                         <img src = "{{ url_for('static', filename='raghul.jpg') }}" 
                             class = "w-96 h-48 object-cover">
@@ -497,7 +465,7 @@
                                         <span id="tooltip-sql" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
                                     </div>
                                     <div class="relative group">
-                                        <img id = "snowflake" src = "static/icon_images/snowflake_icon.png"  alt="Snowflake">
+                                        <img id = "snowflake" src = "{{ url_for('static', filename='icon_images/snowflake_icon.png') }}"  alt="Snowflake">
                                         <span id="tooltip-snowflake" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
                                     </div>
                                     <div class="relative group">
@@ -525,7 +493,7 @@
                                         <span id="tooltip-docker" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
                                     </div>
                                     <div class="relative group">
-                                        <img id = "sap" src = "static/icon_images/sap_icon.png" alt="SAP">
+                                        <img id = "sap" src = "{{ url_for('static', filename='icon_images/sap_icon.png') }}" alt="SAP">
                                         <span id="tooltip-sap" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
                                     </div>
                                     <div class="relative group">
@@ -620,7 +588,7 @@
                                     Compatibility
                                 </div>
                                 <div class="flex gap-2">
-                                    <button id= "maximizeStatsButton" class="w-8 h-8 flex items-center justify-center bg-white rounded hover:bg-blue-100 text-gray-700 hover:text-blue-600 focus:outline-none" title="Maximize">
+                                    <button id= "maximizeSkillStats" class="w-8 h-8 flex items-center justify-center bg-white rounded hover:bg-blue-100 text-gray-700 hover:text-blue-600 focus:outline-none" title="Maximize">
                                         ☐
                                     </button>
                                     <button id= "closeSkillStats" class="w-8 h-8 flex items-center justify-center bg-white rounded hover:bg-red-100 text-gray-700 hover:text-red-500 focus:outline-none" title="Close">
@@ -635,13 +603,9 @@
                             </div>
 
                             <!-- Radar Chart -->
-                            <div id="skillRadar" class="m-2 flex flex-col rounded-md text-center justify-center shadow border overflow-hidden relative" style="display: flex; align-items: center; justify-content: center;">
+                            <div id="skillRadar" class="m-2 flex flex-col rounded-md text-center justify-center shadow border overflow-hidden" style="display: flex; align-items: center; justify-content: center;">
                                 <canvas id="radarChart" class="w-full h-full"></canvas>
-                                <div id="skillRadarTooltip" class = "bg-white text-black" style="position: absolute; display: none; pointer-events: none; padding: 5px 8px; border-radius: 4px; font-size: 12px; z-index: 1000;">
-                                    Maximize the Compatability window to enter expected Proficiency
-                                </div>
                             </div>
-
                         </div>
 
                     </div>
@@ -715,12 +679,17 @@
         const video = document.getElementById('video1');
 
         // Show content after 1.9 seconds the video starts playing
-        video.addEventListener("playing", () => {
-            setTimeout(() => {
-                content.style.opacity = 1;
-                header.style.opacity = 1;
-            }, 1650);
-        });
+        // video.addEventListener("playing", () => {
+        //     setTimeout(() => {
+        //         content.style.opacity = 1;
+        //         header.style.opacity = 1;
+        //     }, 1900);
+        // });
+        video.onended = () =>{
+            video.style.display = 'none';
+            content.style.opacity = 1;
+            header.style.opacity = 1;
+        };
         
         const academicBackgroundButton = document.getElementById('academicBackgroundButton');
         const workExperienceButton = document.getElementById('workExperienceButton');
@@ -847,6 +816,7 @@
         // When you start dragging an icon
         icons.forEach(icon => {
         icon.addEventListener('dragstart', (event) => {
+            console.log('Dragging started:', event.target.id);
             draggedIcon = event.target; // Store the icon that's being dragged
         });
         });
@@ -861,7 +831,7 @@
         dropZone.addEventListener('drop', (event) => {
         event.preventDefault(); // Prevent default browser behavior
         if (draggedIcon) {
-            console.log(draggedIcon.id , ' dropped into the dropzone'); 
+            console.log('Dropped:', draggedIcon.id); 
 
             // Check if the icon has already been dropped
             if (droppedIconIds.has(draggedIcon.id)) {
@@ -937,11 +907,10 @@
                         };
 
                         // 4. Remove the icon's ID from the Set
-                        
+                        console.log(draggedDropZoneIcon.id.split("-")[1]);
                         droppedIconIds.delete(draggedDropZoneIcon.id.split("-")[1]);
-                        console.log(draggedDropZoneIcon.id.split("-")[1] + ' dragged out of dropzone')
                         updateRadarChart();
-                        draggedDropZoneIcon = null; // Reset draggedIcon
+                        draggedIcon = null; // Reset draggedIcon
                     };
                     
                 });
@@ -953,7 +922,7 @@
         
         function updateRadarChart(){
             const ctx = document.getElementById('radarChart').getContext('2d');
-            const droppedIconIdsArr = Array.from(droppedIconIds);
+            const droppedIconIdsArr = Array.from(droppedIconIds)
             const droppedIconScores = droppedIconIdsArr.map(droppedIconId => {
                 const iconData = tooltipData[droppedIconId];
                 return iconData ? iconData.score : null;
@@ -966,24 +935,16 @@
                 type: 'radar',
                 data: {
                     labels: droppedIconIdsArr, 
-                    datasets: [
-                        {
-                            label: "Raghul's Skills", 
-                            data: Array.from(droppedIconScores), 
-                            backgroundColor: 'rgba(0, 123, 255, 0.4)',   // Soft Blue
-                            borderColor: 'rgba(0, 123, 255, 1)',          // Solid Blue border
-                            borderWidth: 2 
-                        },
-                        {
-                            label: "Expected Skill", 
-                            data: Array(droppedIconIdsArr.length).fill(5), 
-                            backgroundColor: 'rgba(255, 193, 7, 0.4)',    // Warm Yellow
-                            borderColor: 'rgba(255, 193, 7, 1)',          // Solid Yellow border
-                            borderWidth: 2 
-                        }
-                    ]
+                    datasets: [{
+                        label: "Raghul's Skills", 
+                        data: Array.from(droppedIconScores), 
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)', 
+                        borderColor: 'rgb(255, 255, 255)', 
+                        borderWidth: 2 
+                        
+                    }]
+                    
                 },
-
                 options: {
                     scales: {
                         r: {
@@ -1194,7 +1155,7 @@
             const tooltip = document.getElementById(`tooltip-${id}`);
             if (hoveredIcon){
                 hoveredIcon.addEventListener("mouseenter", () => {
-                    //console.log('Mouse entered' + `tooltip-${id}`);
+                    console.log('Mouse entered' + `tooltip-${id}`);
                     tooltip.innerHTML = `
                         <div class = "w-48 flex relative flex-col bg-gray-300 rounded-lg shadow-lg border border-gray-400 px-2 py-2">
                             <div class="font-semibold py-2 text-black text-center">${name}</div>
@@ -1207,7 +1168,7 @@
                         `;
                 });
                 hoveredIcon.addEventListener("mouseleave", () => {
-                    //console.log('Mouse exited'+`tooltip-${id}`);
+                    console.log('Mouse exited'+`tooltip-${id}`);
                     tooltip.innerHTML = ` `;
                 });
             }
@@ -1217,7 +1178,7 @@
 
         document.addEventListener('DOMContentLoaded', function () {
             const imageIcons = document.querySelectorAll('#skillsGrid img');
-            const staticPath = "static/icon_images/";
+            const staticPath = "{{ url_for('static', filename='icon_images/') }}";
 
             imageIcons.forEach(imageIcon => {
                 if (!imageIcon.getAttribute('src')) {
@@ -1241,66 +1202,6 @@
             skillStats.style.display = 'none';
         });
         
-        const playButton = document.getElementById('play-button');
-        const skipButton = document.getElementById('skip-button');
-        const about_video = document.getElementById('about_video');
-        const thumbnail = document.getElementById('video-thumbnail');
-
-        playButton.addEventListener('click', () => {
-            playButton.classList.add('hidden');
-            thumbnail.classList.add('hidden');
-            about_video.currentTime = 0.1;
-            about_video.classList.remove('hidden');
-            skipButton.classList.remove('hidden');
-            about_video.play();
-        });
-
-        skipButton.addEventListener('click', () => {
-            about_video.pause();
-            about_video.currentTime = about_video.duration; // Jump to end
-            about_video.classList.add('hidden');
-            skipButton.classList.add('hidden');
-            playButton.classList.remove('hidden');
-            thumbnail.classList.remove('hidden');
-        });
-
-        about_video.addEventListener('ended', () => {
-            console.log('video ended');
-            about_video.classList.add('hidden');
-            playButton.classList.remove('hidden');
-            thumbnail.classList.remove('hidden');
-            skipButton.classList.add('hidden');
-        });
-
-        const maximizeStatsButton = document.getElementById('maximizeStatsButton');
-        maximizeStatsButton.addEventListener('click', ()=>{
-            const droppedIconIdsArr = Array.from(droppedIconIds);
-            const params = new URLSearchParams();
-            params.set("droppedIconIds", JSON.stringify(droppedIconIdsArr));
-            window.location.href = `skills.html?${params.toString()}`;
-
-        });
-
-        const skillRadar = document.getElementById('skillRadar');
-        const skillRadarTooltip = document.getElementById('skillRadarTooltip');
-
-        skillRadar.addEventListener('mousemove', (e) => {
-            console.log('mouse in radarGraph');
-            const rect = skillRadar.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-
-            maximizeStatsButton.style.background = 'green';
-            skillRadarTooltip.style.left = `${x + 10}px`;
-            skillRadarTooltip.style.top = `${y + 10}px`;
-            skillRadarTooltip.style.display = 'block';
-        });
-
-        skillRadar.addEventListener('mouseleave', () => {
-            maximizeStatsButton.style.background = 'white'
-            skillRadarTooltip.style.display = 'none';
-        });
-
 
 
     </script>
