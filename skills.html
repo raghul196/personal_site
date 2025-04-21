@@ -35,7 +35,7 @@
       
       <!-- Skill Grid -->
       <div  class="text-center flex flex-wrap items-start justify-center border rounded-lg h-[calc(100vh-10rem)] shadow ">
-        <div class = "text-center flex justify-center items-center font-sans w-full h-12 text-lg text-black bg-gray-300 border">Available Skills</div>
+        <div class = "text-center flex justify-center items-center font-sans w-full h-12 text-lg text-black bg-gray-300 rounded-t border">Available Skills</div>
         <div id="skillGrid" class="text-center flex flex-wrap items-start justify-center h-[calc(100vh-14rem)] shadow gap-4 overflow-y-auto p-2">
 
         </div>
@@ -70,7 +70,7 @@
 
       <!-- Radar -->
       <div id="skillRadar" class = "w-full h-[calc(100vh-10rem)] border rounded-lg flex flex-col text-center items-center">
-        <div class = "text-center flex justify-center items-center font-sans w-full h-12 text-lg text-black bg-gray-300">Compatability</div>
+        <div class = "text-center flex justify-center items-center font-sans w-full h-12 text-lg text-black bg-gray-300 border rounded-t z-10">Compatability</div>
         <div class="w-full h-[calc(100vh-14rem)] flex items-center justify-center p-4">
           <canvas id="radarChart" class="w-full h-full"></canvas>
         </div>
@@ -504,23 +504,22 @@
                 type: 'radar',
                 data: {
                     labels: droppedIconLabels, 
-                    datasets: [{
-                        label: "Raghul's Skills", 
-                        data: droppedIconScores, 
-                        backgroundColor: 'rgba(255, 99, 132, 0.2)', 
-                        borderColor: 'rgb(255, 255, 255)', 
-                        borderWidth: 2 
-                        
-                    },
-                    {
-                        label: "Expected Skill", 
-                        data: droppedIconExpectedScores, 
-                        backgroundColor: 'rgba(255, 250, 0, 0.2)', 
-                        borderColor: 'rgb(255, 255, 255)', 
-                        borderWidth: 2 
-                        
-                    }]
-                    
+                    datasets: [
+                        {
+                            label: "Raghul's Skills", 
+                            data: droppedIconScores, 
+                            backgroundColor: 'rgba(0, 123, 255, 0.4)',   // Soft Blue
+                            borderColor: 'rgba(0, 123, 255, 1)',          // Solid Blue border
+                            borderWidth: 2 
+                        },
+                        {
+                            label: "Expected Skill", 
+                            data: droppedIconExpectedScores, 
+                            backgroundColor: 'rgba(255, 193, 7, 0.4)',    // Warm Yellow
+                            borderColor: 'rgba(255, 193, 7, 1)',          // Solid Yellow border
+                            borderWidth: 2 
+                        }
+                    ]
                 },
                 options: {
                     scales: {
