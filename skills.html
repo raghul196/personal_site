@@ -34,9 +34,9 @@
     <div class="p-4 grid flex justify-center grid-cols-[25%_25%_45%] h-[calc(100vh-10rem)]  gap-4">
       
       <!-- Skill Grid -->
-      <div  class="text-center flex flex-wrap items-start justify-center border rounded-lg h-[calc(100vh-10rem)] shadow ">
+      <div  class="text-center justify-center border rounded-lg h-[calc(100vh-10rem)] shadow ">
         <div class = "text-center flex justify-center items-center font-sans w-full h-12 text-lg text-black bg-gray-300 rounded-t border">Available Skills</div>
-        <div id="skillGrid" class="text-center flex flex-wrap items-start justify-center h-[calc(100vh-14rem)] shadow gap-4 overflow-y-auto p-2">
+        <div id="skillGrid" class="p-6 text-center items-center justify-center h-[calc(100vh-14rem)] shadow gap-4 overflow-y-auto p-2">
 
         </div>
       </div>
@@ -91,205 +91,242 @@
               name: "English",
               description: "ML library for classical algorithms. ML library for classical algorithms.",
               score: 9.5,
-              source: "div"
+              source: "div", 
+              iconGroup : 'Languages'
           },
           german: {
               name: "German",
               description: "ML library for classical algorithms.",
               score: 9,
-              source: "div"
+              source: "div",
+              iconGroup : 'Languages'
           },
           tamil: {
               name: "Tamil",
               description: "ML library for classical algorithms.",
               score: 7,
-              source: "div"
+              source: "div",
+              iconGroup : 'Languages'
           },
           spanish: {
               name: "Spanish",
               description: "ML library for classical algorithms.",
               score: 7,
-              source: "div"
+              source: "div",
+              iconGroup : 'Languages'
           },
           python: {
               name: "Python",
               description: "ML library for classical algorithms. ML library for classical algorithms.",
               score: 9.5,
-              source: iconStaticPath + "python_icon.svg"
+              source: iconStaticPath + "python_icon.svg",
+              iconGroup : 'Programming Languages'
           },
           vba: {
               name: "Excel - VBA",
               description: "ML library for classical algorithms.",
               score: 9,
-              source: "static/icon_images/vba_icon.jpg"
+              source: "static/icon_images/vba_icon.jpg",
+              iconGroup : 'Programming Languages'
           },
           php: {
               name: "PHP",
               description: "ML library for classical algorithms.",
               score: 7,
-              source: iconStaticPath + "php_icon.svg"
+              source: iconStaticPath + "php_icon.svg",
+              iconGroup : 'Programming Languages'
           },
           js: {
               name: "Javascript",
               description: "ML library for classical algorithms.",
               score: 7,
-              source: iconStaticPath + "js_icon.svg"
+              source: iconStaticPath + "js_icon.svg",
+              iconGroup : 'Programming Languages'
           },
           scikit: {
               name: "Scikit-learn",
               description: "ML library for classical algorithms. ML library for classical algorithms.",
               score: 9,
-              source: iconStaticPath + "scikit_icon.svg"
+              source: iconStaticPath + "scikit_icon.svg",
+              iconGroup : 'ML & DL Libraries'
           },
           pytorch: {
               name: "Pytorch",
               description: "ML library for classical algorithms.",
               score: 9,
-              source: iconStaticPath + "pytorch_icon.svg"
+              source: iconStaticPath + "pytorch_icon.svg",
+              iconGroup : 'ML & DL Libraries'
           },
           tensorflow: {
               name: "Tensorflow",
               description: "ML library for classical algorithms.",
               score: 7,
-              source: iconStaticPath + "tensorflow_icon.svg"
+              source: iconStaticPath + "tensorflow_icon.svg",
+              iconGroup : 'ML & DL Libraries'
           },
           keras: {
               name: "Keras",
               description: "ML library for classical algorithms.",
               score: 7,
-              source: iconStaticPath + "keras_icon.svg"
+              source: iconStaticPath + "keras_icon.svg",
+              iconGroup : 'ML & DL Libraries'
           },
           sql: {
               name: "SQL",
               description: "ML library for classical algorithms. ML library for classical algorithms.",
               score: 9,
-              source: iconStaticPath + "sql_icon.svg"
+              source: iconStaticPath + "sql_icon.svg",
+              iconGroup : 'Data Management'
+
           },
+          
           aws: {
               name: "AWS",
               description: "ML library for classical algorithms.",
               score: 7,
-              source: iconStaticPath + "aws_icon.svg"
+              source: iconStaticPath + "aws_icon.svg",
+              iconGroup : 'Software & Services'
+              
           },
           snowflake: {
               name: "Snowflake",
               description: "ML library for classical algorithms.",
               score: 7,
-              source: "static/icon_images/snowflake_icon.png"
+              source: "static/icon_images/snowflake_icon.png",
+              iconGroup : 'Data Management'
           },
           docker: {
               name: "Docker",
               description: "ML library for classical algorithms.",
               score: 8,
-              source: iconStaticPath + "docker_icon.svg"
+              source: iconStaticPath + "docker_icon.svg",
+              iconGroup : 'Software & Services'
           },
           transformer: {
               name: "Transformers",
               description: "ML library for classical algorithms. ML library for classical algorithms.",
               score: 9,
-              source: "div"
+              source: "div",
+              iconGroup : 'ML Architecture & Algorithms'
           },
           nn: {
               name: "Neural Networks",
               description: "ML library for classical algorithms.",
               score: 9,
-              source: "div"
+              source: "div",
+              iconGroup : 'ML Architecture & Algorithms'
           },
           xgboost: {
               name: "XG - Boost",
               description: "ML library for classical algorithms.",
               score: 9,
-              source: "div"
+              source: "div",
+              iconGroup : 'ML Architecture & Algorithms'
           },
           lstm: {
               name: "LSTM",
               description: "ML library for classical algorithms.",
               score: 9,
-              source: "div"
+              source: "div",
+              iconGroup : 'ML Architecture & Algorithms'
           },
           sap: {
               name: "SAP",
               description: "ML library for classical algorithms.",
               score: 8,
-              source: "static/icon_images/sap_icon.png"
+              source: "static/icon_images/sap_icon.png",
+              iconGroup : 'Software & Services'
           },
           git: {
               name: "Git",
               description: "ML library for classical algorithms. ML library for classical algorithms.",
               score: 9,
-              source: iconStaticPath + "git_icon.svg"
+              source: iconStaticPath + "git_icon.svg",
+              iconGroup : 'Software & Services'
           },
           html: {
               name: "HTML 5",
               description: "ML library for classical algorithms.",
               score: 9,
-              source: iconStaticPath + "html_icon.svg"
+              source: iconStaticPath + "html_icon.svg",
+              iconGroup : 'Web Development'
           },
           css: {
               name: "CSS 3",
               description: "ML library for classical algorithms.",
               score: 9,
-              source: iconStaticPath + "css_icon.svg"
+              source: iconStaticPath + "css_icon.svg",
+              iconGroup : 'Web Development'
           },
           flask: {
               name: "Flask",
               description: "ML library for classical algorithms.",
               score: 9,
-              source: iconStaticPath + "flask_icon.svg"
+              source: iconStaticPath + "flask_icon.svg",
+              iconGroup : 'Web Development'
           },
           django: {
               name: "Django",
               description: "ML library for classical algorithms.",
               score: 7,
-              source: iconStaticPath + "django_icon.svg"
+              source: iconStaticPath + "django_icon.svg",
+              iconGroup : 'Web Development'
           },
           langchain: {
               name: "Langchain",
               description: "ML library for classical algorithms.",
               score: 8,
-              source: iconStaticPath + "langchain_icon.svg"
+              source: iconStaticPath + "langchain_icon.svg",
+              iconGroup : 'AI-Agents & RAG'
           },
           ollama: {
               name: "Ollama",
               description: "ML library for classical algorithms. ML library for classical algorithms.",
               score: 9,
-              source: iconStaticPath + "ollama_icon.svg"
+              source: iconStaticPath + "ollama_icon.svg",
+              iconGroup : 'AI-Agents & RAG'
           },
           langflow: {
               name: "Langflow",
               description: "ML library for classical algorithms.",
               score: 9,
-              source: iconStaticPath + "langflow_icon.svg"
+              source: iconStaticPath + "langflow_icon.svg",
+              iconGroup : 'AI-Agents & RAG'
           },
           n8n: {
               name: "n8n",
               description: "ML library for classical algorithms.",
               score: 9,
-              source: iconStaticPath + "n8n_icon.svg"
+              source: iconStaticPath + "n8n_icon.svg",
+              iconGroup : 'AI-Agents & RAG'
           },
           linux: {
               name: "Linux",
               description: "ML library for classical algorithms.",
               score: 9,
-              source: iconStaticPath + "linux_icon.svg"
+              source: iconStaticPath + "linux_icon.svg",
+              iconGroup : 'Others'
           },
           raspberrypi: {
               name: "Raspberrypi",
               description: "ML library for classical algorithms.",
               score: 7,
-              source: iconStaticPath + "raspberrypi_icon.svg"
+              source: iconStaticPath + "raspberrypi_icon.svg",
+              iconGroup : 'Others'
           },
           powershell: {
               name: "Powershell",
               description: "ML library for classical algorithms.",
               score: 9,
-              source: iconStaticPath + "powershell_icon.svg"
+              source: iconStaticPath + "powershell_icon.svg",
+              iconGroup : 'Others'
           },
           arduino: {
               name: "Arduino",
               description: "ML library for classical algorithms.",
               score: 7,
-              source: iconStaticPath + "arduino_icon.svg"
+              source: iconStaticPath + "arduino_icon.svg",
+              iconGroup : 'Others'
           },    
       };
 
@@ -300,83 +337,96 @@
       const raghulScore = document.getElementById("raghulScore");
       const expectedScore = document.getElementById("expectedScore")
 
+     const groupContainers = new Map();
 
-      Object.entries(iconIdSources).forEach(([id, {name, description, score, source}]) => {
-        const iconDiv = document.createElement("div");
-        if (source == "div"){
-          const mainDiv = document.createElement("div");
-          const textDiv = document.createElement("div");
+    // Loop through the icon sources
+    Object.entries(iconIdSources).forEach(([id, { name, description, score, source, iconGroup }]) => {
+    // Create group container if it doesn't exist
+    if (!groupContainers.has(iconGroup)) {
+        const groupDiv = document.createElement("div");
+        groupDiv.classList.add("mb-6",
+            "w-full"
+        );
+        groupDiv.dataset.group = iconGroup;
 
-          textDiv.textContent = name;
-          textDiv.classList.add(
-            'text-center',
-            'whitespace-normal',
-            'w-full',
-            'h-full',
-            'flex',
-            'items-center',
-            'justify-center',
-            
-          );
-          textDiv.style.overflowWrap = 'break-word';
-          textDiv.style.wordBreak = 'break-word';
+        // Optional: Add a title
+        const groupTitle = document.createElement("h4");
+        groupTitle.textContent = iconGroup;
+        groupTitle.classList.add("text-lg", "font-semibold", "mb-2", "capitalize");
+        groupDiv.appendChild(groupTitle);
 
-          mainDiv.id = id;
-          mainDiv.draggable = true;
+        const iconsWrapper = document.createElement("div");
+        iconsWrapper.classList.add(
+        "flex",
+        "flex-wrap",
+        "grid-cols-[repeat(auto-fit,minmax(20px,1fr))]" ,
+        "gap-4",
+        "w-full"// Responsive grid with fixed icon size
+        );
+        groupDiv.appendChild(iconsWrapper);
 
-          mainDiv.classList.add(
-            'w-16',
-            'h-16',
-            'rounded-lg',
-            'bg-white',
-            'text-black',
-            'hover:scale-110',
-            'text-sm',
-            'border-2',
-            'border-gray-400',
-            'hover:bg-gray-100',
-            'hover:border-gray-500',
-            'group',
-            'relative',
-            'transition-colors',
-            'transition-transform',
-            'shadow-md',
-            'flex',           // Add this to enable flex layout
-            'items-center',   // Vertical centering
-            'justify-center', // Horizontal centering
-            'p-1', 
-            'text-center'
-          );
+        groupContainers.set(iconGroup, { groupDiv, iconsWrapper });
+    }
 
-          mainDiv.appendChild(textDiv);
-          iconDiv.appendChild(mainDiv);
+    // Create icon div
+    const iconDiv = document.createElement("div");
+    iconDiv.classList = "relative group w-[20%]";
 
-        } 
-        else{
-          const img = document.createElement("img");
-          img.src = source;
-          img.id = id;
-          img.classList.add('w-16',
-                    'h-16',
-                    'rounded-lg',
-                    'bg-white',
-                    'hover:scale-110',
-                    'transition-transform',
-                    'shadow-md',
-                    'border-2',
-                    'border-gray-400',);
-          iconDiv.appendChild(img)
+    if (source === "div") {
+        const mainDiv = document.createElement("div");
+        const textDiv = document.createElement("div");
 
-        } 
-        iconDiv.classList =  "relative group" ;
-        iconDiv.innerHTML += `<span id="tooltip-${id}" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>`;
-        skillGrid.appendChild(iconDiv);    
+        textDiv.textContent = name;
+        textDiv.classList.add(
+        "text-center", "whitespace-normal", "w-full", "h-full", "flex",
+        "items-center", "justify-center"
+        );
+        textDiv.style.overflowWrap = 'break-word';
+        textDiv.style.wordBreak = 'break-word';
+
+        mainDiv.id = id;
+        mainDiv.draggable = true;
+        mainDiv.classList.add(
+        "w-full", "aspect-square", "rounded-lg", "bg-white", "text-black",
+        "hover:scale-110", "text-sm", "border-2", "border-gray-400",
+        "hover:bg-gray-100", "hover:border-gray-500", "group", "relative",
+        "transition-colors", "transition-transform", "shadow-md", "flex",
+        "items-center", "justify-center", "p-1", "text-center"
+        );
+
+        mainDiv.appendChild(textDiv);
+        iconDiv.appendChild(mainDiv);
+    } else {
+        const img = document.createElement("img");
+        img.src = source;
+        img.id = id;
+        img.classList.add(
+        "w-full", "aspect-square", "rounded-lg", "bg-white", "hover:scale-110",
+        "transition-transform", "shadow-md", "border-2", "border-gray-400"
+        );
+        iconDiv.appendChild(img);
+    }
+
+    iconDiv.innerHTML += `<span id="tooltip-${id}" class="absolute left-1/2 top-full mt-2 -translate-x-1/2 whitespace-nowrap z-50 pointer-events-none"></span>`;
+
+    groupContainers.get(iconGroup).iconsWrapper.appendChild(iconDiv);
+    });
+
+    // Append all groups to skillGrid
+    groupContainers.forEach(({ groupDiv }) => {
+    skillGrid.appendChild(groupDiv);
     });
 
 
 
+
       const params = new URLSearchParams(window.location.search);
-      const droppedIconIdsArr = JSON.parse(params.get("droppedIconIds"));
+      let droppedIconIdsArr = JSON.parse(params.get("droppedIconIds"));
+
+      if (droppedIconIdsArr == null){
+        droppedIconIdsArr = [];
+      }
+
       
       let radarChart ;
       
@@ -471,14 +521,15 @@
         
       };
 
-      droppedIconIdsArr.forEach(droppedIconId =>{
-          addSkillsToDragOver(droppedIconId); 
-                     
-      });
+      droppedIconIdsArr?.length && droppedIconIdsArr.forEach(addSkillsToDragOver);
+
+
+      if (droppedIconIdsArr != null){
+        updateRadarChart();
+        bindExpectedScores();
+      }
 
       
-      updateRadarChart();
-      bindExpectedScores();
       
       function bindExpectedScores(){
         const expectedScoreFields = document.querySelectorAll('#expectedScore input');
