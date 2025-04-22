@@ -34,9 +34,9 @@
     <div class="p-4 grid flex justify-center grid-cols-[25%_25%_45%] h-[calc(100vh-10rem)]  gap-4">
       
       <!-- Skill Grid -->
-      <div  class="text-center flex flex-wrap items-start justify-center border rounded-lg h-[calc(100vh-10rem)] shadow ">
+      <div  class="text-center justify-center border rounded-lg h-[calc(100vh-10rem)] shadow ">
         <div class = "text-center flex justify-center items-center font-sans w-full h-12 text-lg text-black bg-gray-300 rounded-t border">Available Skills</div>
-        <div id="skillGrid" class="text-center flex flex-wrap items-start justify-center h-[calc(100vh-14rem)] shadow gap-4 overflow-y-auto p-2">
+        <div id="skillGrid" class="p-6 text-center items-center justify-center h-[calc(100vh-14rem)] shadow gap-4 overflow-y-auto p-2">
 
         </div>
       </div>
@@ -179,6 +179,7 @@
               iconGroup : 'Data Management'
 
           },
+          
           aws: {
               name: "AWS",
               description: "ML library for classical algorithms.",
@@ -336,77 +337,86 @@
       const raghulScore = document.getElementById("raghulScore");
       const expectedScore = document.getElementById("expectedScore")
 
-      const iconGroups = [new Set(Object.values(iconIdSources).map(icon =>icon.iconGroup))];
-      Object.entries(iconIdSources).forEach(([id, {name, description, score, source,iconGroup}]) => {
-        const iconDiv = document.createElement("div");
-        if (source == "div"){
-          const mainDiv = document.createElement("div");
-          const textDiv = document.createElement("div");
+     const groupContainers = new Map();
 
-          textDiv.textContent = name;
-          textDiv.classList.add(
-            'text-center',
-            'whitespace-normal',
-            'w-full',
-            'h-full',
-            'flex',
-            'items-center',
-            'justify-center',
-            
-          );
-          textDiv.style.overflowWrap = 'break-word';
-          textDiv.style.wordBreak = 'break-word';
+    // Loop through the icon sources
+    Object.entries(iconIdSources).forEach(([id, { name, description, score, source, iconGroup }]) => {
+    // Create group container if it doesn't exist
+    if (!groupContainers.has(iconGroup)) {
+        const groupDiv = document.createElement("div");
+        groupDiv.classList.add("mb-6",
+            "w-full"
+        );
+        groupDiv.dataset.group = iconGroup;
 
-            mainDiv.id = id;
-          mainDiv.draggable = true;
+        // Optional: Add a title
+        const groupTitle = document.createElement("h4");
+        groupTitle.textContent = iconGroup;
+        groupTitle.classList.add("text-lg", "font-semibold", "mb-2", "capitalize");
+        groupDiv.appendChild(groupTitle);
 
-          mainDiv.classList.add('h-16',
-                    'w-16',          
-            'rounded-lg',
-            'bg-white',
-            'text-black',
-            'hover:scale-110',
-            'text-sm',
-            'border-2',
-            'border-gray-400',
-            'hover:bg-gray-100',
-            'hover:border-gray-500',
-            'group',
-            'relative',
-            'transition-colors',
-            'transition-transform',
-            'shadow-md',
-            'flex',           // Add this to enable flex layout
-            'items-center',   // Vertical centering
-            'justify-center', // Horizontal centering
-            'p-1', 
-            'text-center'
-          );
+        const iconsWrapper = document.createElement("div");
+        iconsWrapper.classList.add(
+        "flex",
+        "flex-wrap",
+        "grid-cols-[repeat(auto-fit,minmax(20px,1fr))]" ,
+        "gap-4",
+        "w-full"// Responsive grid with fixed icon size
+        );
+        groupDiv.appendChild(iconsWrapper);
 
-          mainDiv.appendChild(textDiv);
-          iconDiv.appendChild(mainDiv);
+        groupContainers.set(iconGroup, { groupDiv, iconsWrapper });
+    }
 
-        } 
-        else{
-          const img = document.createElement("img");
-          img.src = source;
-          img.id = id;
-          img.classList.add('h-16',
-                    'w-16',
-                    'rounded-lg',
-                    'bg-white',
-                    'hover:scale-110',
-                    'transition-transform',
-                    'shadow-md',
-                    'border-2',
-                    'border-gray-400',);
-          iconDiv.appendChild(img)
+    // Create icon div
+    const iconDiv = document.createElement("div");
+    iconDiv.classList = "relative group w-[20%]";
 
-        } 
-        iconDiv.classList =  "relative group" ;
-        iconDiv.innerHTML += `<span id="tooltip-${id}" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>`;
-        skillGrid.appendChild(iconDiv);    
+    if (source === "div") {
+        const mainDiv = document.createElement("div");
+        const textDiv = document.createElement("div");
+
+        textDiv.textContent = name;
+        textDiv.classList.add(
+        "text-center", "whitespace-normal", "w-full", "h-full", "flex",
+        "items-center", "justify-center"
+        );
+        textDiv.style.overflowWrap = 'break-word';
+        textDiv.style.wordBreak = 'break-word';
+
+        mainDiv.id = id;
+        mainDiv.draggable = true;
+        mainDiv.classList.add(
+        "w-full", "aspect-square", "rounded-lg", "bg-white", "text-black",
+        "hover:scale-110", "text-sm", "border-2", "border-gray-400",
+        "hover:bg-gray-100", "hover:border-gray-500", "group", "relative",
+        "transition-colors", "transition-transform", "shadow-md", "flex",
+        "items-center", "justify-center", "p-1", "text-center"
+        );
+
+        mainDiv.appendChild(textDiv);
+        iconDiv.appendChild(mainDiv);
+    } else {
+        const img = document.createElement("img");
+        img.src = source;
+        img.id = id;
+        img.classList.add(
+        "w-full", "aspect-square", "rounded-lg", "bg-white", "hover:scale-110",
+        "transition-transform", "shadow-md", "border-2", "border-gray-400"
+        );
+        iconDiv.appendChild(img);
+    }
+
+    iconDiv.innerHTML += `<span id="tooltip-${id}" class="absolute left-1/2 top-full mt-2 -translate-x-1/2 whitespace-nowrap z-50 pointer-events-none"></span>`;
+
+    groupContainers.get(iconGroup).iconsWrapper.appendChild(iconDiv);
     });
+
+    // Append all groups to skillGrid
+    groupContainers.forEach(({ groupDiv }) => {
+    skillGrid.appendChild(groupDiv);
+    });
+
 
 
 
