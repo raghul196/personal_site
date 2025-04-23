@@ -22,8 +22,8 @@
           <nav class="space-x-6">
             <a href="./index.html" class="hover:text-green-300 transition">Home</a>
             <a href="./index.html#aboutSection" class="hover:text-green-300 transition">About</a>
-            <a href="./projects.html" class="hover:text-green-300 transition">Projects</a>
-            <a href="./skills.html" class="hover:text-green-300 transition">Skills</a>
+            <a href="./index.html#projectsSection" class="hover:text-green-300 transition">Projects</a>
+            <a href="./index.html#skillsSection" class="hover:text-green-300 transition">Skills</a>
             <a href="./index.html#contactSection" class="hover:text-green-300 transition">Contact</a>
           </nav>
         </div>
@@ -32,37 +32,41 @@
 
   <!-- Main Content -->
   <main class="flex flex-row mx-auto min-h-[700px]">
-    <div class="p-4 grid flex justify-center grid-cols-[30%_25%_40%] h-[calc(100vh-3rem)]  gap-4">
+    <div class="p-4 grid flex justify-center grid-cols-[30%_25%_35%] h-[calc(100vh-3rem)]  gap-4">
       
       <!-- Skill Grid -->
       <div  class="text-center justify-center border rounded-lg h-[calc(100vh-3rem)]  shadow ">
-        <div class = "text-center flex justify-center items-center font-sans w-full h-12 whitespace-normal text-black bg-gray-300 rounded-t 2xl:text-[24px] xl:text-[18px] lg:text-[12px] border">Available Skills</div>
+        <div class = "text-center flex justify-center items-center font-sans w-full h-12 whitespace-normal text-black bg-gray-300 rounded-t border">Available Skills</div>
         <div id="skillGrid" class="p-6 text-center items-center justify-center h-[calc(100vh-6rem)] shadow gap-4 overflow-y-auto p-2">
 
         </div>
       </div>
 
       <!-- Drop + Score + Expected -->
-      <div id="skillDragOver" class="rounded-lg h-[calc(100vh-3rem)] w-full overflow-y-auto border rounded-md">
+      <div id="skillDragOver" class="grid grid-cols-[30%_40%_30%] rounded-lg h-[calc(100vh-3rem)] w-full overflow-y-auto border rounded-md">
         
-        
-        <table class="table-fixed w-full border-collapse">
-            <colgroup>
-              <col style="width: 30%;" />
-              <col style="width: 40%;" />
-              <col style="width: 30%;" />
-            </colgroup>
-            <thead class = "bg-gray-300 h-12">
-              <tr class = "sticky top-0 bg-gray-300 h-12 z-40 text-black font-sans 2xl:text-[24px] xl:text-[18px] lg:text-[12px]" >
-                <td class="align-middle text-center" colspan="2" >Expected Skills</td>
-                <td class="align-middle" >Proficiency</td>
-              </tr>
-            </thead>
-            <tbody id="skillGridTable">
-              <!-- Rows added dynamically -->
-            </tbody>
-        </table>
+        <!-- Drop Zone with icons -->
+        <div class="w-full h-[calc(100vh-6rem)] flex flex-col text-center items-center justify-start">
+          <div class = "sticky top-0 p-1 z-10 flex justify-center items-center font-sans w-full h-12  whitespace-normal text-black bg-gray-300 border">Expected Skills</div>
+          <div id="dropZone" class="w-full p-4 gap-4 h-[calc(100vh-14rem)] flex flex-col grid-cols-[repeat(auto-fit,minmax(10px,0.5fr))] justify-start">
 
+          </div>
+        
+        </div>
+
+        <div class="w-full h-[calc(100vh-6rem)] flex flex-col text-center items-center justify-start">
+          <div class = "sticky top-0 p-1 z-10 flex justify-center items-center font-sans w-full h-12  whitespace-normal  text-black bg-gray-300 border">Expected Skills</div>
+          <div id="dropZoneName" class="w-full p-4 gap-4 h-[calc(100vh-14rem)] flex flex-col text-center items-center justify-start">
+
+          </div>
+        </div>
+        <!-- Expected Score -->
+        <div class="w-full h-[calc(100vh-6rem)] flex flex-col text-center items-center justify-start">
+          <div class = "sticky top-0 p-1 z-10 flex justify-center items-center font-sans w-full h-12 whitespace-normal text-black bg-gray-300 border">Expected Proficiency</div>
+          <div id="expectedScore" class="w-full h-[calc(100vh-14rem)] flex flex-col text-black  items-center justify-start gap-4 p-4">
+            
+          </div>
+      </div>
       </div>
 
       <!-- Radar -->
@@ -399,7 +403,7 @@
         textDiv.textContent = name;
         textDiv.classList.add(
         "text-center", "whitespace-normal", "w-full", "h-full", "flex",
-        "items-center", "justify-center",'2xl:text-[20px]', 'xl:text-[12px]', 'lg:text-[10px]','font-sans'
+        "items-center", "justify-center"
         );
         textDiv.style.overflowWrap = 'break-word';
         textDiv.style.wordBreak = 'break-word';
@@ -412,7 +416,7 @@
         "hover:bg-gray-100", "hover:border-gray-500", "group", "relative",
         "transition-colors", "transition-transform", "shadow-md", "flex",
         "items-center", "justify-center", "p-1", "text-center"
-        ); 
+        );
 
         mainDiv.appendChild(textDiv);
         iconDiv.appendChild(mainDiv);
@@ -454,11 +458,10 @@
       function addSkillsToDragOver(droppedIconId){
         const source = iconIdSources[droppedIconId].source;
         const name = iconIdSources[droppedIconId].name;
-        const score = iconIdSources[droppedIconId].score;      
-        const tableRow = document.createElement("tr");
-        tableRow.id = `${droppedIconId}Row`;
-        // === 1. Icon Cell ===
-        const iconCell = document.createElement("td");
+        const score = iconIdSources[droppedIconId].score;
+        let iconDivHeight;
+        
+
         if (source == "div"){
             const mainDiv = document.createElement("div");
             const textDiv = document.createElement("div");
@@ -471,8 +474,7 @@
                 "aspect-square",
                 'items-center',
                 'justify-center',
-                'flex',
-                '2xl:text-[18px]', 'xl:text-[11px]', 'lg:text-[9px]'
+                'flex'
                 
                 
             );
@@ -505,12 +507,13 @@
               'items-center',   // Vertical centering
               'justify-center', // Horizontal centering
               'p-1', 
+              'm-1',
               'text-center'
             );
 
             mainDiv.appendChild(textDiv);
-            iconCell.appendChild(mainDiv);
-            
+            dropZone.appendChild(mainDiv);
+            iconDivHeight = mainDiv.clientHeight;
 
             } 
             else{
@@ -522,63 +525,32 @@
                     'min-w-12',
                     'aspect-square',       
                     'rounded-full', 
-                    'bg-white',                   
-                    'object-contain',
-                    'shadow' 
+                    'bg-white',     
+                    'p-1',         
+                    'm-1',         
+                    'object-contain', 
                   );
-                iconCell.appendChild(img);
-                
+                dropZone.appendChild(img);
+                iconDivHeight = img.clientHeight;
+
             }
         
-            iconCell.classList.add("p-2", "align-middle"); 
-
-            // === 2. Input Cell ===
-            const inputCell = document.createElement("td");
-            const expectedScoreInput = document.createElement("input");
-            expectedScoreInput.type = "number";
-            expectedScoreInput.value = 5;
-            expectedScoreInput.id = `${droppedIconId}ExpectedScore`;
-            expectedScoreInput.classList.add(
-                "border",
-                "items-center",
-                "justify-center",
-                "h-8",
-                "rounded",
-                "px-2",
-                "py-1",
-                "w-16",
-                "max-w-full",
-                "text-black"
-            );
-            inputCell.appendChild(expectedScoreInput);
-
-            // === 3. Name Cell ===
-            const nameCell = document.createElement("td");
-            const nameP = document.createElement("p");
-            nameP.textContent = name;
-            nameP.classList.add(
-                "words-break",
-                "flex",
-                "items-center",
-                "justify-center",
-                "text-center"
-
-            );
-            nameCell.appendChild(nameP);
-
-            iconCell.classList.add("p-4", "align-middle");
-            nameCell.classList.add("p-2", "align-middle");
-            inputCell.classList.add("p-2", "align-middle");
-            // === Append cells to row ===
-            tableRow.appendChild(iconCell);
-            tableRow.appendChild(nameCell);
-            tableRow.appendChild(inputCell);
-            
-
-            // === Append row to table body ===
-            skillGridTable.appendChild(tableRow);
         
-        };
+        const expectedScoreDiv = document.createElement("div");
+        expectedScoreDiv.classList.add('flex','items-center','justify-center');
+        expectedScoreDiv.setAttribute("style",`height:${iconDivHeight}px`);
+        expectedScoreDiv.id = droppedIconId + '-ExpectedScoreDiv'
+        expectedScoreDiv.innerHTML = `<input type="number" value = 5 id = "${droppedIconId}ExpectedScore" class="border items-center justify-center h-8 rounded px-2 py-1 w-16 max-w-full" />`;
+        expectedScore.appendChild(expectedScoreDiv);
+
+        const dropZoneNameDiv = document.createElement("div");
+        dropZoneNameDiv.classList.add('flex', 'items-center','justify-center');
+        dropZoneNameDiv.setAttribute("style",`height:${iconDivHeight}px`);
+        dropZoneNameDiv.id = droppedIconId +'-NameDiv'
+        dropZoneNameDiv.innerHTML = `<p class="words-break flex items-center justify-center h-16 rounded px-2 py-1 w-16 max-w-full">${iconIdSources[droppedIconId].name}</p>`;
+        dropZoneName.appendChild(dropZoneNameDiv);
+        
+      };
 
       droppedIconIdsArr?.length && droppedIconIdsArr.forEach(addSkillsToDragOver);
 
@@ -591,7 +563,7 @@
       
       
       function bindExpectedScores(){
-        const expectedScoreFields = document.querySelectorAll('#skillDragOver input');
+        const expectedScoreFields = document.querySelectorAll('#expectedScore input');
         expectedScoreFields.forEach(expectedScoreField => {
         expectedScoreField.addEventListener('input', () => {
             updateRadarChart();
@@ -711,7 +683,7 @@
       });
 
       function bindDropZoneIconListeners() {
-        const dropZoneIcons = document.querySelectorAll('#skillDragOver img, #skillDragOver div[draggable="true"]');
+        const dropZoneIcons = document.querySelectorAll('#dropZone img, #dropZone div[draggable="true"]');
         let draggedDropZoneIcon = null;
         dropZoneIcons.forEach(icon => {
             icon.setAttribute('draggable', true); // drag behavior
@@ -719,16 +691,18 @@
                 draggedDropZoneIcon = event.target;
             });
             
-            skillDragOver.addEventListener('dragleave', (event) => {
+            dropZone.addEventListener('dragleave', (event) => {
                 // 1. Get the element that is being dragged
                 if(draggedDropZoneIcon){
-                    const draggedElement = document.getElementById(`${draggedDropZoneIcon.id.split("-")[1]}Row`);
+                    const draggedElement = document.getElementById(draggedDropZoneIcon.id);
                     const draggedElementName = document.getElementById(draggedDropZoneIcon.id.split("-")[1] + "-NameDiv");
                     const draggedElementExpectedScore = document.getElementById(draggedDropZoneIcon.id.split("-")[1] + "-ExpectedScoreDiv");
 
                     // 3. Remove the icon from the DOM
                     if (draggedElement){
                         draggedElement.remove();
+                        draggedElementName.remove();
+                        draggedElementExpectedScore.remove();
                     };
 
                     // 4. Remove the icon's ID from the Set
