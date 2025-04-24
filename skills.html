@@ -37,7 +37,7 @@
       <!-- Skill Grid -->
       <div  class="text-center justify-center border rounded-lg h-[calc(100vh-3rem)]  shadow ">
         <div class = "text-center flex justify-center items-center font-sans w-full h-12 whitespace-normal text-black bg-gray-300 rounded-t 2xl:text-[18px] xl:text-[18px] lg:text-[12px] border">Available Skills</div>
-        <div id="skillGrid" class="text-center items-center justify-center h-[calc(100vh-6rem)] grid grid-cols-1 2xl:grid-cols-2 shadow gap-4 2xl:gap-8 overflow-y-auto p-6 2xl:px-6">
+        <div id="skillGrid" class="text-center items-center justify-center h-[calc(100vh-6rem)] z-40 grid grid-cols-1 2xl:grid-cols-2 shadow gap-4 2xl:gap-8 overflow-y-auto overflow-visible p-6 2xl:px-6">
 
         </div>
       </div>
@@ -390,7 +390,7 @@
 
     // Create icon div
     const iconDiv = document.createElement("div");
-    iconDiv.classList = "relative group w-[20%]";
+    iconDiv.classList = "relative group w-[20%] ";
 
     if (source === "div") {
         const mainDiv = document.createElement("div");
@@ -427,7 +427,7 @@
         iconDiv.appendChild(img);
     }
 
-    iconDiv.innerHTML += `<span id="tooltip-${id}" class="absolute left-1/2 top-full mt-2 -translate-x-1/2 whitespace-nowrap z-50 pointer-events-none"></span>`;
+    // iconDiv.innerHTML += `<span id="tooltip-${id}" class="absolute left-1/2 top-full z-50 mt-2 -translate-x-1/2 whitespace-nowrap pointer-events-none"></span>`;
 
     groupContainers.get(iconGroup).iconsWrapper.appendChild(iconDiv);
     });
@@ -440,12 +440,12 @@
 
 
 
-      const params = new URLSearchParams(window.location.search);
-      let droppedIconIdsArr = JSON.parse(params.get("droppedIconIds"));
+    const params = new URLSearchParams(window.location.search);
+    let droppedIconIdsArr = JSON.parse(params.get("droppedIconIds"));
 
-      if (droppedIconIdsArr == null){
-        droppedIconIdsArr = [];
-      }
+    if (droppedIconIdsArr == null){
+    droppedIconIdsArr = [];
+    }
 
       
       let radarChart ;
@@ -623,14 +623,14 @@
                     labels: droppedIconLabels, 
                     datasets: [
                         {
-                            label: "Raghul's Skills", 
+                            label: "Raghul's Proficiency", 
                             data: droppedIconScores, 
                             backgroundColor: 'rgba(0, 123, 255, 0.4)',   // Soft Blue
                             borderColor: 'rgba(0, 123, 255, 1)',          // Solid Blue border
                             borderWidth: 2 
                         },
                         {
-                            label: "Expected Skill", 
+                            label: "Expected Proficiency", 
                             data: droppedIconExpectedScores, 
                             backgroundColor: 'rgba(255, 193, 7, 0.4)',    // Warm Yellow
                             borderColor: 'rgba(255, 193, 7, 1)',          // Solid Yellow border
@@ -709,7 +709,7 @@
           
         }
       });
-
+      bindDropZoneIconListeners();
       function bindDropZoneIconListeners() {
         const dropZoneIcons = document.querySelectorAll('#skillDragOver img, #skillDragOver div[draggable="true"]');
         let draggedDropZoneIcon = null;
@@ -746,30 +746,92 @@
         });        
         };
 
-        Object.entries(iconIdSources).forEach(([id,{name, description, score, source}]) => {
+        Object.entries(iconIdSources).forEach(([id, { name, description, score, source }]) => {
             const hoveredIcon = document.getElementById(id);
-            const tooltip = document.getElementById(`tooltip-${id}`);
-            if (hoveredIcon){
+            const tooltipId = `tooltip-${id}`;
+
+            if (hoveredIcon) {
+                let tooltip = document.getElementById(tooltipId);
+                if (!tooltip) {
+                    tooltip = document.createElement("span");
+                    tooltip.id = tooltipId;
+                    tooltip.className = "absolute z-50 pointer-events-none transition-opacity duration-200 opacity-0";
+                    hoveredIcon.parentElement.appendChild(tooltip);
+                }
+
                 hoveredIcon.addEventListener("mouseenter", () => {
-                    //console.log('Mouse entered' + `tooltip-${id}`);
                     tooltip.innerHTML = `
-                        <div class = "w-48 flex relative flex-col bg-gray-300 rounded-lg shadow-lg border border-gray-400 px-2 py-2">
+                        <div class="w-48 flex relative flex-col bg-gray-300 rounded-lg shadow-lg border border-gray-400 px-2 py-2">
                             <div class="font-semibold py-2 text-black text-center">${name}</div>
                             <div class="w-full bg-gray-200 text-black rounded-full h-4">
                                 <div class="bg-blue-500 h-4 rounded-full" style="width: ${score * 10}%;"></div>
                             </div>
                             <div class="text-xs text-center text-black mt-1">${score}/10</div>
-                            <div class="text-xs py-2 text-gray-800 break-words whitespace-normal"><p>${description}</p></div>
+                            <div class="text-xs py-2 text-gray-800 break-words whitespace-normal">
+                                <p>${description}</p>
+                            </div>
                         </div>
-                        `;
+                    `;
+
+                    // Reset tooltip styles
+                    tooltip.style.opacity = "1";
+                    requestAnimationFrame(()=>{tooltip.style.top = '';
+                        tooltip.style.bottom = '';
+                        tooltip.style.left = '';
+                        tooltip.style.right = '';
+                        tooltip.style.transform = '';
+
+                        // Smart positioning
+                        const iconRect = hoveredIcon.getBoundingClientRect();
+                        const gridRect = skillGrid.getBoundingClientRect();
+                        const tooltipRect = tooltip.firstElementChild.getBoundingClientRect();
+
+                        const spaceBelow = gridRect.bottom - iconRect.bottom;
+                        const spaceAbove = iconRect.top - gridRect.top;
+                        const spaceRight = gridRect.right - iconRect.right;
+                        const spaceLeft = iconRect.left - gridRect.left;
+                        console.log(spaceLeft , tooltipRect.width);
+
+                        // Try to show below
+                        if (spaceBelow >= tooltipRect.height && spaceLeft >= tooltipRect.width/2 && spaceRight >=tooltipRect.width/2) {             
+                            tooltip.style.top = `${hoveredIcon.offsetHeight + 8}px`;
+                            tooltip.style.left = "50%";
+                            tooltip.style.transform = "translateX(-50%)";
+                        }
+                        // Else show above
+                        else if (spaceAbove >= tooltipRect.height && spaceBelow <= tooltipRect.height && spaceLeft >= tooltipRect.width/2 && spaceRight >=tooltipRect.width/2) {
+                            tooltip.style.bottom = `${hoveredIcon.offsetHeight + 8}px`;
+                            tooltip.style.left = "50%";
+                            tooltip.style.transform = "translateX(-50%)";
+                        }
+                        // Else show right
+                        else if (spaceRight >= tooltipRect.width) {
+                            console.log('1');
+                            tooltip.style.top = "50%";
+                            tooltip.style.left = `${hoveredIcon.offsetWidth + 8}px`;
+                            tooltip.style.transform = "translateY(-50%)";
+                        }
+                        // Else show left
+                        else if (spaceLeft >= tooltipRect.width) {
+                            console.log('2');
+                            tooltip.style.top = "50%";
+                            tooltip.style.right = `${hoveredIcon.offsetWidth + 8}px`;
+                            tooltip.style.transform = "translateY(-50%)";
+                        } else {
+                            // Default to below if all else fails
+                            tooltip.style.top = `${hoveredIcon.offsetHeight + 8}px`;
+                            tooltip.style.left = "50%";
+                            tooltip.style.transform = "translateX(-50%)";
+                        }
+                    });
                 });
                 hoveredIcon.addEventListener("mouseleave", () => {
-                    //console.log('Mouse exited'+`tooltip-${id}`);
-                    tooltip.innerHTML = ` `;
+                    tooltip.style.opacity = "0";
+                    tooltip.innerHTML = '';
                 });
             }
-
         });
+
 
     </script>
 
