@@ -1,160 +1,119 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Data Scientist | Energy, Climate & Sustainability</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-
-
-    </style>
-</head>
-
-<body class="text-white h-screen flex flex-col bg-black font-sans">
-    
-    <!-- Header -->
-  <header class="fixed top-0 left-0 w-full z-50 bg-opacity-80 backdrop-blur-md text-white shadow-md">
-    <div class="container mx-auto px-6 py-4 flex justify-between items-center" id="header">
-      <h1 class="text-2xl font-bold">Raghul Babu</h1>
-      <nav class="space-x-6">
-        <a href="./index.html" class="hover:text-green-300 transition">Home</a>
-        <a href="./index.html#aboutSection" class="hover:text-green-300 transition">About</a>
-        <a href="./projects.html" class="hover:text-green-300 text-green-300 transition">Projects</a>
-        <a href="./skills.html" class="hover:text-green-300 transition">Skills</a>
-        <a href="./index.html#contactSection" class="hover:text-green-300 transition">Contact</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="main-container pt-24">
-    <div class="space-y-6">
-    <div class = "mx-auto max-w-5xl p-4 bg-gray-700 rounded-lg hover:scale-105 transition  ">
-        <h2 class="text-3xl font-semibold mb-4 text-center mx-auto" >Deutsche Telekom CO 2030</h2>
-        
-        <div class = "mx-auto grid grid-cols-[39%_2%_59%]">
-            <div>
-                <img src = "static/projects_images/dt_1.jpg" class = "w-full rounded-lg">
-            </div>
-            <div></div>
-            <div class = "space-y-4">
-                <div>Aim : Energy Cost Saving  </div>
-                <div class = "words-break">Description : Created a digital twin for Electricity system of Telecommunication Node spread throughout Germany.
-                  With the help of the digital twin optimal value of PV and BESS installation were devised
-                  to maximise cost Saving.   
-
-                    
-                  </div>
-                <div>Outcome : Around <b>15%</b> cost saving can be realised by installing Optimal PV and batteries
-
-                </div>
-                <div>Applied skills: python, Energy Market, Energy Modelling, SQL, 
-                                    </div>
-            </div>
-        </div>        
-    </div> 
-    <div class = "mx-auto max-w-5xl p-4 bg-gray-700 rounded-lg hover:scale-105 transition">
-        <h2 class="text-3xl font-semibold mb-4 text-center mx-auto" >Transport Hub of Future</h2>
-        
-        <div class = "mx-auto grid grid-cols-[59%_2%_39%]">
-            
-            <div class = "space-y-4">
-                <div>Aim : Business model for future Transport Hub  </div>
-                <div class = "words-break">Description : Conceived a version of futuristic Transport Hub and devised a
-                  business model.
-                  </div>
-                <div>Outcome: Won <b>First</b> Place
-
-                </div>
-                <div>Applied skills: Business Model Canvas, Team work, Brainstorming
-                                    </div>
-            </div>
-            <div></div>
-            <div>
-                <img src = "static/projects_images/ihack.png" class = "w-full rounded-lg">
-            </div>
-        </div>        
-    </div>  
-    <div class = "mx-auto max-w-5xl p-4 bg-gray-700 rounded-lg hover:scale-105 transition">
-        <h2 class="text-3xl font-semibold mb-4 text-center mx-auto" >Workflow Automation</h2>
-        
-        <div class = "mx-auto grid grid-cols-[39%_2%_59%]">
-            <div >
-                <img src = "static/projects_images/sap_automation_3.png" class = "w-full rounded-lg">
-            </div>
-            <div></div>
-            <div class = "space-y-4">
-                <div>Aim : Automate Workflows and Processes  </div>
-                <div class = "words-break">Description : Consulting with Co-workers on time-consuming tasks and 
-                  recommend a custom automation workflow, to ease their tasks. The major part is in identifying the problem as a porblem
-                  </div>
-                <div>Outcome : Ease of workflow and lower manual errors.
-
-                </div>
-                <div>Applied skills: python, VBA, SAP, PHP
-                                    </div>
-            </div>
-        </div>        
-    </div> 
-
-    <div class = "mx-auto max-w-5xl p-4 bg-gray-700 rounded-lg hover:scale-105 transition">
-        <h2 class="text-3xl font-semibold mb-4 text-center mx-auto" >Global Energy Model</h2>
-        
-        <div class = "mx-auto grid grid-cols-[59%_2%_39%]">
-            
-            
-            <div class = "space-y-4">
-                <div>Aim : Analyse and Evaluate Decarbonisation Scenarios  </div>
-                <div class = "words-break">Description : Digital representation of gloabal energy system was modelled and plausible paths for 
-                  decarbonisation were evaluated.
-                  </div>
-                <div>Outcome : Carbon Price based and Regulation based Scenarios were analysed.
-                </div>
-                <div>Applied skills: ESDP compact (modelling Tool), Energy Modelling ,Energy Reports(IEA, IRENA) 
-                                    </div>
-            </div>
-            <div></div>
-            <div >
-              <img src = "static/projects_images/iep.png" class = "w-full rounded-lg">
-            </div>
-          
-        </div>        
-    </div> 
-
-    
-    <div class = "mx-auto max-w-5xl p-4 bg-gray-700 rounded-lg hover:scale-105 transition">
-        <h2 class="text-3xl font-semibold mb-4 text-center mx-auto" >Energy Storage Technology</h2>
-        
-        <div class = "mx-auto grid grid-cols-[39%_2%_59%]">
-          
+  <div class="space-y-6">
+    <div id = "dt-container" class = "mx-auto max-w-5xl p-4 bg-gray-700 rounded-lg hover:scale-105 transition  ">
+      <h2 class="text-3xl font-semibold mb-4 text-center mx-auto" >Deutsche Telekom CO 2030</h2>
+      
+      <div class = "mx-auto grid grid-cols-[39%_2%_59%]">
           <div>
-              <img src = "static/projects_images/tess_2.png" class = "w-full rounded-lg">
+              <img src = "static/projects_images/dt_1.jpg" class = "w-full rounded-lg">
           </div>
           <div></div>
-            <div class = "space-y-4">
-                <div>Aim : Optimisation of Energy Storage </div>
-                <div class = "words-break">Description : Devised a Thermal energy Storage Technology for a 
-                  Commercial Building to store ice. Moddelled the storage cycle to find optimal size and rating of Storage 
-                  </div>
-                <div>Outcome : Storage Solution with a payback time of <b>12</b> years
+          <div class = "space-y-4">
+              <div>Aim : Energy Cost Saving  </div>
+              <div class = "words-break">Description : Created a digital twin for Electricity system of Telecommunication Node spread throughout Germany.
+                With the help of the digital twin optimal value of PV and BESS installation were devised
+                to maximise cost Saving.   
 
+                  
                 </div>
-                <div>Applied skills: python, VBA 
-                                    </div>
-            </div>
-            
-        </div>        
-    </div>   
+              <div>Outcome : Around <b>15%</b> cost saving can be realised by installing Optimal PV and batteries
+
+              </div>
+              <div>Applied skills: python, Energy Market, Energy Modelling, SQL, 
+                                  </div>
+          </div>
+      </div>        
   </div> 
-  </main>
+  <div id = "ihack-container" class = "mx-auto max-w-5xl p-4 bg-gray-700 rounded-lg hover:scale-105 transition">
+      <h2 class="text-3xl font-semibold mb-4 text-center mx-auto" >Transport Hub of Future</h2>
+      
+      <div class = "mx-auto grid grid-cols-[59%_2%_39%]">
+          
+          <div class = "space-y-4">
+              <div>Aim : Business model for future Transport Hub  </div>
+              <div class = "words-break">Description : Conceived a version of futuristic Transport Hub and devised a
+                business model.
+                </div>
+              <div>Outcome: Won <b>First</b> Place
 
+              </div>
+              <div>Applied skills: Business Model Canvas, Team work, Brainstorming
+                                  </div>
+          </div>
+          <div></div>
+          <div>
+              <img src = "static/projects_images/ihack.png" class = "w-full rounded-lg">
+          </div>
+      </div>        
+  </div>  
+  <div id = "sap_automation-container" class = "mx-auto max-w-5xl p-4 bg-gray-700 rounded-lg hover:scale-105 transition">
+      <h2 class="text-3xl font-semibold mb-4 text-center mx-auto" >Workflow Automation</h2>
+      
+      <div class = "mx-auto grid grid-cols-[39%_2%_59%]">
+          <div >
+              <img src = "static/projects_images/sap_automation_3.png" class = "w-full rounded-lg">
+          </div>
+          <div></div>
+          <div class = "space-y-4">
+              <div>Aim : Automate Workflows and Processes  </div>
+              <div class = "words-break">Description : Consulting with Co-workers on time-consuming tasks and 
+                recommend a custom automation workflow, to ease their tasks. The major part is in identifying the problem as a porblem
+                </div>
+              <div>Outcome : Ease of workflow and lower manual errors.
 
-  <!-- Footer -->
-  <footer class="text-white text-center py-6 mt-12">
-    <p>&copy; 2025 Raghul Babu.  All rights reserved.</p>
-  </footer>
+              </div>
+              <div>Applied skills: python, VBA, SAP, PHP
+                                  </div>
+          </div>
+      </div>        
+  </div> 
 
-</body>
-</html>
+  <div id = "iep-container" class = "mx-auto max-w-5xl p-4 bg-gray-700 rounded-lg hover:scale-105 transition">
+      <h2 class="text-3xl font-semibold mb-4 text-center mx-auto" >Global Energy Model</h2>
+      
+      <div class = "mx-auto grid grid-cols-[59%_2%_39%]">
+          
+          
+          <div class = "space-y-4">
+              <div>Aim : Analyse and Evaluate Decarbonisation Scenarios  </div>
+              <div class = "words-break">Description : Digital representation of gloabal energy system was modelled and plausible paths for 
+                decarbonisation were evaluated.
+                </div>
+              <div>Outcome : Carbon Price based and Regulation based Scenarios were analysed.
+              </div>
+              <div>Applied skills: ESDP compact (modelling Tool), Energy Modelling ,Energy Reports(IEA, IRENA) 
+                                  </div>
+          </div>
+          <div></div>
+          <div >
+            <img src = "static/projects_images/iep.png" class = "w-full rounded-lg">
+          </div>
+        
+      </div>        
+  </div> 
+
+  
+  <div id = "tess-container" class = "mx-auto max-w-5xl p-4 bg-gray-700 rounded-lg hover:scale-105 transition">
+      <h2 class="text-3xl font-semibold mb-4 text-center mx-auto" >Energy Storage Technology</h2>
+      
+      <div class = "mx-auto grid grid-cols-[39%_2%_59%]">
+        
+        <div>
+            <img src = "static/projects_images/tess_2.png" class = "w-full rounded-lg">
+        </div>
+        <div></div>
+          <div class = "space-y-4">
+              <div>Aim : Optimisation of Energy Storage </div>
+              <div class = "words-break">Description : Devised a Thermal energy Storage Technology for a 
+                Commercial Building to store ice. Moddelled the storage cycle to find optimal size and rating of Storage 
+                </div>
+              <div>Outcome : Storage Solution with a payback time of <b>12</b> years
+
+              </div>
+              <div>Applied skills: python, VBA 
+                                  </div>
+          </div>
+          
+      </div>        
+  </div>   
+</div> 
+  
