@@ -16,6 +16,7 @@
             height: 100%;
             overflow: hidden;
             z-index: -1;
+            transition:opacity 3s ease;
         }
 
         .video-background video {
@@ -106,7 +107,7 @@
     </style>
 </head>
 
-<body class="text-white font-sans">
+<body class="text-white font-sans bg-black">
     <div class="video-background">
         <video id="video1" autoplay muted playsinline>
             <source src="static/3045163-hd_1920_1080_25fps(1).mp4" type="video/mp4" />
@@ -354,27 +355,27 @@
             <div class="max-w-4xl mx-auto">
                 <h2 class="text-3xl font-semibold mb-8 mx-auto text-center">Projects</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="p-6 rounded-xl bg-gray-300 bg-opacity-50 shadow hover:shadow-lg transition">
+                    <div class="p-6 rounded-xl bg-gray-300 hover hover:scale-105 bg-opacity-50 shadow hover:shadow-lg transition">
                         <h3 class="text-xl font-bold mb-2">Telekom</h3>
                         <p class="text-black">Masterarbeit: collaboration with TUD and Telekom</p>
                     </div>
-                    <div class="p-6 rounded-xl shadow bg-gray-300 bg-opacity-50 hover:shadow-lg transition">
+                    <div class="p-6 rounded-xl shadow bg-gray-300 hover hover:scale-105 bg-opacity-50 hover:shadow-lg transition">
                         <h3 class="text-xl font-bold mb-2">SAP Automation</h3>
                         <p class="text-black">Meldung Contract, Material </p>
                     </div>
-                    <div class="p-6 rounded-xl shadow bg-gray-300 bg-opacity-50 hover:shadow-lg transition">
+                    <div class="p-6 rounded-xl shadow bg-gray-300 hover hover:scale-105 bg-opacity-50 hover:shadow-lg transition">
                         <h3 class="text-xl font-bold mb-2">SAP Atuomation</h3>
                         <p class="text-black">KALA stuff</p>
                     </div>
-                    <div class="p-6 rounded-xl shadow bg-gray-300 bg-opacity-50 hover:shadow-lg transition">
+                    <div class="p-6 rounded-xl shadow bg-gray-300 hover hover:scale-105 bg-opacity-50 hover:shadow-lg transition">
                         <h3 class="text-xl font-bold mb-2">Leap</h3>
                         <p class="text-black">model electricity in germany</p>
                     </div>
-                    <div class="p-6 rounded-xl shadow bg-gray-300 bg-opacity-50 hover:shadow-lg transition">
+                    <div class="p-6 rounded-xl shadow bg-gray-300 hover hover:scale-105 bg-opacity-50 hover:shadow-lg transition">
                         <h3 class="text-xl font-bold mb-2">Energy Storage</h3>
                         <p class="text-black">developed optimal heat storage technology for a commercial building</p>
                     </div>
-                    <div class="p-6 rounded-xl shadow bg-gray-300 bg-opacity-50 hover:shadow-lg transition">
+                    <div class="p-6 rounded-xl shadow bg-gray-300 hover hover:scale-105 bg-opacity-50 hover:shadow-lg transition">
                         <h3 class="text-xl font-bold mb-2">Hackathon</h3>
                         <p class="text-black">Transport Hub of the Future</p>
                     </div>
@@ -723,6 +724,11 @@
                 content.style.opacity = 1;
                 header.style.opacity = 1;
             }, 1650);
+        });
+        video.addEventListener('play', () => {
+            setTimeout(() => {
+            video.style.opacity = '0';
+            }, 10000); // 10 seconds
         });
         
         const academicBackgroundButton = document.getElementById('academicBackgroundButton');
