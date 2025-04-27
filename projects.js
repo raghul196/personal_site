@@ -1,5 +1,6 @@
 
 const dtContainer = document.getElementById("dt-container");
+const dtTextContainer  = document.getElementById("dt-textContainer")
 
 if (dtContainer) {
     dtContainer.addEventListener('click', () => {

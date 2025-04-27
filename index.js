@@ -1,3 +1,5 @@
+
+
 // Manages Background Video timeout so that video fades smoothly as it ends
 // and main content appers seamlessly as the video plays
 // manages also that the video plays only once per session
@@ -232,3 +234,99 @@ document.getElementById('message').value = '';
 };
 
 
+// ############################## About Me ####################################################
+
+// Sample data
+const educationData = [
+    { title: "M.Sc. - Energy Science and Engineering", time: "2021 - 2024" , 
+        inst: "TU Darmstadt",   place:"Darmstadt, Germany",
+        info :["German-taught curriculum", "Specialization in automation & controls",
+            "German-taught curriculum", "Specialization in automation & controls"
+         ]},
+    { title: "B.Sc. - Electrical Engineering", time: "2018 - 2019" , 
+        inst:"TH Bingen", place :"Bingen, Germany",
+        info :["German-taught curriculum", "Specialization in automation & controls" ]
+    },
+    { title: "B.Tech. - Electrical and Electronics Engineering", inst: "2014 - 2017" , 
+        inst:"SRM University", place : "Chennai, India",
+        info :["German-taught curriculum", "Specialization in automation & controls" ]
+    },
+  ];
+
+  const experienceData = [
+    { title: "Information Manager", time: "2023- present" , 
+        inst: "Mainzer Verkehr Gesellschaft mbH.", place:"Mainz, Germany",
+        info :["Analysed data trends to support strategic decision-making and project initiatives.", 
+            "Designed and implemented automated workflows to reduce manual processing errors.",
+            "Managed technical integration for multiple projects launches."
+         ]
+    },
+    { title: "Working Student", time: "2021 - 2023", 
+        inst: "Mainzer Verkehr Gesellschaft mbH.", place:"Mainz, Germany" ,
+        info :["Analysed data trends", 
+            "Assisted in Fleet maintenance"
+         ]
+    },
+  ];
+
+  // Function to create timeline entries
+  function createTimeline(containerId, data, color) {
+    const container = document.getElementById(containerId);
+
+    data.forEach((item, index) => {
+      const entry = document.createElement('div');
+      entry.className = `
+        relative flex items-center mb-12 fade-slide
+      `;
+      let infoList = '';
+      item.info.forEach(infoItem => {
+        infoList +=  `<li>${infoItem}</li>`
+      })  
+
+    entry.innerHTML = `
+        <!-- Time on left -->
+        <div class="w-1/2 pr-8 text-right">
+        <p class="text-md text-white">${item.time}</p>
+        <p class="text-md text-${color}-300">${item.inst}</p>
+        <p class="text-md text-white">${item.place}</p>
+        </div>
+
+        <!-- Line between time and text -->
+        <div class="relative z-10">
+        <div class="w-4 h-4 bg-${color}-300 rounded-full absolute top-0 left-1/2 transform -translate-x-1/2"></div>
+        </div>
+
+        <!-- Text on right -->
+        <div class="w-1/2 pl-8">
+        <h3 class="text-lg font-semibold text-${color}-300">${item.title}</h3>
+        
+        <ul class="list-disc list-inside text-lg leading-relaxed pl-4">${infoList} </ul>
+
+        </div>
+    `;
+
+
+      container.appendChild(entry);
+
+      // Add scroll-trigger animation
+      observeVisibility(entry);
+    });
+  }
+
+  // IntersectionObserver to trigger animation when points enter the viewport
+  function observeVisibility(entry) {
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    observer.observe(entry);
+  }
+
+  // Render timelines
+  createTimeline("education-timeline", educationData, "blue");
+  createTimeline("experience-timeline", experienceData, "green");
