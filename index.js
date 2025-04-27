@@ -599,6 +599,8 @@ function about_video(){
         playButton.classList.remove('hidden');
         thumbnail.classList.remove('hidden');
         pausePlayButton.classList.add('hidden');
+        pauseIcon.classList.remove('hidden');
+        playIcon.classList.add('hidden');
     });
 
     about_video.addEventListener('loadedmetadata', () => {
