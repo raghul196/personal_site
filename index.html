@@ -364,7 +364,7 @@
 
         <!-- ##################  Projects Section ################################## -->
         <section id="projectsSection" class="py-16 px-6">
-            <div class="max-w-4xl mx-auto">
+            <div class=" mx-auto">
                 <h2 class="text-3xl font-semibold mb-8 mx-auto text-center">Projects</h2>
                 <div id="projects-container">
                     <!-- projects.html will be loaded here -->
@@ -374,269 +374,21 @@
         <!-- ##################  End of Projects Section ################################## -->
 
         <!-- ##################  Skills Section ################################## -->
-        <section id = "skillsSection" class = "bg-trasparent lg:w-full sm:4/5 flex justify-center items-center px-6 py-6 text-white mx-auto">
+        <section id = "skillsSection" class = "bg-trasparent lg:w-full sm:4/5 flex justify-center items-center text-white mx-auto">
             <div class = "w-full  mx-auto" >
                 <h2 class="text-3xl font-semibold mb-8 text-center">Skills</h2> 
 
-                <div class=" mx-auto py-4 px-6 justify-center items-center ">
+                <div class=" mx-auto justify-center items-center ">
                     <button id="skillStatsButton" 
                             class="text-center block mx-auto mb-4 px-4 py-2 bg-green-500 text-black rounded-md transition duration-200 hover:bg-green-600 hover:text-white 2xl:hidden"
                             >
                             Toggle Stats
                     </button>
 
-                    
-                    <div class = "flex flex-col  p-6  md:flex-row mx-auto justify-center items-center gap-16 md:items-start">
-                        <div id= "skillsGrid" class="grid gap-8 grid-cols-1 md:grid-cols-2 transition-all duration-300">
-                    
-                            <!-- Section Template -->
-                            <!-- Language Section  -->
-                            <div class= "px-6"> 
-                                <h2 class="text-xl font-semibold mb-4">Languages</h2>
-                                <div class="flex flex-wrap items-center text-black gap-4">
-                                    <div class="relative group">
-                                        <div id = "english" draggable="true" class=" h-16 w-16 text-center flex items-center justify-center bg-white rounded-md hover:bg-gray-300 transition">English</div>
-                                        <span id="tooltip-english" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group">
-                                        <div id = "german" draggable="true" class=" p-2 h-16 w-16 text-center flex items-center justify-center bg-white rounded-md hover:bg-gray-300 transition">German</div>
-                                        <span id="tooltip-german" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group">
-                                        <div id = "tamil" draggable="true" class=" p-2 h-16 w-16 text-center flex items-center justify-center bg-white rounded-md hover:bg-gray-300 transition">Tamil</div>
-                                        <span id="tooltip-tamil" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group">
-                                        <div id = "spanish" draggable="true" class=" p-2 h-16 w-16 text-center flex items-center justify-center bg-white rounded-md hover:bg-gray-300 transition">Spanish</div>
-                                        <span id="tooltip-spanish" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Programming Language Section -->
-                            <div class= "px-6" >
-                                <h2 class="text-xl font-semibold mb-4">Programming Languages</h2>
-                                <div class="relative group flex flex-wrap items-center gap-4">
-                                    <div class="relative group">
-                                        <img id = "python" alt="scikit" >
-                                        <span id="tooltip-python" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group">
-                                        <img id = "vba"  src ="static/icon_images/vba_icon.jpg"alt="Pytorch">
-                                        <span id="tooltip-vba" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group">
-                                        <img id = "php"  alt="Tensorflow">
-                                        <span id="tooltip-php" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group">    
-                                        <img id = "js"  alt="Power BI">
-                                        <span id="tooltip-js" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div> 
-                                </div>
-                            </div>
-
-
-                            <div class= "px-6">
-                                <h2 class="text-xl font-semibold mb-4">ML & DL Libraries</h2>
-                                <div class="relative group flex flex-wrap items-center gap-4">
-                                    <div class="relative group">
-                                        <img id = "scikit" alt="scikit">
-                                        <span id="tooltip-scikit" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group">
-                                        <img id = "pytorch"  alt="Pytorch">
-                                        <span id="tooltip-pytorch" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group">
-                                        <img id = "tensorflow" alt="Tensorflow">
-                                        <span id="tooltip-tensorflow" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group">    
-                                        <img id = "keras"   alt="Keras">
-                                        <span id="tooltip-keras" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div> 
-                                </div>
-                            </div>
-
-                            <div class= "px-6">
-                                <h2 class="text-xl font-semibold mb-4">ML Architecture & Algorithms</h2>
-                                <div class="flex items-center gap-4 flex-wrap text-black">
-                                    <div class="relative group"> 
-                                        <div id = "transformer" draggable="true" class="h-16 w-16 text-center flex text-center break-words whitespace-normal items-center justify-center bg-white rounded-md hover:bg-gray-300 transition">Trans<br>former</div>
-                                        <span id="tooltip-transformer" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group"> 
-                                        <div id = "nn" draggable="true" class="h-16 w-16 text-center flex items-center text-center justify-center bg-white rounded-md hover:bg-gray-300 transition">Neural Network</div>
-                                        <span id="tooltip-nn" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group"> 
-                                        <div id = "xgboost" draggable="true" class="h-16 w-16 text-center flex items-center justify-center bg-white rounded-md hover:bg-gray-300 transition">XG -<br>Boost</div>
-                                        <span id="tooltip-xgboost" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group"> 
-                                        <div id = "lstm" draggable="true" class="h-16 w-16 text-center flex items-center justify-center bg-white rounded-md hover:bg-gray-300 transition">LSTM</div>
-                                        <span id="tooltip-lstm" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                </div>
-                            </div>
-                        
-                            <div class= "px-6">
-                                <h2 class="text-xl font-semibold mb-4">Data Management</h2>
-                                <div class="flex flex-wrap items-center gap-4">
-                                    <div class="relative group">
-                                        <img id = "sql" alt="SQL">
-                                        <span id="tooltip-sql" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group">
-                                        <img id = "snowflake" src = "static/icon_images/snowflake_icon.png"  alt="Snowflake">
-                                        <span id="tooltip-snowflake" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group">
-                                        <img id = "" alt="AWS">
-                                        <span id="tooltip-" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>                                    
-                                    <div class="relative group">
-                                        <img id = "" alt="Docker">
-                                        <span id="tooltip-" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>   
-                                </div>
-                            </div>
-                        
-                            
-                        
-                            <div class= "px-6">
-                                <h2 class="text-xl font-semibold mb-4">Software & Services</h2>
-                                <div class="flex flex-wrap items-center gap-4">
-                                    <div class="relative group">
-                                        <img id = "aws" alt="AWS">                                
-                                        <span id="tooltip-aws" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group">
-                                        <img id = "docker" alt="Docker">
-                                        <span id="tooltip-docker" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group">
-                                        <img id = "sap" src = "static/icon_images/sap_icon.png" alt="SAP">
-                                        <span id="tooltip-sap" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group">
-                                        <img id = "git" alt="Git">
-                                        <span id="tooltip-git" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                </div>
-                            </div>
-                        
-
-                        
-                            <div class= "px-6">
-                                <h2 class="text-xl font-semibold mb-4">Web Development</h2>
-                                <div class="flex flex-wrap items-center gap-4">
-                                    <div class="relative group"> 
-                                        <img id = "html"  alt="HTML">
-                                        <span id="tooltip-html" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group">
-                                        <img id = "css"  alt="CSS">
-                                        <span id="tooltip-css" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group">
-                                        <img id = "flask"  alt="Flask">
-                                        <span id="tooltip-flask" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group">                                        
-                                        <img id = "django" alt="Django">
-                                        <span id="tooltip-django" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                        
-                                                    
-                            <div class= "px-6">
-                                <h2 class="text-xl font-semibold mb-4">AI-Agents & RAG</h2>
-                                <div class="flex flex-wrap items-center gap-4">
-                                    <div class="relative group">     
-                                        <img id = "langchain"  alt="Langchain">
-                                        <span id="tooltip-langchain" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group"> 
-                                        <img id = "ollama"  alt="Ollama">
-                                        <span id="tooltip-ollama" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group"> 
-                                        <img id = "langflow"  alt="Langflow">
-                                        <span id="tooltip-langflow" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group"> 
-                                        <img id = "n8n" alt="n8n">
-                                        <span id="tooltip-n8n" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                </div>
-                            </div>
-                        
-                            <div class= "px-6">
-                                <h2 class="text-xl font-semibold mb-4">Others</h2>
-                                <div class="flex flex-wrap items-center gap-4">
-                                    <div class="relative group">
-                                        <img id = "linux"  alt="Linux">
-                                        <span id="tooltip-linux" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group">                                        
-                                        <img id = "raspberrypi"  alt="Raspberry Pi">
-                                        <span id="tooltip-raspberrypi" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group">
-                                        <img id = "powershell"  alt="Powershell">
-                                        <span id="tooltip-powershell" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group">
-                                        <img id = "arduino"  alt="Arduino">
-                                        <span id="tooltip-arduino" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                </div>
-                            </div>
-                        
-                            
-                        
-                            
-                        </div>
-
-                        <div id="skillStats" 
-                                                      
-                            class="flex flex-col bg-transparent w-[25vw] md:h-full rounded-md shadow border space-y-4 min-h-0 hidden 2xl:block">
-                            
-                            <!-- Header -->
-                            <div class="flex items-center justify-between bg-gray-300 h-10 px-4 shadow-md">
-                                <div class="text-sm font-semibold text-gray-700">
-                                    Compatibility
-                                </div>
-                                <div class="flex gap-2">
-                                    <button id= "maximizeStatsButton" class="w-8 h-8 flex items-center justify-center bg-white rounded hover:bg-blue-100 text-gray-700 hover:text-blue-600 focus:outline-none" title="Maximize">
-                                        ☐
-                                    </button>
-                                    <button id= "closeSkillStats" class="w-8 h-8 flex items-center justify-center bg-white rounded hover:bg-red-100 text-gray-700 hover:text-red-500 focus:outline-none" title="Close">
-                                        &times;
-                                    </button>
-                                </div>
-                            </div>
-
-                            <!-- Drag Over Area -->
-                            <div id="skillDragOver" class="m-2 flex flex-row flex-wrap justify-center gap-4 items-center shadow border rounded-md"> 
-                                <p class="absolute text-center items-center">Drag and Drop atleast 3 Skills to generate Graph</p>
-                            </div>
-
-                            <!-- Radar Chart -->
-                            <div id="skillRadar" class="m-2 flex flex-col rounded-md text-center justify-center shadow border overflow-hidden relative" style="display: flex; align-items: center; justify-content: center;">
-                                <canvas id="radarChart" class="w-full h-full"></canvas>
-                                <div id="skillRadarTooltip" class = "bg-white text-black" style="position: absolute; display: none; pointer-events: none; padding: 5px 8px; border-radius: 4px; font-size: 12px; z-index: 1000;">
-                                    Maximize the Compatability window to enter expected Proficiency
-                                </div>
-                            </div>
-
-                        </div>
-
+                    <div id="skills-container">
+                        <!-- skills.html will be loaded here -->
                     </div>
+                    
                 </div>
                   
             </div>
@@ -705,6 +457,7 @@
     ######################################### Javascript ##################################################################################################
     ########################################################################################################## -->
     <script src = "index.js">   </script>
+    
 </body>
 
 </html>
