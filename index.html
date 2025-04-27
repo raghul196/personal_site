@@ -16,7 +16,7 @@
             height: 100%;
             overflow: hidden;
             z-index: -1;
-            transition:opacity 3s ease;
+            transition:opacity 8s ease;
         }
 
         .video-background video {
@@ -107,20 +107,13 @@
     </style>
 </head>
 
-<body class="text-white font-sans bg-black">
-    <div class="video-background">
+<body  class="text-white font-sans bg-black">
+    <div id="background-video" class="video-background">
         <video id="video1" autoplay muted playsinline>
             <source src="static/3045163-hd_1920_1080_25fps(1).mp4" type="video/mp4" />
             Your browser does not support the video tag.
         </video>
     </div>
-
-    <!-- <div class="video-background">
-        <video id="video1" autoplay muted playsinline>
-            <source src='static/about_video/final/intro_video.mp4' type="video/mp4" />
-            Your browser does not support the video tag.
-        </video>
-    </div> -->
 
     <header class="fixed top-0 left-0 w-full z-50 bg-opacity-80 backdrop-blur-md text-white shadow-md">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center"  id = "header">
@@ -128,7 +121,7 @@
             <nav class="space-x-6">
                 <a href="./index.html" class="hover:text-green-300 text-green-300 transition">Home</a>
                 <a href="#aboutSection" class="hover:text-green-300 transition">About</a>
-                <a href="/projects.html" class="hover:text-green-300 transition">Projects</a>
+                <a href="#projectsSection" class="hover:text-green-300 transition">Projects</a>
                 <a href="/skills.html" class="hover:text-green-300 transition">Skills</a>
                 <a href="#contactSection" class="hover:text-green-300 transition">Contact</a>
             </nav>
@@ -142,7 +135,7 @@
             <div class="max-auto mx-auto">
                 <h2 class="text-3xl font-semibold mb-4 text-center mx-auto">About Me</h2>
                 
-                <div id="video-container" class="mx-auto p-4 relative h-[500px] w-[850px] flex flex-row  bg-transparent">
+                <div id="video-container" class="mx-auto relative h-[500px] w-[850px] flex flex-row  bg-transparent">
                     
                     <img id="video-thumbnail" src="static/about_video/final/thumbnail.png" alt="Video Thumbnail"
                         class="rounded-lg group-hover:scale-110  object-cover w-full h-full relative inset-0 z-0">
@@ -156,7 +149,7 @@
                     </button>
                 
                     
-                    <video id="about_video" class="hidden w-full h-full object-cover rounded-md inset-0 relative z-0" autoplay muted playsinline>
+                    <video id="about_video" class="hidden w-full h-full object-cover rounded-lg inset-0 relative z-0" autoplay muted playsinline>
                         <source src="static/about_video/final/intro_video.mp4" type="video/mp4" />
                         Your browser does not support the video tag.
                     </video>
@@ -165,6 +158,25 @@
                     <button id="skip-button" class="hidden absolute top-4 right-4 bg-white text-black px-4 py-2 rounded">
                         Stop
                     </button>
+
+                            <!-- Progress bar and time -->
+                    <div class="absolute bottom-0 inset-x-0 left-0 w-full flex items-center justify-between p-2 bg-black bg-opacity-50 text-white rounded-b-lg text-sm">
+                        <button id="pause-play-button" class="bg-white text-black p-2 hidden rounded">
+                            <!-- Pause Icon  -->
+                            <svg id="pause-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 " fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6" />
+                            </svg>
+                            <!-- Play Icon  -->
+                            <svg id="play-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-5.197-3.004A1 1 0 008 9v6a1 1 0 001.555.832l5.197-3.004a1 1 0 000-1.664z" />
+                            </svg>
+                        </button>
+                        <span id="current-time">0:00</span>
+                        <div class="relative flex-1 mx-4 h-2 bg-gray-600 rounded overflow-hidden">
+                            <div id="progress-bar" class="h-full bg-green-400 w-0"></div>
+                        </div>
+                        <span id="duration">0:00</span>
+                    </div>
                 </div>
                 
                 <div class="flex flex-col md:flex-row items-center max-w-5xl mx-auto  items-start gap-6">
@@ -352,302 +364,31 @@
 
         <!-- ##################  Projects Section ################################## -->
         <section id="projectsSection" class="py-16 px-6">
-            <div class="max-w-4xl mx-auto">
+            <div class=" mx-auto">
                 <h2 class="text-3xl font-semibold mb-8 mx-auto text-center">Projects</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="p-6 rounded-xl bg-gray-300 hover hover:scale-105 bg-opacity-50 shadow hover:shadow-lg transition">
-                        <h3 class="text-xl font-bold mb-2">Telekom</h3>
-                        <p class="text-black">Masterarbeit: collaboration with TUD and Telekom</p>
-                    </div>
-                    <div class="p-6 rounded-xl shadow bg-gray-300 hover hover:scale-105 bg-opacity-50 hover:shadow-lg transition">
-                        <h3 class="text-xl font-bold mb-2">SAP Automation</h3>
-                        <p class="text-black">Meldung Contract, Material </p>
-                    </div>
-                    <div class="p-6 rounded-xl shadow bg-gray-300 hover hover:scale-105 bg-opacity-50 hover:shadow-lg transition">
-                        <h3 class="text-xl font-bold mb-2">SAP Atuomation</h3>
-                        <p class="text-black">KALA stuff</p>
-                    </div>
-                    <div class="p-6 rounded-xl shadow bg-gray-300 hover hover:scale-105 bg-opacity-50 hover:shadow-lg transition">
-                        <h3 class="text-xl font-bold mb-2">Leap</h3>
-                        <p class="text-black">model electricity in germany</p>
-                    </div>
-                    <div class="p-6 rounded-xl shadow bg-gray-300 hover hover:scale-105 bg-opacity-50 hover:shadow-lg transition">
-                        <h3 class="text-xl font-bold mb-2">Energy Storage</h3>
-                        <p class="text-black">developed optimal heat storage technology for a commercial building</p>
-                    </div>
-                    <div class="p-6 rounded-xl shadow bg-gray-300 hover hover:scale-105 bg-opacity-50 hover:shadow-lg transition">
-                        <h3 class="text-xl font-bold mb-2">Hackathon</h3>
-                        <p class="text-black">Transport Hub of the Future</p>
-                    </div>
+                <div id="projects-container">
+                    <!-- projects.html will be loaded here -->
                 </div>
             </div>
         </section>
         <!-- ##################  End of Projects Section ################################## -->
 
         <!-- ##################  Skills Section ################################## -->
-        <section id = "skillsSection" class = "bg-trasparent lg:w-full sm:4/5 flex justify-center items-center px-6 py-6 text-white mx-auto">
+        <section id = "skillsSection" class = "bg-trasparent lg:w-full sm:4/5 flex justify-center items-center text-white mx-auto">
             <div class = "w-full  mx-auto" >
                 <h2 class="text-3xl font-semibold mb-8 text-center">Skills</h2> 
 
-                <div class=" mx-auto py-4 px-6 justify-center items-center ">
+                <div class=" mx-auto justify-center items-center ">
                     <button id="skillStatsButton" 
                             class="text-center block mx-auto mb-4 px-4 py-2 bg-green-500 text-black rounded-md transition duration-200 hover:bg-green-600 hover:text-white 2xl:hidden"
                             >
                             Toggle Stats
                     </button>
 
-                    
-                    <div class = "flex flex-col  p-6  md:flex-row mx-auto justify-center items-center gap-16 md:items-start">
-                        <div id= "skillsGrid" class="grid gap-8 grid-cols-1 md:grid-cols-2 transition-all duration-300">
-                    
-                            <!-- Section Template -->
-                            <!-- Language Section  -->
-                            <div class= "px-6"> 
-                                <h2 class="text-xl font-semibold mb-4">Languages</h2>
-                                <div class="flex flex-wrap items-center text-black gap-4">
-                                    <div class="relative group">
-                                        <div id = "english" draggable="true" class=" h-16 w-16 text-center flex items-center justify-center bg-white rounded-md hover:bg-gray-300 transition">English</div>
-                                        <span id="tooltip-english" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group">
-                                        <div id = "german" draggable="true" class=" p-2 h-16 w-16 text-center flex items-center justify-center bg-white rounded-md hover:bg-gray-300 transition">German</div>
-                                        <span id="tooltip-german" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group">
-                                        <div id = "tamil" draggable="true" class=" p-2 h-16 w-16 text-center flex items-center justify-center bg-white rounded-md hover:bg-gray-300 transition">Tamil</div>
-                                        <span id="tooltip-tamil" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group">
-                                        <div id = "spanish" draggable="true" class=" p-2 h-16 w-16 text-center flex items-center justify-center bg-white rounded-md hover:bg-gray-300 transition">Spanish</div>
-                                        <span id="tooltip-spanish" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Programming Language Section -->
-                            <div class= "px-6" >
-                                <h2 class="text-xl font-semibold mb-4">Programming Languages</h2>
-                                <div class="relative group flex flex-wrap items-center gap-4">
-                                    <div class="relative group">
-                                        <img id = "python" alt="scikit" >
-                                        <span id="tooltip-python" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group">
-                                        <img id = "vba"  src ="static/icon_images/vba_icon.jpg"alt="Pytorch">
-                                        <span id="tooltip-vba" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group">
-                                        <img id = "php"  alt="Tensorflow">
-                                        <span id="tooltip-php" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group">    
-                                        <img id = "js"  alt="Power BI">
-                                        <span id="tooltip-js" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div> 
-                                </div>
-                            </div>
-
-
-                            <div class= "px-6">
-                                <h2 class="text-xl font-semibold mb-4">ML & DL Libraries</h2>
-                                <div class="relative group flex flex-wrap items-center gap-4">
-                                    <div class="relative group">
-                                        <img id = "scikit" alt="scikit">
-                                        <span id="tooltip-scikit" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group">
-                                        <img id = "pytorch"  alt="Pytorch">
-                                        <span id="tooltip-pytorch" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group">
-                                        <img id = "tensorflow" alt="Tensorflow">
-                                        <span id="tooltip-tensorflow" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group">    
-                                        <img id = "keras"   alt="Keras">
-                                        <span id="tooltip-keras" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div> 
-                                </div>
-                            </div>
-
-                            <div class= "px-6">
-                                <h2 class="text-xl font-semibold mb-4">ML Architecture & Algorithms</h2>
-                                <div class="flex items-center gap-4 flex-wrap text-black">
-                                    <div class="relative group"> 
-                                        <div id = "transformer" draggable="true" class="h-16 w-16 text-center flex text-center break-words whitespace-normal items-center justify-center bg-white rounded-md hover:bg-gray-300 transition">Trans<br>former</div>
-                                        <span id="tooltip-transformer" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group"> 
-                                        <div id = "nn" draggable="true" class="h-16 w-16 text-center flex items-center text-center justify-center bg-white rounded-md hover:bg-gray-300 transition">Neural Network</div>
-                                        <span id="tooltip-nn" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group"> 
-                                        <div id = "xgboost" draggable="true" class="h-16 w-16 text-center flex items-center justify-center bg-white rounded-md hover:bg-gray-300 transition">XG -<br>Boost</div>
-                                        <span id="tooltip-xgboost" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group"> 
-                                        <div id = "lstm" draggable="true" class="h-16 w-16 text-center flex items-center justify-center bg-white rounded-md hover:bg-gray-300 transition">LSTM</div>
-                                        <span id="tooltip-lstm" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                </div>
-                            </div>
-                        
-                            <div class= "px-6">
-                                <h2 class="text-xl font-semibold mb-4">Data Management</h2>
-                                <div class="flex flex-wrap items-center gap-4">
-                                    <div class="relative group">
-                                        <img id = "sql" alt="SQL">
-                                        <span id="tooltip-sql" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group">
-                                        <img id = "snowflake" src = "static/icon_images/snowflake_icon.png"  alt="Snowflake">
-                                        <span id="tooltip-snowflake" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group">
-                                        <img id = "" alt="AWS">
-                                        <span id="tooltip-" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>                                    
-                                    <div class="relative group">
-                                        <img id = "" alt="Docker">
-                                        <span id="tooltip-" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>   
-                                </div>
-                            </div>
-                        
-                            
-                        
-                            <div class= "px-6">
-                                <h2 class="text-xl font-semibold mb-4">Software & Services</h2>
-                                <div class="flex flex-wrap items-center gap-4">
-                                    <div class="relative group">
-                                        <img id = "aws" alt="AWS">                                
-                                        <span id="tooltip-aws" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group">
-                                        <img id = "docker" alt="Docker">
-                                        <span id="tooltip-docker" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group">
-                                        <img id = "sap" src = "static/icon_images/sap_icon.png" alt="SAP">
-                                        <span id="tooltip-sap" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group">
-                                        <img id = "git" alt="Git">
-                                        <span id="tooltip-git" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                </div>
-                            </div>
-                        
-
-                        
-                            <div class= "px-6">
-                                <h2 class="text-xl font-semibold mb-4">Web Development</h2>
-                                <div class="flex flex-wrap items-center gap-4">
-                                    <div class="relative group"> 
-                                        <img id = "html"  alt="HTML">
-                                        <span id="tooltip-html" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group">
-                                        <img id = "css"  alt="CSS">
-                                        <span id="tooltip-css" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group">
-                                        <img id = "flask"  alt="Flask">
-                                        <span id="tooltip-flask" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group">                                        
-                                        <img id = "django" alt="Django">
-                                        <span id="tooltip-django" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                        
-                                                    
-                            <div class= "px-6">
-                                <h2 class="text-xl font-semibold mb-4">AI-Agents & RAG</h2>
-                                <div class="flex flex-wrap items-center gap-4">
-                                    <div class="relative group">     
-                                        <img id = "langchain"  alt="Langchain">
-                                        <span id="tooltip-langchain" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group"> 
-                                        <img id = "ollama"  alt="Ollama">
-                                        <span id="tooltip-ollama" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group"> 
-                                        <img id = "langflow"  alt="Langflow">
-                                        <span id="tooltip-langflow" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group"> 
-                                        <img id = "n8n" alt="n8n">
-                                        <span id="tooltip-n8n" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                </div>
-                            </div>
-                        
-                            <div class= "px-6">
-                                <h2 class="text-xl font-semibold mb-4">Others</h2>
-                                <div class="flex flex-wrap items-center gap-4">
-                                    <div class="relative group">
-                                        <img id = "linux"  alt="Linux">
-                                        <span id="tooltip-linux" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group">                                        
-                                        <img id = "raspberrypi"  alt="Raspberry Pi">
-                                        <span id="tooltip-raspberrypi" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group">
-                                        <img id = "powershell"  alt="Powershell">
-                                        <span id="tooltip-powershell" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                    <div class="relative group">
-                                        <img id = "arduino"  alt="Arduino">
-                                        <span id="tooltip-arduino" class="absolute left-1/2 top-full mt-2  -translate-x-1/2  whitespace-nowrap z-50 pointer-events-none" ></span>
-                                    </div>
-                                </div>
-                            </div>
-                        
-                            
-                        
-                            
-                        </div>
-
-                        <div id="skillStats" 
-                                                      
-                            class="flex flex-col bg-transparent w-[25vw] md:h-full rounded-md shadow border space-y-4 min-h-0 hidden 2xl:block">
-                            
-                            <!-- Header -->
-                            <div class="flex items-center justify-between bg-gray-300 h-10 px-4 shadow-md">
-                                <div class="text-sm font-semibold text-gray-700">
-                                    Compatibility
-                                </div>
-                                <div class="flex gap-2">
-                                    <button id= "maximizeStatsButton" class="w-8 h-8 flex items-center justify-center bg-white rounded hover:bg-blue-100 text-gray-700 hover:text-blue-600 focus:outline-none" title="Maximize">
-                                        ☐
-                                    </button>
-                                    <button id= "closeSkillStats" class="w-8 h-8 flex items-center justify-center bg-white rounded hover:bg-red-100 text-gray-700 hover:text-red-500 focus:outline-none" title="Close">
-                                        &times;
-                                    </button>
-                                </div>
-                            </div>
-
-                            <!-- Drag Over Area -->
-                            <div id="skillDragOver" class="m-2 flex flex-row flex-wrap justify-center gap-4 items-center shadow border rounded-md"> 
-                                <p class="absolute text-center items-center">Drag and Drop atleast 3 Skills to generate Graph</p>
-                            </div>
-
-                            <!-- Radar Chart -->
-                            <div id="skillRadar" class="m-2 flex flex-col rounded-md text-center justify-center shadow border overflow-hidden relative" style="display: flex; align-items: center; justify-content: center;">
-                                <canvas id="radarChart" class="w-full h-full"></canvas>
-                                <div id="skillRadarTooltip" class = "bg-white text-black" style="position: absolute; display: none; pointer-events: none; padding: 5px 8px; border-radius: 4px; font-size: 12px; z-index: 1000;">
-                                    Maximize the Compatability window to enter expected Proficiency
-                                </div>
-                            </div>
-
-                        </div>
-
+                    <div id="skills-container">
+                        <!-- skills.html will be loaded here -->
                     </div>
+                    
                 </div>
                   
             </div>
@@ -712,607 +453,11 @@
             <p>&copy; 2025 Raghul Babu. All rights reserved.</p>
         </footer>
     </main>
-
-    <script>
-        const content = document.getElementById('main-content');
-        const header = document.getElementById('header');
-        const video = document.getElementById('video1');
-
-        // Show content after 1.9 seconds the video starts playing
-        video.addEventListener("playing", () => {
-            setTimeout(() => {
-                content.style.opacity = 1;
-                header.style.opacity = 1;
-            }, 1650);
-        });
-        video.addEventListener('play', () => {
-            setTimeout(() => {
-            video.style.opacity = '0';
-            }, 10000); // 10 seconds
-        });
-        
-        const academicBackgroundButton = document.getElementById('academicBackgroundButton');
-        const workExperienceButton = document.getElementById('workExperienceButton');
-        const educationSection = document.getElementById('educationSection');
-        const experienceSection = document.getElementById('experienceSection');
-
-        academicBackgroundButton.addEventListener('click', function() {
-            if (educationSection.style.display === 'none') {
-                experienceSection.style.display = 'none';
-                educationSection.style.display = 'block'; // Show the section
-            } else {
-                educationSection.style.display = 'none'; // Hide the section
-            }
-        });
-
-        workExperienceButton.addEventListener('click', function() {
-            if (experienceSection.style.display === 'none') {
-                educationSection.style.display = 'none';
-                experienceSection.style.display = 'block'; // Show the section
-            } else {
-                experienceSection.style.display = 'none'; // Hide the section
-            }
-        });
-
-        const additionalText_education = document.getElementById("educationDetails");
-        const additionalText_experience = document.getElementById("experienceDetails");
-        const hoverMap_education = {
-            srm: "info-srm",
-            thb: "info-bingen",
-            tud: "info-darmstadt"
-        };
-
-        Object.entries(hoverMap_education).forEach(([hoverId, infoId]) => {
-            const hoverElement = document.getElementById(hoverId);
-            const infoContent = document.getElementById(infoId).innerHTML;
-
-            hoverElement.addEventListener("mouseenter", () => {
-            additionalText_education.innerHTML = infoContent;
-            });
-
-        });
-
-
-        const exitEducationButton = document.getElementById("exitEducationButton")
-
-        exitEducationButton.addEventListener('click', function(){
-            educationSection.style.display = 'none';
-            additionalText_education.innerHTML = document.getElementById("defaultEducationDetails").innerHTML;
-
-        });
-        const hoverMap_experience = {
-            werkstudent : "info-werkstudent",
-            infoManager : "info-infoManager"
-
-        }
-
-        Object.entries(hoverMap_experience).forEach(([hoverId, infoId]) => {
-            const hoverElement = document.getElementById(hoverId);
-            const infoContent = document.getElementById(infoId).innerHTML;
-
-            hoverElement.addEventListener("mouseenter", () => {
-            additionalText_experience.innerHTML = infoContent;
-            });
-
-        });
-
-        const exitExperienceButton = document.getElementById("exitExperienceButton")
-
-        exitExperienceButton.addEventListener('click', function(){
-            experienceSection.style.display = 'none';
-            additionalText_experience.innerHTML = document.getElementById("defaultExperienceDetails").innerHTML;
-
-        });
-
-        window.onload = function() { // This means "run this code when the page finishes loading"
-        document.getElementById('name').value = '';
-        document.getElementById('email').value = '';
-        document.getElementById('message').value = '';
-        };
-
-        const skillStatsButton = document.getElementById("skillStatsButton");
-        const skillStats = document.getElementById("skillStats");
-
-        skillStatsButton.addEventListener('click', function(){
-            if (skillStats.style.display == 'none'){
-                skillStats.style.display = 'block';
-            }
-            else{
-                skillStats.style.display = 'none';
-            }
-            
-        });
-
-        function syncHeights() {
-        const first = document.getElementById("skillsGrid");
-        const second = document.getElementById("skillStats");
-        const dragOver = document.getElementById("skillDragOver")
-        const radarGraph = document.getElementById("skillRadar")
-        
-        // Reset secondDiv's height in case it was already set
-        second.style.height = "auto";
-
-        // Match the height of the firstDiv
-        const firstHeight = first.offsetHeight;
-        second.style.height = `${firstHeight}px`;
-        dragOver.style.height = `${firstHeight *0.25}px`;
-        radarGraph.style.height = `${firstHeight *0.6}px`;
-        }
-
-        // Run on page load
-        window.addEventListener('load', syncHeights);
-
-        // Optional: run on resize too, in case layout changes
-        window.addEventListener('resize', syncHeights);
-
-        const icons = document.querySelectorAll('#skillsGrid img, #skillsGrid div[draggable="true"]');
-        const dropZone = document.getElementById('skillDragOver');
-        var dropZoneIcons;
-        let draggedIcon = null;
-        
-        let defaultTextRemoved = false;
-        let droppedIconIds = new Set();
-
-        // When you start dragging an icon
-        icons.forEach(icon => {
-        icon.addEventListener('dragstart', (event) => {
-            draggedIcon = event.target; // Store the icon that's being dragged
-        });
-        });
-
-        // When something is dragged over the drop zone
-        dropZone.addEventListener('dragover', (event) => {
-        event.preventDefault(); // This is important to allow dropping!
-        // You can add some visual feedback here, like changing the border color
-        });
-
-        // When you drop something onto the drop zone
-        dropZone.addEventListener('drop', (event) => {
-        event.preventDefault(); // Prevent default browser behavior
-        if (draggedIcon) {
-            console.log(draggedIcon.id , ' dropped into the dropzone'); 
-
-            // Check if the icon has already been dropped
-            if (droppedIconIds.has(draggedIcon.id)) {
-                console.log('Icon already dropped:', draggedIcon.id);
-                return; // Don't drop it again
-            }
-
-            // Remove the default text only once
-            if (!defaultTextRemoved) {
-                dropZone.innerHTML = ''; // Remove the text
-                defaultTextRemoved = true;  // Set the flag
-            }          
-            
-            if (draggedIcon){
-                if (draggedIcon.tagName =='IMG'){
-                    // Create a new image element to display the dropped icon
-                    const droppedImage = document.createElement('img');
-                    droppedImage.src = draggedIcon.src;
-                    droppedImage.classList.add(
-                        'w-14',       // width: 3.5rem (roughly 56px, close to 50px)
-                        'h-14',       // height: 3.5rem (roughly 56px, close to 50px)
-                        'rounded-full', // borderRadius: 50%
-                        'bg-white',     // backgroundColor: white
-                        'p-1',         // padding: 0.25rem (roughly 4px, close to 5px)
-                        'm-1',         // margin: 0.25rem (roughly 4px, close to 5px)
-                        'object-contain' // objectFit: contain
-                    );
-                    droppedImage.id = 'dropped-' + draggedIcon.id; // Add a unique ID
-                    dropZone.appendChild(droppedImage);
-                
-                }
-                else if (draggedIcon.tagName =='DIV'){
-                    const droppedDiv = document.createElement('div');
-                    droppedDiv.textContent = draggedIcon.textContent;
-                    droppedDiv.classList.add('p-2' ,'text-center' , 'text-black','bg-white', 'items-center','rounded-md')
-                    droppedDiv.id = 'dropped-' + draggedIcon.id;
-                    droppedDiv.draggable = "true";
-                    dropZone.appendChild(droppedDiv)
-                }
-            }
-                
-            // Store the ID of the dropped icon
-            droppedIconIds.add(draggedIcon.id);
-            updateRadarChart();
-            
-
-            
-            draggedIcon = null; // Reset draggedIcon
-            bindDropZoneIconListeners();
-            
-        }
-        });
-
-        
-
-        function bindDropZoneIconListeners() {
-            const dropZoneIcons = document.querySelectorAll('#skillDragOver img, #skillDragOver div[draggable="true"]');
-            let draggedDropZoneIcon = null;
-            dropZoneIcons.forEach(icon => {
-                icon.setAttribute('draggable', true); // drag behavior
-                icon.addEventListener('dragstart', (event) => {
-                    draggedDropZoneIcon = event.target;
-                });
-                
-                dropZone.addEventListener('dragleave', (event) => {
-                    // 1. Get the element that is being dragged
-                    if(draggedDropZoneIcon){
-                        const draggedElement = document.getElementById(draggedDropZoneIcon.id);
-
-                        // 3. Remove the icon from the DOM
-                        if (draggedElement){
-                            draggedElement.remove();
-                        };
-
-                        // 4. Remove the icon's ID from the Set
-                        
-                        droppedIconIds.delete(draggedDropZoneIcon.id.split("-")[1]);
-                        console.log(draggedDropZoneIcon.id.split("-")[1] + ' dragged out of dropzone')
-                        updateRadarChart();
-                        draggedDropZoneIcon = null; // Reset draggedIcon
-                    };
-                    
-                });
-            });        
-        };
-
-        // Radar Chart
-        let radarChart ;
-        
-        function updateRadarChart(){
-            const ctx = document.getElementById('radarChart').getContext('2d');
-            const droppedIconIdsArr = Array.from(droppedIconIds);
-            const droppedIconScores = droppedIconIdsArr.map(droppedIconId => {
-                const iconData = tooltipData[droppedIconId];
-                return iconData ? iconData.score : null;
-                });
-            
-            if (radarChart) {
-                radarChart.destroy(); 
-            }
-            radarChart = new Chart(ctx, {
-                type: 'radar',
-                data: {
-                    labels: droppedIconIdsArr, 
-                    datasets: [
-                        {
-                            label: "Raghul's Skills", 
-                            data: Array.from(droppedIconScores), 
-                            backgroundColor: 'rgba(0, 123, 255, 0.4)',   // Soft Blue
-                            borderColor: 'rgba(0, 123, 255, 1)',          // Solid Blue border
-                            borderWidth: 2 
-                        },
-                        {
-                            label: "Expected Skill", 
-                            data: Array(droppedIconIdsArr.length).fill(5), 
-                            backgroundColor: 'rgba(255, 193, 7, 0.4)',    // Warm Yellow
-                            borderColor: 'rgba(255, 193, 7, 1)',          // Solid Yellow border
-                            borderWidth: 2 
-                        }
-                    ]
-                },
-
-                options: {
-                    scales: {
-                        r: {
-                            beginAtZero: true, // Start the scale from zero
-                            grid: {
-                                color: 'rgba(220, 220, 220, 0.8)' // Light gray grid lines
-                            },
-                            pointLabels: {
-                                font: {
-                                    size: 14, // Increased font size
-                                },
-                                color: '#ffffff' // White label color
-                            }
-                        }
-                    },
-                    plugins: {
-                        legend: {
-                            labels: {
-                                color: '#ffffff'  // Color of the legend
-                            }
-                        }
-                    }
-
-                }
-            });
-        };
-
-
-        // icon tool tip data with description and score
-        const tooltipData = {
-            english: {
-                name: "English",
-                description: "ML library for classical algorithms. ML library for classical algorithms.",
-                score: 9.5
-            },
-            german: {
-                name: "German",
-                description: "ML library for classical algorithms.",
-                score: 9
-            },
-            tamil: {
-                name: "Tamil",
-                description: "ML library for classical algorithms.",
-                score: 7
-            },
-            spanish: {
-                name: "Spanish",
-                description: "ML library for classical algorithms.",
-                score: 7
-            },
-            python: {
-                name: "Python",
-                description: "ML library for classical algorithms. ML library for classical algorithms.",
-                score: 9.5
-            },
-            vba: {
-                name: "Excel - VBA",
-                description: "ML library for classical algorithms.",
-                score: 9
-            },
-            php: {
-                name: "PHP",
-                description: "ML library for classical algorithms.",
-                score: 7
-            },
-            js: {
-                name: "Javascript",
-                description: "ML library for classical algorithms.",
-                score: 7
-            },
-            scikit: {
-                name: "Scikit-learn",
-                description: "ML library for classical algorithms. ML library for classical algorithms.",
-                score: 9
-            },
-            pytorch: {
-                name: "Pytorch",
-                description: "ML library for classical algorithms.",
-                score: 9
-            },
-            tensorflow: {
-                name: "Tensorflow",
-                description: "ML library for classical algorithms.",
-                score: 7
-            },
-            keras: {
-                name: "Keras",
-                description: "ML library for classical algorithms.",
-                score: 7
-            },
-            sql: {
-                name: "SQL",
-                description: "ML library for classical algorithms. ML library for classical algorithms.",
-                score: 9
-            },
-            aws: {
-                name: "AWS",
-                description: "ML library for classical algorithms.",
-                score: 7
-            },
-            snowflake: {
-                name: "Snowflake",
-                description: "ML library for classical algorithms.",
-                score: 7
-            },
-            docker: {
-                name: "Docker",
-                description: "ML library for classical algorithms.",
-                score: 8
-            },
-            transformer: {
-                name: "Transformers",
-                description: "ML library for classical algorithms. ML library for classical algorithms.",
-                score: 9
-            },
-            nn: {
-                name: "Neural Networks",
-                description: "ML library for classical algorithms.",
-                score: 9
-            },
-            xgboost: {
-                name: "XG - Boost",
-                description: "ML library for classical algorithms.",
-                score: 9
-            },
-            lstm: {
-                name: "LSTM",
-                description: "ML library for classical algorithms.",
-                score: 9
-            },
-            sap: {
-                name: "SAP",
-                description: "ML library for classical algorithms.",
-                score: 8
-            },
-            git: {
-                name: "Git",
-                description: "ML library for classical algorithms. ML library for classical algorithms.",
-                score: 9
-            },
-            html: {
-                name: "HTML 5",
-                description: "ML library for classical algorithms.",
-                score: 9
-            },
-            css: {
-                name: "CSS 3",
-                description: "ML library for classical algorithms.",
-                score: 9
-            },
-            flask: {
-                name: "Flask",
-                description: "ML library for classical algorithms.",
-                score: 9
-            },
-            django: {
-                name: "Django",
-                description: "ML library for classical algorithms.",
-                score: 7
-            },
-            langchain: {
-                name: "Langchain",
-                description: "ML library for classical algorithms.",
-                score: 8
-            },
-            ollama: {
-                name: "Ollama",
-                description: "ML library for classical algorithms. ML library for classical algorithms.",
-                score: 9
-            },
-            langflow: {
-                name: "Langflow",
-                description: "ML library for classical algorithms.",
-                score: 9
-            },
-            n8n: {
-                name: "n8n",
-                description: "ML library for classical algorithms.",
-                score: 9
-            },
-            linux: {
-                name: "Linux",
-                description: "ML library for classical algorithms.",
-                score: 9
-            },
-            raspberrypi: {
-                name: "Raspberrypi",
-                description: "ML library for classical algorithms.",
-                score: 7
-            },
-            powershell: {
-                name: "Powershell",
-                description: "ML library for classical algorithms.",
-                score: 9
-            },
-            arduino: {
-                name: "Arduino",
-                description: "ML library for classical algorithms.",
-                score: 7
-            },
-            // more icons...
-        };
-
-
-
-        Object.entries(tooltipData).forEach(([id,{name, description, score}]) => {
-            const hoveredIcon = document.getElementById(id);
-            const tooltip = document.getElementById(`tooltip-${id}`);
-            if (hoveredIcon){
-                hoveredIcon.addEventListener("mouseenter", () => {
-                    //console.log('Mouse entered' + `tooltip-${id}`);
-                    tooltip.innerHTML = `
-                        <div class = "w-48 flex relative flex-col bg-gray-300 rounded-lg shadow-lg border border-gray-400 px-2 py-2">
-                            <div class="font-semibold py-2 text-black text-center">${name}</div>
-                            <div class="w-full bg-gray-200 text-black rounded-full h-4">
-                                <div class="bg-blue-500 h-4 rounded-full" style="width: ${score * 10}%;"></div>
-                            </div>
-                            <div class="text-xs text-center text-black mt-1">${score}/10</div>
-                            <div class="text-xs py-2 text-gray-800 break-words whitespace-normal"><p>${description}</p></div>
-                        </div>
-                        `;
-                });
-                hoveredIcon.addEventListener("mouseleave", () => {
-                    //console.log('Mouse exited'+`tooltip-${id}`);
-                    tooltip.innerHTML = ` `;
-                });
-            }
-
-        });
-
-
-        document.addEventListener('DOMContentLoaded', function () {
-            const imageIcons = document.querySelectorAll('#skillsGrid img');
-            const staticPath = "static/icon_images/";
-
-            imageIcons.forEach(imageIcon => {
-                if (!imageIcon.getAttribute('src')) {
-                    imageIcon.src = staticPath + imageIcon.id + "_icon.svg";
-                }
-                imageIcon.classList.add(
-                    'w-16',
-                    'h-16',
-                    'rounded-lg',
-                    'bg-white',
-                    'hover:scale-110',
-                    'transition-transform',
-                    'shadow-md'
-                );
-            });
-        });
-
-        const closeSkillStats = document.getElementById('closeSkillStats');
-
-        closeSkillStats.addEventListener('click', function(){
-            skillStats.style.display = 'none';
-        });
-        
-        const playButton = document.getElementById('play-button');
-        const skipButton = document.getElementById('skip-button');
-        const about_video = document.getElementById('about_video');
-        const thumbnail = document.getElementById('video-thumbnail');
-
-        playButton.addEventListener('click', () => {
-            playButton.classList.add('hidden');
-            thumbnail.classList.add('hidden');
-            about_video.currentTime = 0.1;
-            about_video.classList.remove('hidden');
-            skipButton.classList.remove('hidden');
-            about_video.play();
-        });
-
-        skipButton.addEventListener('click', () => {
-            about_video.pause();
-            about_video.currentTime = about_video.duration; // Jump to end
-            about_video.classList.add('hidden');
-            skipButton.classList.add('hidden');
-            playButton.classList.remove('hidden');
-            thumbnail.classList.remove('hidden');
-        });
-
-        about_video.addEventListener('ended', () => {
-            console.log('video ended');
-            about_video.classList.add('hidden');
-            playButton.classList.remove('hidden');
-            thumbnail.classList.remove('hidden');
-            skipButton.classList.add('hidden');
-        });
-
-        const maximizeStatsButton = document.getElementById('maximizeStatsButton');
-        maximizeStatsButton.addEventListener('click', ()=>{
-            const droppedIconIdsArr = Array.from(droppedIconIds);
-            const params = new URLSearchParams();
-            params.set("droppedIconIds", JSON.stringify(droppedIconIdsArr));
-            window.location.href = `skills.html?${params.toString()}`;
-
-        });
-
-        const skillRadar = document.getElementById('skillRadar');
-        const skillRadarTooltip = document.getElementById('skillRadarTooltip');
-
-        skillRadar.addEventListener('mousemove', (e) => {
-            console.log('mouse in radarGraph');
-            const rect = skillRadar.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-
-            maximizeStatsButton.style.background = 'green';
-            skillRadarTooltip.style.left = `${x + 10}px`;
-            skillRadarTooltip.style.top = `${y + 10}px`;
-            skillRadarTooltip.style.display = 'block';
-        });
-
-        skillRadar.addEventListener('mouseleave', () => {
-            maximizeStatsButton.style.background = 'white'
-            skillRadarTooltip.style.display = 'none';
-        });
-
-
-
-    </script>
+    <!-- ##################################################################################################
+    ######################################### Javascript ##################################################################################################
+    ########################################################################################################## -->
+    <script src = "index.js">   </script>
+    
 </body>
 
 </html>
