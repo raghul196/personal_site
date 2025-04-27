@@ -104,6 +104,26 @@
         .contact-form button:hover {
             background-color: #0056b3;
         }
+        /* Animation keyframes */
+        @keyframes fadeSlide {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        }
+        .fade-slide {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-slide.visible {
+        opacity: 1;
+        transform: translateY(0);
+        }
     </style>
 </head>
 
@@ -119,10 +139,9 @@
         <div class="container mx-auto px-6 py-4 flex justify-between items-center"  id = "header">
             <h1 class="text-2xl font-bold">Raghul Babu</h1>
             <nav class="space-x-6">
-                <a href="./index.html" class="hover:text-green-300 text-green-300 transition">Home</a>
                 <a href="#aboutSection" class="hover:text-green-300 transition">About</a>
                 <a href="#projectsSection" class="hover:text-green-300 transition">Projects</a>
-                <a href="/skills.html" class="hover:text-green-300 transition">Skills</a>
+                <a href="#skillsSection" class="hover:text-green-300 transition">Skills</a>
                 <a href="#contactSection" class="hover:text-green-300 transition">Contact</a>
             </nav>
         </div>
@@ -131,8 +150,8 @@
     <main class="main-container pt-24" id="main-content">
         
         <!-- ##################  About Section ################################## -->
-        <section id="aboutSection" class="py-6 px-6">
-            <div class="max-auto mx-auto">
+        <section id="aboutSection" class="py-6 px-6 ">
+            <div class="max-auto mx-auto space-y-6">
                 <h2 class="text-3xl font-semibold mb-4 text-center mx-auto">About Me</h2>
                 
                 <div id="video-container" class="mx-auto relative h-[500px] w-[850px] flex flex-row  bg-transparent">
@@ -179,11 +198,10 @@
                     </div>
                 </div>
                 
-                <div class="flex flex-col md:flex-row items-center max-w-5xl mx-auto  items-start gap-6">
-                    <!-- <div>
-                        <img src = "{{ url_for('static', filename='raghul.jpg') }}" 
-                            class = "w-96 h-48 object-cover">
-                    </div> -->
+                <div class="flex flex-col md:flex-row items-center max-w-6xl mx-auto  items-start gap-6">
+                    <div>
+                        <img src = "/static/raghul.jpg"  class = "w-96 h-48 rounded-lg object-cover">
+                    </div>
                     <div>
                         <p class="text-lg leading-relaxed">
                             I am a data scientist passionate about using data to drive insights and solutions in the areas of energy, climate change,
@@ -192,6 +210,31 @@
                         </p>
                     </div>
                 </div>
+
+                <div class="max-w-6xl mx-auto">
+                                    
+                    <!-- Education Section -->
+                    <section class="mb-20">
+                        <h2 class="text-2xl font-semibold mb-10 text-center">Education</h2>
+                        <div id="education-timeline" class="relative">
+                          <!-- Timeline line -->
+                          <div class="absolute left-1/2 transform -translate-x-1/2 h-full border-l-2 border-blue-500"></div>
+                        </div>
+                      </section>
+                  
+                      <!-- Experience Section -->
+                      <section>
+                        <h2 class="text-2xl font-semibold mb-10 text-center">Experience</h2>
+                        <div id="experience-timeline" class="relative">
+                          <!-- Timeline line -->
+                          <div class="absolute left-1/2 transform -translate-x-1/2 h-full border-l-2 border-green-500"></div>
+                        </div>
+                      </section>
+
+                </div>
+
+
+                
             </div>
         </section>
         
