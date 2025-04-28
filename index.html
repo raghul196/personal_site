@@ -104,31 +104,73 @@
         .contact-form button:hover {
             background-color: #0056b3;
         }
-        /* Animation keyframes */
-        @keyframes fadeSlide {
-        0% {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        100% {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        }
-        .fade-slide {
+        .fade-slide-right {
         opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.8s ease, transform 0.8s ease;
+        transform: translateX(40vw); /* 100% of viewport width */
+        transition: all 1s ease;
         }
-        .fade-slide.visible {
+
+        .fade-slide-left {
+        opacity: 0;
+        transform: translateX(-40vw); /* left off-screen */
+        transition: all 1s ease;
+        }
+
+        .visible {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateX(0);
         }
+
+        .project-slide-left,
+        .project-slide-right {
+            opacity: 0;
+            transition: all 20s ease-out;
+        }
+
+        .project-slide-left {
+            transform: translateX(-50vw);
+        }
+
+        .project-slide-right {
+            transform: translateX(50vw);
+        }
+
+        .project-visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+
+        @keyframes slideLeftFade {
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        }
+
+        @keyframes slideRightFade {
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        }
+        .typing-container {
+        display: flex;
+        align-items: center;
+        }
+        .dynamic-text {
+            border-right: 2px solid green;
+
+            margin-left: 18px;
+        }
+
+
     </style>
 </head>
 
 <body  class="text-white font-sans bg-black">
-    <div id="background-video" class="video-background">
+    <div id="background-video" class="video-background max-w-full">
         <video id="video1" autoplay muted playsinline>
             <source src="static/3045163-hd_1920_1080_25fps(1).mp4" type="video/mp4" />
             Your browser does not support the video tag.
@@ -147,14 +189,14 @@
         </div>
     </header>
 
-    <main class="main-container pt-24" id="main-content">
+    <main class="main-container xl:pt-20 2xl:pt-24" id="main-content">
         
         <!-- ##################  About Section ################################## -->
-        <section id="aboutSection" class="py-6 px-6 ">
-            <div class="max-auto mx-auto space-y-6">
-                <h2 class="text-3xl font-semibold mb-4 text-center mx-auto">About Me</h2>
+        <section id="aboutSection" class="2xl:py-6 2xl:px-6 xl:py-3 xl:px-3">
+            <div class="max-w-full mx-auto space-y-10 ">
+                <h2 class="text-3xl font-semibold xl:mb-2 2xl:mb-4 text-center mx-auto">About Me</h2>
                 
-                <div id="video-container" class="mx-auto relative h-[500px] w-[850px] flex flex-row  bg-transparent">
+                <div id="video-container" class="mx-auto relative xl:w-[65%] 2xl:w-[80%] flex flex-row  bg-transparent">
                     
                     <img id="video-thumbnail" src="static/about_video/final/thumbnail.png" alt="Video Thumbnail"
                         class="rounded-lg group-hover:scale-110  object-cover w-full h-full relative inset-0 z-0">
@@ -198,36 +240,33 @@
                     </div>
                 </div>
                 
-                <div class="flex flex-col md:flex-row items-center max-w-6xl mx-auto  items-start gap-6">
-                    <!-- <div>
-                        <img src = "/static/raghul.jpg"  class = "w-96 h-48 rounded-lg object-cover">
-                    </div> -->
-                    <div>
-                        <p class="text-lg leading-relaxed">
-                            I am a data scientist passionate about using data to drive insights and solutions in the areas of energy, climate change,
-                            and sustainability. I have four years of <button id = workExperienceButton class="hover:text-green-300 transition"><b><i>work experience</i></b></button> in the field of Data Analysis. With a strong <button class="hover:text-green-300 transition" id="academicBackgroundButton"><i><b>academic background </b></i></button> in statistical modeling, machine learning, and data visualization, I work
-                            on projects that aim to understand and mitigate the impact of human activity on the environment.
-                        </p>
+                <div class="grid mx-auto xl:max-w-2xl xl:grid-cols-[120px_1fr] 2xl:grid-cols-[180px_1fr] items-center text-center max-w-6xl  gap-6">
+                    <div class = "w-full">
+                        <img src = "/static/raghul.jpg"  class = "rounded-lg object-cover">
+                    </div>
+                    <div class="typing-container xl:text-4xl 2xl:text-6xl h-full items-center">
+                        <span class="static-text">I am </span>
+                        <span class="dynamic-text text-green-500 justify-center" id="dynamic-text"></span>
                     </div>
                 </div>
 
-                <div class="max-w-6xl mx-auto">
+                <div class="max-w-full mx-auto">
                                     
                     <!-- Education Section -->
                     <section class="mb-20">
-                        <h2 class="text-2xl font-semibold mb-10 text-center">Education</h2>
-                        <div id="education-timeline" class="relative">
+                        <h2 class="text-2xl font-semibold mb-10  text-center">Education</h2>
+                        <div id="education-timeline" class="relative space-y-6">
                           <!-- Timeline line -->
                           <div class="absolute left-1/2 transform -translate-x-1/2 h-full border-l-2 border-blue-500"></div>
                         </div>
                       </section>
                   
                       <!-- Experience Section -->
-                      <section>
+                      <section class="mb-20">
                         <h2 class="text-2xl font-semibold mb-10 text-center">Experience</h2>
-                        <div id="experience-timeline" class="relative">
+                        <div id="experience-timeline" class="relative space-y-6 ">
                           <!-- Timeline line -->
-                          <div class="absolute left-1/2 transform -translate-x-1/2 h-full border-l-2 border-green-500"></div>
+                          <div class="absolute left-1/2 transform -translate-x-1/2 h-full border-l-2 border-yellow-500"></div>
                         </div>
                       </section>
 
@@ -240,177 +279,15 @@
         
         <!-- ##################  Hidden Components from About Section ################################## -->
 
-        <div id="educationSection" style="display: none;" class = "relative bg-transparent border border-gray-500 p-8 rounded-2xl shadow-2xl  mx-auto mt-5">
-            <button  id="exitEducationButton" class="absolute top-3 right-5 text-white text-2xl font-bold hover:text-red-500 focus:outline-none">
-                &times;
-            </button>
-
-            <section id="det-about" class="relative py-6 text-white">
-                <div class="text-center mb-12">
-                <h2 class="text-3xl font-semibold mb-2">My Journey</h2>
-                </div>
-            
-
-                <div class="relative flex justify-center max-w-full mx-auto">
-                    <div class="relative flex flex-col items-center space-y-10 px-10 min-h-[200px]">
-            
-                    <!-- Wrapper for Bachelor's and Master's side-by-side -->
-                        <div class="flex flex-wrap justify-center gap-10">
-                            <div class="bg-transparent border border-gray-500 p-8 rounded-2xl shadow-2xl  max-w-5xl mx-auto mt-5">
-                                <h2 class="text-2xl font-bold text-white mb-6">Bachelor's</h2>
-                                <div class="flex flex-wrap gap-6 justify-center">
-                                
-                                    <div class="relative z-10 group w-64 flex-shrink-0">
-                                        <div id = "srm" data-info = "SRM in in India" class="bg-gray-800 p-4 rounded-xl shadow-xl transform transition-all duration-300 group-hover:scale-105 group-hover:-translate-y-2">
-                                            <h3 class="text-lg font-bold text-green-300">SRM University</h3>
-                                            <p class="text-sm text-white-600">B.E. in Electrical Engineering</p>
-                                            <p class="text-sm text-gray-300">Jul/2014 - Jun/2017</p>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="relative z-10 group w-64 flex-shrink-0">
-                                        <div id = "thb" class="bg-gray-800 p-4 rounded-xl shadow-xl transform transition-all duration-300 group-hover:scale-105 group-hover:-translate-y-2">
-                                            <h3 class="text-lg font-bold text-green-300">TH Bingen</h3>
-                                            <p class="text-sm text-white-600">B.Sc. in Electrical Engineering</p>
-                                            <p class="text-sm text-gray-300">Oct/2018 - Jan/2020</p>
-                                        </div>
-                                    </div>
-                                
-                                    </div>
-
-                                </div>
-                                
-                                <div class="bg-transparent border border-gray-500 p-8 rounded-2xl shadow-2xl max-w-5xl mx-auto mt-5">
-                                    <h2 class="text-2xl font-bold text-white mb-6">Masters's</h2>
-                                    <div class="flex flex-wrap gap-6 justify-center">
-                                    
-                                    <div class="relative z-10 group w-90 flex-shrink-0">
-                                        <div id = "tud" class="bg-gray-800 p-4 rounded-xl shadow-xl transform transition-all duration-300 group-hover:scale-105 group-hover:-translate-y-2">
-                                            <h3 class="text-lg font-bold text-green-300">TU Darmstadt</h3>
-                                            <p class="text-sm text-white-600">M.Sc. in Energy Science and Engineering</p>
-                                            <p class="text-sm text-gray-300">May/2021 - Nov/2024</p>
-                                        </div>
-                                    </div>
-                                </div>                    
-                            </div>
-                        </div>
-
-                        <!-- New Div Below -->
-                        <div class="mt-12 p-6 border border-dashed border-gray-500 rounded-xl text-white text-center max-w-2xl">
-                            <p id = "educationDetails" class="text-sm text-gray-300 transition-opacity duration-300">Hover over the Degree to see additional details.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="hidden">
-                    <div id="info-srm">
-                      <ul class="list-disc list-inside text-lg leading-relaxed">
-                        <li>Focused on core Electrical & Electronics Engineering</li>
-                        <li>Electives in Robotics, Power Systems</li>
-                        <li>Graduated with Distinction</li>
-                      </ul>
-                    </div>
-                  
-                    <div id="info-bingen">
-                      <ul class="list-disc list-inside text-lg leading-relaxed">
-                        <li>German-taught curriculum</li>
-                        <li>Specialization in automation & controls</li>
-                        <li>Hands-on labs and industry training</li>
-                      </ul>
-                    </div>
-                  
-                    <div id="info-darmstadt">
-                      <ul class="list-disc list-inside text-lg leading-relaxed">
-                        <li>Specialized in Energy Systems & Smart Grids</li>
-                        <li>Research in sustainable energy technologies</li>
-                        <li>Thesis on decentralized power management</li>
-                      </ul>
-                    </div>
-                </div>
-
-            </section>
-        </div>  
-
-        <div id="experienceSection" style="display: none;" class = "relative bg-transparent border border-gray-500 p-8 rounded-2xl shadow-2xl  mx-auto mt-5">
-            <button  id = "exitExperienceButton" class="absolute top-3 right-5 text-white text-2xl font-bold hover:text-red-500 focus:outline-none">
-                &times;
-            </button>
-
-            <section id="det-about" class="relative py-6 text-white">
-                <div class="text-center mb-12">
-                <h2 class="text-3xl font-semibold mb-2">My Experience</h2>
-                </div>
-            
-
-                <div class="relative flex justify-center max-w-full mx-auto">
-                    <div class="relative flex flex-col items-center space-y-10 px-10 min-h-[200px]">
-            
-      
-                        <div class="flex flex-wrap justify-center gap-10"> 
-                    
-                            <div class="flex flex-wrap gap-6 justify-center">
-                                
-                                <div class="relative z-10 group w-90 flex-shrink-0">
-                                    <div id = "werkstudent"  class="bg-gray-800 p-4 rounded-xl shadow-xl transform transition-all duration-300 group-hover:scale-105 group-hover:-translate-y-2">
-                                        <h3 class="text-lg font-bold text-green-300">Working Student</h3>
-                                        <p class="text-sm text-white-600">Mainzer Verkehr Gesellschaft mbH.</p>
-                                        <p class="text-sm text-gray-300">Apr/2021 - Aug/2023</p>
-                                    </div>
-                                </div>
-                            
-                                <div class="relative z-10 group w-64 flex-shrink-0">
-                                    <div id = "infoManager" class="bg-gray-800 p-4 rounded-xl shadow-xl transform transition-all duration-300 group-hover:scale-105 group-hover:-translate-y-2">
-                                        <h3 class="text-lg font-bold text-green-300">Information Manager</h3>
-                                        <p class="text-sm text-white-600">Mainzer Verkehr Gesellschaft mbH.</p>
-                                        <p class="text-sm text-gray-300"> Sep/2023 - Today</p>
-                                    </div>
-                                </div>
-                            
-                            </div>
-
-                        </div>
-                            
-
-                        <!-- New Div Below -->
-                        <div class="mt-12 p-6 border border-dashed border-gray-500 rounded-xl text-white text-center max-w-2xl">
-                            <p id = "experienceDetails" class="text-sm text-gray-300 transition-opacity duration-300">Hover over the Field to see additional details.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="hidden">
-                    <div id="info-werkstudent">
-                      <ul class="list-disc list-inside text-lg leading-relaxed">
-                        <li>Focused on core Electrical & Electronics Engineering</li>
-                        <li>Electives in Robotics, Power Systems</li>
-                        <li>Graduated with Distinction</li>
-                      </ul>
-                    </div>
-                  
-                    <div id="info-infoManager">
-                      <ul class="list-disc list-inside text-lg leading-relaxed">
-                        <li>German-taught curriculum</li>
-                        <li>Specialization in automation & controls</li>
-                        <li>Hands-on labs and industry training</li>
-                      </ul>
-                    </div>
-
-                    <div id = "defaultExperienceDetails">
-                        <p  class="text-sm text-gray-300 transition-opacity duration-300">Hover over the Field to see additional details.</p>
-                    </div>
-                </div>
-
-            </section>
-        </div> 
 
         <!-- ##################  End of About Section ################################## -->
 
         <!-- ##################  Projects Section ################################## -->
         <section id="projectsSection" class="py-16 px-6">
-            <div class=" mx-auto">
+            <div class="mx-auto max-w-full">
                 <h2 class="text-3xl font-semibold mb-8 mx-auto text-center">Projects</h2>
-                <div id="projects-container">
-                    <!-- projects.html will be loaded here -->
+                <div id="projects-container" class =  "space-y-6">
+                    <!-- Projects are loaded dynamically -->
                 </div>
             </div>
         </section>
@@ -441,7 +318,7 @@
         <!-- ##################  Contact Section ################################## -->
         
         <section id="contactSection" class="bg-trasparent flex justify-center items-center px-6 py-16 text-white">
-            <div class="w-full max-w-4xl">
+            <div class="w-full max-w-2xl">
               <h2 class="text-3xl font-semibold mb-8 text-center">Contact</h2>
           
               <div class="text-center mb-12">
