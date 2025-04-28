@@ -2,91 +2,91 @@ const iconStaticPath = "static/icon_images/";
 const iconIdSources= {
     english: {
         name: "English",
-        description: "ML library for classical algorithms. ML library for classical algorithms.",
-        score: 9.5,
+        description: "I am Bilingual in English, I have been speaking English alongside my Mother toungue.",
+        score: 9,
         source: "div", 
         iconGroup : 'Languages'
     },
     german: {
         name: "German",
-        description: "ML library for classical algorithms.",
-        score: 9,
+        description: "I am Fluent in German and been living in Germany for the past six years",
+        score: 8,
         source: "div",
         iconGroup : 'Languages'
     },
     tamil: {
         name: "Tamil",
-        description: "ML library for classical algorithms.",
-        score: 7,
+        description: "my Mother toungue, A south indian Language",
+        score: 9,
         source: "div",
         iconGroup : 'Languages'
     },
     spanish: {
         name: "Spanish",
-        description: "ML library for classical algorithms.",
-        score: 7,
+        description: "Very Basic level, learned during my stay in Spain.",
+        score: 3,
         source: "div",
         iconGroup : 'Languages'
     },
     python: {
         name: "Python",
-        description: "ML library for classical algorithms. ML library for classical algorithms.",
-        score: 9.5,
+        description: "My goto Language of Programming Overall.",
+        score: 9,
         source: iconStaticPath + "python_icon.svg",
         iconGroup : 'Programming Languages'
     },
     vba: {
         name: "Excel - VBA",
-        description: "ML library for classical algorithms.",
+        description: "prefers VBA when doing simple calculation and Analysis with Excel Shees.",
         score: 9,
         source: "static/icon_images/vba_icon.jpg",
         iconGroup : 'Programming Languages'
     },
     php: {
         name: "PHP",
-        description: "ML library for classical algorithms.",
-        score: 7,
+        description: "Learned at Mainzer Verkehr Gesellschaft mbH.",
+        score: 6,
         source: iconStaticPath + "php_icon.svg",
         iconGroup : 'Programming Languages'
     },
     js: {
         name: "Javascript",
-        description: "ML library for classical algorithms.",
-        score: 7,
+        description: "Knows Basics of Javascript to design user friendly Interaction with the backend",
+        score: 5,
         source: iconStaticPath + "js_icon.svg",
         iconGroup : 'Programming Languages'
     },
     scikit: {
         name: "Scikit-learn",
-        description: "ML library for classical algorithms. ML library for classical algorithms.",
-        score: 9,
+        description: "Competent in Modelling with Scikit-Learn",
+        score: 8,
         source: iconStaticPath + "scikit_icon.svg",
         iconGroup : 'ML & DL Libraries'
     },
     pytorch: {
         name: "Pytorch",
-        description: "ML library for classical algorithms.",
-        score: 9,
+        description: "preferred ML Library over Tensorflow or Keras",
+        score: 8,
         source: iconStaticPath + "pytorch_icon.svg",
         iconGroup : 'ML & DL Libraries'
     },
     tensorflow: {
         name: "Tensorflow",
-        description: "ML library for classical algorithms.",
-        score: 7,
+        description: "Can Create Models using Tensorflow",
+        score: 6,
         source: iconStaticPath + "tensorflow_icon.svg",
         iconGroup : 'ML & DL Libraries'
     },
     keras: {
         name: "Keras",
-        description: "ML library for classical algorithms.",
-        score: 7,
+        description: "Can Create Models using Keras",
+        score: 6,
         source: iconStaticPath + "keras_icon.svg",
         iconGroup : 'ML & DL Libraries'
     },
     sql: {
         name: "SQL",
-        description: "ML library for classical algorithms. ML library for classical algorithms.",
+        description: "Strong competence in Querying from Data Bank",
         score: 9,
         source: iconStaticPath + "sql_icon.svg",
         iconGroup : 'Data Management'
@@ -95,148 +95,148 @@ const iconIdSources= {
     
     aws: {
         name: "AWS",
-        description: "ML library for classical algorithms.",
-        score: 7,
+        description: "Have used EC2, dynamoDB instances",
+        score: 5,
         source: iconStaticPath + "aws_icon.svg",
         iconGroup : 'Software & Services'
         
     },
     snowflake: {
         name: "Snowflake",
-        description: "ML library for classical algorithms.",
-        score: 7,
+        description: "have used Data Warehouse in AWS",
+        score: 5,
         source: "static/icon_images/snowflake_icon.png",
         iconGroup : 'Data Management'
     },
     docker: {
         name: "Docker",
-        description: "ML library for classical algorithms.",
+        description: "Strong competence in compartmentalisation",
         score: 8,
         source: iconStaticPath + "docker_icon.svg",
         iconGroup : 'Software & Services'
     },
     transformer: {
         name: "Transformers",
-        description: "ML library for classical algorithms. ML library for classical algorithms.",
-        score: 9,
+        description: "strong knowledge in the Architecture of Transformer",
+        score: 8,
         source: "div",
         iconGroup : 'ML Architecture & Algorithms'
     },
     nn: {
         name: "Neural Networks",
-        description: "ML library for classical algorithms.",
-        score: 9,
+        description: "Strong competence in modelling both CNN and RNN",
+        score: 8,
         source: "div",
         iconGroup : 'ML Architecture & Algorithms'
     },
     xgboost: {
         name: "XG - Boost",
-        description: "ML library for classical algorithms.",
-        score: 9,
+        description: "Competence in Gradient Boosting Algorithms",
+        score: 8,
         source: "div",
         iconGroup : 'ML Architecture & Algorithms'
     },
     lstm: {
         name: "LSTM",
-        description: "ML library for classical algorithms.",
-        score: 9,
+        description: "Competent in Time Seires Analysis",
+        score: 8,
         source: "div",
         iconGroup : 'ML Architecture & Algorithms'
     },
     sap: {
         name: "SAP",
-        description: "ML library for classical algorithms.",
+        description: "Competent in execute scripts in SAP from python or VBA using OOPS",
         score: 8,
         source: "static/icon_images/sap_icon.png",
         iconGroup : 'Software & Services'
     },
     git: {
         name: "Git",
-        description: "ML library for classical algorithms. ML library for classical algorithms.",
-        score: 9,
+        description: "Competence in CI/CD Workflow",
+        score: 8,
         source: iconStaticPath + "git_icon.svg",
         iconGroup : 'Software & Services'
     },
     html: {
         name: "HTML 5",
-        description: "ML library for classical algorithms.",
-        score: 9,
+        description: "Have Basic understand of HTML components and structure",
+        score: 4,
         source: iconStaticPath + "html_icon.svg",
         iconGroup : 'Web Development'
     },
     css: {
         name: "CSS 3",
-        description: "ML library for classical algorithms.",
-        score: 9,
+        description: "Have Basic Understand of CSS components and its design",
+        score: 4,
         source: iconStaticPath + "css_icon.svg",
         iconGroup : 'Web Development'
     },
     flask: {
         name: "Flask",
-        description: "ML library for classical algorithms.",
-        score: 9,
+        description: "have created websites using flask",
+        score: 5,
         source: iconStaticPath + "flask_icon.svg",
         iconGroup : 'Web Development'
     },
     django: {
         name: "Django",
-        description: "ML library for classical algorithms.",
-        score: 7,
+        description: "have created websites using Django",
+        score: 5,
         source: iconStaticPath + "django_icon.svg",
         iconGroup : 'Web Development'
     },
     langchain: {
         name: "Langchain",
-        description: "ML library for classical algorithms.",
+        description: "Strong competence in creating RAG using langchain",
         score: 8,
         source: iconStaticPath + "langchain_icon.svg",
         iconGroup : 'AI-Agents & RAG'
     },
     ollama: {
         name: "Ollama",
-        description: "ML library for classical algorithms. ML library for classical algorithms.",
-        score: 9,
+        description: "Strong competence in local LLm models.",
+        score: 8,
         source: iconStaticPath + "ollama_icon.svg",
         iconGroup : 'AI-Agents & RAG'
     },
     langflow: {
         name: "Langflow",
-        description: "ML library for classical algorithms.",
-        score: 9,
+        description: "Have created AI-Agents using Langflow",
+        score: 7,
         source: iconStaticPath + "langflow_icon.svg",
         iconGroup : 'AI-Agents & RAG'
     },
     n8n: {
         name: "n8n",
-        description: "ML library for classical algorithms.",
-        score: 9,
+        description: "Have created AI-Agents using n8n",
+        score: 7,
         source: iconStaticPath + "n8n_icon.svg",
         iconGroup : 'AI-Agents & RAG'
     },
     linux: {
         name: "Linux",
-        description: "ML library for classical algorithms.",
-        score: 9,
+        description: "have Experince in Debian based distros",
+        score: 8,
         source: iconStaticPath + "linux_icon.svg",
         iconGroup : 'Others'
     },
     raspberrypi: {
         name: "Raspberrypi",
-        description: "ML library for classical algorithms.",
+        description: "Have Experience in setuping a raspberry pi for VPN and Network wide Ad-blocking",
         score: 7,
         source: iconStaticPath + "raspberrypi_icon.svg",
         iconGroup : 'Others'
     },
     powershell: {
         name: "Powershell",
-        description: "ML library for classical algorithms.",
-        score: 9,
+        description: "Competent in Powershell and Terminal commands",
+        score: 7,
         source: iconStaticPath + "powershell_icon.svg",
         iconGroup : 'Others'
     },
     arduino: {
         name: "Arduino",
-        description: "ML library for classical algorithms.",
+        description: "Compentent in Arduino",
         score: 7,
         source: iconStaticPath + "arduino_icon.svg",
         iconGroup : 'Others'
