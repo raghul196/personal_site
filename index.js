@@ -338,10 +338,10 @@ projects.forEach((project, index)=> {
   const isImageLeft = project.layout === "image-left";
   const gridCols = isImageLeft ? "grid-cols-[39%_2%_59%]" : "grid-cols-[59%_2%_39%]";
     // alternate slide direction
-  const slideClass = index % 2 === 0 ? 'project-slide-left' : 'project-slide-right';
+  const slideClass = index % 2 === 0 ? 'fade-slide-left' : 'fade-slide-right';
   const projectDiv = document.createElement('div');
   projectDiv.id = project.id;
-  projectDiv.className = `mx-auto max-w-5xl p-4 bg-gray-700 rounded-lg hover:scale-105 transition ${slideClass}`;
+  projectDiv.className = `mx-auto max-w-5xl p-4 bg-gray-700 rounded-lg hover:scale-105 ${slideClass}`;
 
   projectDiv.innerHTML = `
     <h2 class="text-3xl font-semibold mb-4 text-center mx-auto">${project.title}</h2>
@@ -376,10 +376,10 @@ projects.forEach((project, index)=> {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.classList.add('project-visible');
+            entry.target.classList.add('visible');
         }
         else {
-            entry.target.classList.remove('project-visible');}
+            entry.target.classList.remove('visible');}
         });
     }, { threshold: 0.1 });
     
