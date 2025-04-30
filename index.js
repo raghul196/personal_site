@@ -41,6 +41,35 @@ function background_video(){
 background_video();
 
 
+// ############################# Navi Bar ####################################################
+
+
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".nav-link");
+
+
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        const id = entry.target.getAttribute("id");
+        const navLink = document.querySelector(`.nav-link[href="#${id}"]`);
+        if (entry.isIntersecting && navLink) {
+          navLinks.forEach(link => link.classList.remove("text-green-300"));
+          navLink.classList.add("text-green-300");
+        }
+      });
+    },
+    {
+      threshold: 0.5,
+    }
+  );
+
+  sections.forEach(section => {
+    observer.observe(section);
+  });
+// ############################# Navi Bar ####################################################
+
+
 
 
 
