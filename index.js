@@ -289,7 +289,7 @@ data.forEach((item, index) => {
 
 // Render timelines
 createTimeline("education-timeline", educationData, "blue");
-createTimeline("experience-timeline", experienceData, "blue");
+createTimeline("experience-timeline", experienceData, "cyan");
 
 // ############################### End of About ME ##########################################################
 
