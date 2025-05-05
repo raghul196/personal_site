@@ -7,19 +7,19 @@
                   lg:grid-cols-[30%_25%_40%] 
                   xl:grid-cols-[30%_25%_40%]  
                   2xl:grid-cols-[40%_17%_38%] 
-                  lg:h-[calc(100vh-3rem)]  
+                  lg:h-[calc(100vh-4rem)]  
                   gap-1 2xl:gap-8">
       
       <!-- Skill Grid -->
-      <div  class="text-center justify-center border border-blue-300 rounded-lg h-[calc(100vh-3rem)]  shadow ">
+      <div  class="text-center justify-center border border-blue-300 rounded-lg h-[calc(100vh-9rem)]  shadow ">
         <div class = "flex text-center justify-center items-center font-sans w-full h-12 whitespace-normal text-black bg-blue-300 rounded-t text-[10px] 2xl:text-[18px] xl:text-[18px] lg:text-[16px] md:text-[14px] sm:text-[12px] border border-blue-300">Available Skills</div>
-        <div id="skillGrid" class="text-center items-center justify-center h-[calc(100vh-6rem)] z-40 grid grid-cols-1 2xl:grid-cols-2 shadow gap-4 2xl:gap-8 overflow-y-auto overflow-visible p-6 2xl:px-6">
+        <div id="skillGrid" class="text-center items-center justify-center h-[calc(100vh-12rem)] z-40 grid grid-cols-1 2xl:grid-cols-2 shadow gap-4 2xl:gap-8 overflow-y-auto overflow-visible p-6 2xl:px-6">
 
         </div>
       </div>
 
       <!-- Drop + Score + Expected -->
-      <div id="skillDragOver" class="rounded-lg h-[calc(100vh-3rem)] w-full overflow-y-auto border border-blue-300 rounded-md">
+      <div id="skillDragOver" class="rounded-lg h-[calc(100vh-9rem)] w-full overflow-y-auto border border-blue-300 rounded-md">
         
         
         <table class="table-fixed w-full border-collapse">
@@ -42,7 +42,7 @@
       </div>
 
       <!-- Radar -->
-      <div id="skillRadar" class = "w-full col-span-2 lg:col-span-1 lg:h-[calc(100vh-3rem)]  border border-blue-300 rounded-lg text-center items-center">
+      <div id="skillRadar" class = "w-full col-span-2 lg:col-span-1 lg:h-[calc(100vh-9rem)]  border border-blue-300 rounded-lg text-center items-center">
         <div class = "text-center flex align-middle justify-center items-center font-sans w-full h-12 text-black whitespace-normal bg-blue-300 border  border-blue-300 text-[10px] 2xl:text-[18px] xl:text-[18px] lg:text-[16px] md:text-[14px] sm:text-[12px] rounded-t z-10">Compatability</div>
         <div class="w-full h-[calc(100vh-10rem)] items-center justify-center p-4">
           <canvas id="radarChart" class="w-full h-full"></canvas>

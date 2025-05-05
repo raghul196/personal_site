@@ -754,3 +754,88 @@ Object.entries(iconIdSources).forEach(([id, { name, description, score, source }
         });
     }
 });
+
+
+
+function autoDropIcons() {
+    const iconIdsToAutoDrop = ['python', 'pytorch', 'sql', 'english'];
+    const skillDragOver = document.getElementById('skillDragOver');
+    const skillDragOverRect = skillDragOver.getBoundingClientRect();
+  
+    let delay = 0;
+  
+    // Schedule the automatic "drag-out" after the loop finishes
+    // setTimeout(() => {
+    //   // For each dropped icon ID, remove associated DOM elements
+    //   droppedIconIdsArr.forEach((id) => {
+    //     const row = document.getElementById(`${id}Row`);
+    //     const nameDiv = document.getElementById(`${id}-NameDiv`);
+    //     const expectedScoreDiv = document.getElementById(`${id}-ExpectedScoreDiv`);
+  
+    //     if (row) row.remove();
+    //     if (nameDiv) nameDiv.remove();
+    //     if (expectedScoreDiv) expectedScoreDiv.remove();
+  
+    //     console.log(`${id} auto-dragged out of dropzone`);
+    //   });
+  
+    //   // Clear the dropped icon list
+    //   droppedIconIdsArr = [];
+    //   updateRadarChart();
+    // }, iconIdsToAutoDrop.length * 1200 + 1500); // After last icon drops + small buffer
+    
+  
+    iconIdsToAutoDrop.forEach((id) => {
+      const originalIcon = document.getElementById(id);
+      if (!originalIcon) return;
+  
+      setTimeout(() => {
+        const clone = originalIcon.cloneNode(true);
+        clone.id = 'clonned-'+id;
+        document.body.appendChild(clone);
+  
+        const iconRect = originalIcon.getBoundingClientRect();
+        clone.style.position = 'absolute';
+        clone.style.left = `${iconRect.left}px`;
+        clone.style.top = `${iconRect.top}px`;
+        clone.style.width = `${iconRect.width}px`;
+        clone.style.height = `${iconRect.height}px`;
+        clone.style.opacity = '0.5';
+        // clone.style.transition = 'all 1s ease-in-out';
+        console.log(clone);
+        clone.style.pointerEvents = 'none';
+        clone.classList.add('z-20');
+
+        const targetX = skillDragOverRect.left ;
+        const targetY = skillDragOverRect.top;
+        
+        clone.style.transform = `translate(${targetX}px, ${targetY}px)`;
+
+  
+        setTimeout(() => {
+          if (!droppedIconIdsArr.includes(id)) {
+            addSkillsToDragOver(id);
+            droppedIconIdsArr.push(id);
+            updateRadarChart();
+            bindExpectedScores();
+            bindDropZoneIconListeners();
+          }
+          clone.remove();
+        }, 1000);
+      }, delay);
+  
+      delay += 1200;
+    });
+  }
+  
+  window.addEventListener('load', () => {
+    autoDropIcons();
+  
+    // setInterval(() => {
+    //   autoDropIcons();
+    // }, 8000);
+  });
+  
+  
+  
+
