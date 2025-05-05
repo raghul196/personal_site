@@ -203,7 +203,7 @@ const educationData = [
         inst:"TH Bingen", place :"Bingen, Germany",
         info :["Power Electronics and Components" ]
     },
-    { title: "B.Tech. - Electrical and Electronics Engineering", inst: "2014 - 2017" , 
+    { title: "B.Tech. - Electrical and Electronics Engineering", time: "2014 - 2017" , 
         inst:"SRM University", place : "Chennai, India",
         info :["Fundamentals of Electric Motors and Transformers", "Electrical Circuits and Components",
             "Digital Signal Processing", "Statistics"
