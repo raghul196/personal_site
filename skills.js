@@ -1,3 +1,28 @@
+const screenWidth = window.innerWidth;
+const screenHeight = window.innerHeight;
+
+let screenSize;
+if (screenWidth >= 1536) {
+    screenSize = "2xl" ;
+} 
+else if (screenWidth >= 1280) {
+    screenSize = "xl";
+} 
+else if (screenWidth >= 1024) {
+    screenSize = "lg";
+}
+else if (screenWidth >= 768) {
+    screenSize = "md";
+}
+else if (screenWidth >= 640) {
+    screenSize = "sm";
+}
+else {
+    screenSize = "not in Tailwind class";
+}
+
+
+console.log("Screen Size is " + screenSize);
 const iconStaticPath = "static/icon_images/";
 const iconIdSources= {
     english: {
@@ -417,7 +442,9 @@ if (source == "div"){
             'rounded-full', 
             'bg-white',                   
             'object-contain',
-            'shadow' 
+            'shadow-md' , 
+            'border-2',
+            'border-gray-500',
             );
         iconCell.appendChild(img);
         
@@ -505,7 +532,7 @@ droppedIconIdsArr.forEach(droppedIconId =>{
     droppedIconExpectedScores.push(expectedScore);
 
 });
-
+    if(document.getElementById('radarChart')){
     const ctx = document.getElementById('radarChart').getContext('2d');                     
     if (radarChart) {
         radarChart.destroy(); 
@@ -532,6 +559,8 @@ droppedIconIdsArr.forEach(droppedIconId =>{
         ]
     },
     options: { // <-- moved here
+        responsive: true,
+        maintainAspectRatio: false,
         scales: {
             r: { // r axis settings
                 beginAtZero: true,
@@ -549,6 +578,9 @@ droppedIconIdsArr.forEach(droppedIconId =>{
         plugins: {
             legend: {
                 labels: {
+                    font: {
+                        size: 16 // Increase legend label font size
+                    },
                     color: '#ffffff' // Color of the legend
                 }
             }
@@ -556,6 +588,7 @@ droppedIconIdsArr.forEach(droppedIconId =>{
     }
 });
 
+}
 }
 
 const icons = document.querySelectorAll('#skillGrid img, #skillGrid div[draggable="true"]');
@@ -683,8 +716,7 @@ Object.entries(iconIdSources).forEach(([id, { name, description, score, source }
                 const spaceAbove = iconRect.top - gridRect.top;
                 const spaceRight = gridRect.right - iconRect.right;
                 const spaceLeft = iconRect.left - gridRect.left;
-                console.log(spaceLeft , tooltipRect.width);
-
+                
                 // Try to show below
                 if (spaceBelow >= tooltipRect.height && spaceLeft >= tooltipRect.width/2 && spaceRight >=tooltipRect.width/2) {             
                     tooltip.style.top = `${hoveredIcon.offsetHeight + 8}px`;
@@ -699,14 +731,12 @@ Object.entries(iconIdSources).forEach(([id, { name, description, score, source }
                 }
                 // Else show right
                 else if (spaceRight >= tooltipRect.width) {
-                    console.log('1');
                     tooltip.style.top = "50%";
                     tooltip.style.left = `${hoveredIcon.offsetWidth + 8}px`;
                     tooltip.style.transform = "translateY(-50%)";
                 }
                 // Else show left
                 else if (spaceLeft >= tooltipRect.width) {
-                    console.log('2');
                     tooltip.style.top = "50%";
                     tooltip.style.right = `${hoveredIcon.offsetWidth + 8}px`;
                     tooltip.style.transform = "translateY(-50%)";

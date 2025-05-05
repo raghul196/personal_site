@@ -1,4 +1,5 @@
-
+// const screenWidth = window.innerWidth;
+// const screenHeight = window.innerHeight;
 
 // Manages Background Video timeout so that video fades smoothly as it ends
 // and main content appers seamlessly as the video plays
@@ -60,7 +61,7 @@ const navLinks = document.querySelectorAll(".nav-link");
       });
     },
     {
-      threshold: 0.5,
+      threshold: 0.1,
     }
   );
 
@@ -148,6 +149,7 @@ function about_video(){
 }
 
 about_video();
+
 // typed Text
 
 const words = ["Data Scientist", "Data Analyst", "AI Engineer", "ML Developer", "Energy Model Developer"];
@@ -289,7 +291,7 @@ data.forEach((item, index) => {
 
 // Render timelines
 createTimeline("education-timeline", educationData, "blue");
-createTimeline("experience-timeline", experienceData, "cyan");
+createTimeline("experience-timeline", experienceData, "blue");
 
 // ############################### End of About ME ##########################################################
 

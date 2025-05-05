@@ -1,16 +1,25 @@
-  <div class="flex flex-row mx-auto min-h-[700px]">
-    <div class="p-4 grid flex justify-center grid-cols-[30%_25%_40%] 2xl:grid-cols-[40%_17%_38%] h-[calc(100vh-3rem)]  gap-4 2xl:gap-8">
+  <div class="mx-auto w-full ">
+
+    <div class="p-4 grid justify-center
+                  w-full  
+                  grid-cols-2                                    
+                  grid-cols-[50%_45%]
+                  lg:grid-cols-[30%_25%_40%] 
+                  xl:grid-cols-[30%_25%_40%]  
+                  2xl:grid-cols-[40%_17%_38%] 
+                  lg:h-[calc(100vh-3rem)]  
+                  gap-1 2xl:gap-8">
       
       <!-- Skill Grid -->
-      <div  class="text-center justify-center border rounded-lg h-[calc(100vh-3rem)]  shadow ">
-        <div class = "text-center flex justify-center items-center font-sans w-full h-12 whitespace-normal text-black bg-gray-300 rounded-t 2xl:text-[18px] xl:text-[18px] lg:text-[12px] border">Available Skills</div>
+      <div  class="text-center justify-center border border-blue-300 rounded-lg h-[calc(100vh-3rem)]  shadow ">
+        <div class = "flex text-center justify-center items-center font-sans w-full h-12 whitespace-normal text-black bg-blue-300 rounded-t text-[10px] 2xl:text-[18px] xl:text-[18px] lg:text-[16px] md:text-[14px] sm:text-[12px] border border-blue-300">Available Skills</div>
         <div id="skillGrid" class="text-center items-center justify-center h-[calc(100vh-6rem)] z-40 grid grid-cols-1 2xl:grid-cols-2 shadow gap-4 2xl:gap-8 overflow-y-auto overflow-visible p-6 2xl:px-6">
 
         </div>
       </div>
 
       <!-- Drop + Score + Expected -->
-      <div id="skillDragOver" class="rounded-lg h-[calc(100vh-3rem)] w-full overflow-y-auto border rounded-md">
+      <div id="skillDragOver" class="rounded-lg h-[calc(100vh-3rem)] w-full overflow-y-auto border border-blue-300 rounded-md">
         
         
         <table class="table-fixed w-full border-collapse">
@@ -19,8 +28,8 @@
               <col style="width: 40%;" />
               <col style="width: 30%;" />
             </colgroup>
-            <thead class = "bg-gray-300 h-12">
-              <tr class = "sticky top-0 bg-gray-300 h-12 z-40 text-black font-sans 2xl:text-[18px] xl:text-[18px] lg:text-[12px]" >
+            <thead class = "bg-blue-300 h-12">
+              <tr class = "sticky top-0 bg-blue-300 h-12 z-40 text-black font-sans text-[10px] 2xl:text-[18px] xl:text-[18px] lg:text-[16px] md:text-[14px] sm:text-[12px]" >
                 <td class="align-middle text-center" colspan="2" >Expected Skills</td>
                 <td class="align-middle" >Proficiency</td>
               </tr>
@@ -33,9 +42,9 @@
       </div>
 
       <!-- Radar -->
-      <div id="skillRadar" class = "w-full h-[calc(100vh-3rem)]  border rounded-lg flex flex-col text-center items-center">
-        <div class = "text-center flex justify-center items-center font-sans w-full h-12 text-black whitespace-normal bg-gray-300 border 2xl:text-[18px] xl:text-[18px] lg:text-[12px] rounded-t z-10">Compatability</div>
-        <div class="w-full h-[calc(100vh-10rem)] flex items-center justify-center p-4">
+      <div id="skillRadar" class = "w-full col-span-2 lg:col-span-1 lg:h-[calc(100vh-3rem)]  border border-blue-300 rounded-lg text-center items-center">
+        <div class = "text-center flex align-middle justify-center items-center font-sans w-full h-12 text-black whitespace-normal bg-blue-300 border  border-blue-300 text-[10px] 2xl:text-[18px] xl:text-[18px] lg:text-[16px] md:text-[14px] sm:text-[12px] rounded-t z-10">Compatability</div>
+        <div class="w-full h-[calc(100vh-10rem)] items-center justify-center p-4">
           <canvas id="radarChart" class="w-full h-full"></canvas>
         </div>
       </div>
