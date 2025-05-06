@@ -758,31 +758,31 @@ Object.entries(iconIdSources).forEach(([id, { name, description, score, source }
 
 
 function autoDropIcons() {
-    const iconIdsToAutoDrop = ['python', 'pytorch', 'sql', 'english'];
+    const iconIdsToAutoDrop = ['python', 'pytorch', 'sql'];
     const skillDragOver = document.getElementById('skillDragOver');
-    const skillDragOverRect = skillDragOver.getBoundingClientRect();
+    
   
     let delay = 0;
   
     // Schedule the automatic "drag-out" after the loop finishes
-    // setTimeout(() => {
-    //   // For each dropped icon ID, remove associated DOM elements
-    //   droppedIconIdsArr.forEach((id) => {
-    //     const row = document.getElementById(`${id}Row`);
-    //     const nameDiv = document.getElementById(`${id}-NameDiv`);
-    //     const expectedScoreDiv = document.getElementById(`${id}-ExpectedScoreDiv`);
+    setTimeout(() => {
+      // For each dropped icon ID, remove associated DOM elements
+      droppedIconIdsArr.forEach((id) => {
+        const row = document.getElementById(`${id}Row`);
+        const nameDiv = document.getElementById(`${id}-NameDiv`);
+        const expectedScoreDiv = document.getElementById(`${id}-ExpectedScoreDiv`);
   
-    //     if (row) row.remove();
-    //     if (nameDiv) nameDiv.remove();
-    //     if (expectedScoreDiv) expectedScoreDiv.remove();
+        if (row) row.remove();
+        if (nameDiv) nameDiv.remove();
+        if (expectedScoreDiv) expectedScoreDiv.remove();
   
-    //     console.log(`${id} auto-dragged out of dropzone`);
-    //   });
+        console.log(`${id} auto-dragged out of dropzone`);
+      });
   
-    //   // Clear the dropped icon list
-    //   droppedIconIdsArr = [];
-    //   updateRadarChart();
-    // }, iconIdsToAutoDrop.length * 1200 + 1500); // After last icon drops + small buffer
+      // Clear the dropped icon list
+      droppedIconIdsArr = [];
+      updateRadarChart();
+    }, iconIdsToAutoDrop.length * 2400 + 1500); // After last icon drops + small buffer
     
   
     iconIdsToAutoDrop.forEach((id) => {
@@ -790,50 +790,53 @@ function autoDropIcons() {
       if (!originalIcon) return;
   
       setTimeout(() => {
+        const skillDragOverRect = skillDragOver.getBoundingClientRect();        
         const clone = originalIcon.cloneNode(true);
-        clone.id = 'clonned-'+id;
-        document.body.appendChild(clone);
-  
-        const iconRect = originalIcon.getBoundingClientRect();
-        clone.style.position = 'absolute';
-        clone.style.left = `${iconRect.left}px`;
-        clone.style.top = `${iconRect.top}px`;
-        clone.style.width = `${iconRect.width}px`;
-        clone.style.height = `${iconRect.height}px`;
-        clone.style.opacity = '0.5';
-        // clone.style.transition = 'all 1s ease-in-out';
-        console.log(clone);
-        clone.style.pointerEvents = 'none';
-        clone.classList.add('z-20');
-
-        const targetX = skillDragOverRect.left ;
-        const targetY = skillDragOverRect.top;
+        const rect = originalIcon.getBoundingClientRect();
+        const targetX = skillDragOverRect.left - rect.left +50;
+        const targetY = skillDragOverRect.top -rect.top + 200;
         
-        clone.style.transform = `translate(${targetX}px, ${targetY}px)`;
+        clone.id = 'clonned-'+id;           
+        const iconRect = originalIcon.getBoundingClientRect();
+        // Initial state
+        clone.style.transform = "translate(0px, 0px)";
+        clone.style.transition = "transform 2s ease-in-out, opacity 0.5s ease";
 
-  
-        setTimeout(() => {
-          if (!droppedIconIdsArr.includes(id)) {
-            addSkillsToDragOver(id);
-            droppedIconIdsArr.push(id);
-            updateRadarChart();
-            bindExpectedScores();
-            bindDropZoneIconListeners();
-          }
-          clone.remove();
-        }, 1000);
+        // clone.style.pointerEvents = 'none';
+        clone.classList.add( "absolute", "z-50" ,"opacity-50");
+        // originalIcon.parentElement.appendChild(clone);
+        clone.style.position = "fixed"
+        clone.style.left = `${rect.left}px`;
+        clone.style.top = `${rect.top}px`;
+        clone.style.width = `${rect.width}px`;
+        clone.style.height = `${rect.height}px`;
+        document.body.append(clone);
+        void clone.offsetWidth;
+        clone.style.transform = `translate(${targetX}px, ${targetY}px)`;
+        clone.addEventListener("transitionend", () => {
+            clone.remove();
+            if (!droppedIconIdsArr.includes(id)) {            
+                addSkillsToDragOver(id);
+                droppedIconIdsArr.push(id);
+                updateRadarChart();
+                bindExpectedScores();
+                bindDropZoneIconListeners();
+                
+              }
+          });
+
       }, delay);
   
-      delay += 1200;
+      delay += 2400;
     });
   }
   
   window.addEventListener('load', () => {
     autoDropIcons();
   
-    // setInterval(() => {
-    //   autoDropIcons();
-    // }, 8000);
+    setInterval(() => {
+      autoDropIcons();
+    }, 8000);
   });
   
   
