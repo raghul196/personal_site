@@ -26,6 +26,7 @@ function background_video(){
             setTimeout(() => {
                 content.style.opacity = 1;
                 header.style.opacity = 1;
+                autoDropIcons();
                 // sessionStorage.setItem('introPlayed', 'true');
             }, 1650);
         });
