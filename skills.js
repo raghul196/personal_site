@@ -786,7 +786,7 @@ function autoDropIcons() {
             droppedIconIdsArr = [];
             updateRadarChart();
         }
-    }, iconIdsToAutoDrop.length * 2500 + 1500); // After last icon drops + small buffer
+    }, iconIdsToAutoDrop.length * 2500 + 500); // After last icon drops + small buffer
     
     
   
@@ -806,7 +806,7 @@ function autoDropIcons() {
 
                 // Initial state
                 clone.style.transform = "translate(0px, 0px)";
-                clone.style.transition = "transform 2s ease-in-out, opacity 0.5s ease";
+                clone.style.transition = "transform 1s ease-in-out, opacity 0.5s ease";
                 clone.classList.add( "absolute", "z-50" ,"opacity-50");
                 clone.style.position = "fixed"
                 clone.style.left = `${rect.left}px`;
