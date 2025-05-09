@@ -520,76 +520,80 @@ expectedScoreField.addEventListener('input', () => {
 }
 
 function updateRadarChart(){
-const droppedIconScores = [];
-const droppedIconLabels = [];
-const droppedIconExpectedScores = [];
-droppedIconIdsArr.forEach(droppedIconId =>{
-    const score = iconIdSources[droppedIconId].score;
-    const label = iconIdSources[droppedIconId].name; 
-    const expectedScore = document.getElementById(droppedIconId + 'ExpectedScore').value;         
-    droppedIconScores.push(score);
-    droppedIconLabels.push(label);
-    droppedIconExpectedScores.push(expectedScore);
+    const droppedIconScores = [];
+    const droppedIconLabels = [];
+    const droppedIconExpectedScores = [];
+    droppedIconIdsArr.forEach(droppedIconId =>{
+        const score = iconIdSources[droppedIconId].score;
+        const label = iconIdSources[droppedIconId].name; 
+        const expectedScore = document.getElementById(droppedIconId + 'ExpectedScore').value;         
+        droppedIconScores.push(score);
+        droppedIconLabels.push(label);
+        droppedIconExpectedScores.push(expectedScore);
 
-});
+    });
+
     if(document.getElementById('radarChart')){
-    const ctx = document.getElementById('radarChart').getContext('2d');                     
-    if (radarChart) {
-        radarChart.destroy(); 
-    }
-    radarChart = new Chart(ctx, {
-    type: 'radar',
-    data: {
-        labels: droppedIconLabels,
-        datasets: [
-            {
-                label: "Raghul's Proficiency",
-                data: droppedIconScores,
-                backgroundColor: 'rgba(0, 123, 255, 0.4)', // Soft Blue
-                borderColor: 'rgba(0, 123, 255, 1)',        // Solid Blue border
-                borderWidth: 2
-            },
-            {
-                label: "Expected Proficiency",
-                data: droppedIconExpectedScores,
-                backgroundColor: 'rgba(255, 193, 7, 0.4)', // Warm Yellow
-                borderColor: 'rgba(255, 193, 7, 1)',        // Solid Yellow border
-                borderWidth: 2
-            }
-        ]
-    },
-    options: { // <-- moved here
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-            r: { // r axis settings
-                beginAtZero: true,
-                grid: {
-                    color: 'rgba(220, 220, 220, 0.8)' // Light gray grid lines
+        const ctx = document.getElementById('radarChart').getContext('2d');                     
+        if (radarChart) {
+            radarChart.destroy(); 
+        }
+        radarChart = new Chart(ctx, {
+        type: 'radar',
+        data: {
+            labels: droppedIconLabels,
+            datasets: [
+                {
+                    label: "Raghul's Proficiency",
+                    data: droppedIconScores,
+                    backgroundColor: 'rgba(0, 123, 255, 0.4)', // Soft Blue
+                    borderColor: 'rgba(0, 123, 255, 1)',        // Solid Blue border
+                    borderWidth: 2
                 },
-                pointLabels: {
-                    font: {
-                        size: 14
-                    },
-                    color: '#ffffff'
+                {
+                    label: "Expected Proficiency",
+                    data: droppedIconExpectedScores,
+                    backgroundColor: 'rgba(255, 193, 7, 0.4)', // Warm Yellow
+                    borderColor: 'rgba(255, 193, 7, 1)',        // Solid Yellow border
+                    borderWidth: 2
                 }
-            }
+            ]
         },
-        plugins: {
-            legend: {
-                labels: {
-                    font: {
-                        size: 16 // Increase legend label font size
+        options: { // <-- moved here
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                r: { // r axis settings
+                    beginAtZero: true,
+                    grid: {
+                        color: 'rgba(220, 220, 220, 0.8)' // Light gray grid lines
                     },
-                    color: '#ffffff' // Color of the legend
+                    pointLabels: {
+                        font: {
+                            size: 14
+                        },
+                        color: '#ffffff'
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display :false
+                    // labels: {
+                    //     font: {
+                    //         size: 16 // Increase legend label font size
+                    //     },
+                    //     color: '#ffffff' // Color of the legend
+                    // }
                 }
             }
         }
-    }
-});
+    });
 
+
+    }
 }
-}
+
 
 const icons = document.querySelectorAll('#skillGrid img, #skillGrid div[draggable="true"]');
 var dropZoneIcons;
@@ -778,17 +782,13 @@ function autoDropIcons() {
 
     let delay = 0;
   
-    // Schedule the automatic "drag-out" after the loop finishes
-    setTimeout(() => {
-        if(!isIconDragged){    
-            
-            removeClonnedIcons(); 
-            droppedIconIdsArr = [];
-            updateRadarChart();
-        }
-    }, iconIdsToAutoDrop.length * 2500 + 500); // After last icon drops + small buffer
-    
-    
+    // removing icons from Dragover
+  
+    if(!isIconDragged){          
+        removeClonnedIcons(); 
+        droppedIconIdsArr = [];
+        updateRadarChart();
+    }
   
     iconIdsToAutoDrop.forEach((id) => {
         if (!isIconDragged){  
@@ -838,9 +838,16 @@ function autoDropIcons() {
                 }
 
             }, delay);  
-            delay += 2500;
+            delay += 1500;
         }
     });
+
+    setTimeout(() => {
+        const radarChart = document.getElementById('radarChart');
+        
+
+    }, delay + 500);
+
 }
 
 window.addEventListener('load', () => {
@@ -849,7 +856,7 @@ window.addEventListener('load', () => {
     // Start interval to auto drop icons
     ghostInterval = setInterval(() => {
         autoDropIcons();
-    }, 13000);
+    }, 8000);
 });
   
   

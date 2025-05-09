@@ -46,7 +46,18 @@
       <div id="skillRadar" class = "w-full col-span-2 lg:col-span-1 lg:h-[calc(100vh-9rem)]  border border-blue-300 rounded-lg text-center items-center">
         <div class = "text-center flex align-middle justify-center items-center font-sans w-full h-12 text-black whitespace-normal bg-blue-300 border  border-blue-300 text-[10px] 2xl:text-[18px] xl:text-[18px] lg:text-[16px] md:text-[14px] sm:text-[12px] rounded-t z-10">Compatability</div>
         <div class="w-full h-[calc(100vh-10rem)] items-center justify-center p-4">
-          <canvas id="radarChart" class="w-full h-full"></canvas>
+          <div id="custom-legend" class="w-full h-12 grid grid-cols-2">
+            <div id="raghul-proficiency" class = "flex items-center justify-center space-x-2" >
+              <span class = "w-12 h-6 items-center justify-center border inline-block rounded" style="background-color: rgba(0, 123, 255, 0.4); border-color: rgba(0, 123, 255, 1);"></span>
+              <span class = "items-center justify-center">Raghul's Proficiency</span>
+
+            </div>
+            <div id="expected-proficiency" class = "flex items-center justify-center space-x-2">
+              <span class = "w-12 h-6 items-center justify-center border inline-block rounded" style="background-color: rgba(255, 193, 7, 0.4); border-color: rgba(255, 193, 7, 1);"></span>
+              <span class = "items-center justify-center">Expected Proficiency</span>
+            </div>
+          </div>
+          <canvas id="radarChart" class="w-full "></canvas>
         </div>
       </div>
 
