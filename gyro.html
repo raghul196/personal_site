@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roof Pitch Calculator</title>
+    <!-- Tailwind CSS CDN for easy styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Light blue-gray background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .container {
+            background-color: #ffffff; /* White card background */
+            border-radius: 1.5rem; /* More rounded corners */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Soft shadow */
+            padding: 2.5rem;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+        .button-primary {
+            background-image: linear-gradient(to right, #6366f1, #8b5cf6); /* Gradient button */
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 0.75rem; /* Rounded button */
+            font-weight: 600;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
+        .button-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+        }
+        .data-display {
+            font-size: 3rem; /* Large pitch display */
+            font-weight: 700;
+            color: #1e293b; /* Dark text */
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .instructions {
+            color: #475569; /* Gray text */
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        .status-message {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: #ef4444; /* Red for errors/warnings */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="text-3xl font-bold text-gray-800 mb-4">🏠 Find Your Roof Pitch</h1>
+        <p class="instructions">
+            Click the button below to allow access to your device's motion sensors.
+            Then, place your phone flat on the slope of your roof, ensuring it's aligned with the direction of the slope.
+            The angle will be displayed below.
+        </p>
+
+        <button id="requestPermissionBtn" class="button-primary">
+            Start Measuring Roof Pitch
+        </button>
+
+        <div class="data-display" id="pitchDisplay">
+            --°
+        </div>
+
+        <p class="text-gray-600 text-sm">
+            <span id="pitchLabel">Roof Pitch:</span>
+        </p>
+
+        <div id="statusMessage" class="status-message"></div>
+    </div>
+
+    <script>
+        // Get references to HTML elements
+        const requestPermissionBtn = document.getElementById('requestPermissionBtn');
+        const pitchDisplay = document.getElementById('pitchDisplay');
+        const pitchLabel = document.getElementById('pitchLabel');
+        const statusMessage = document.getElementById('statusMessage');
+
+        // Function to handle device orientation data
+        function handleDeviceOrientation(event) {
+            // The beta angle represents the front-to-back tilt of the device.
+            // When the phone is placed flat on a surface, this angle directly corresponds to the pitch.
+            // We take the absolute value as pitch is typically positive.
+            const beta = event.beta; // Rotation around the X-axis (-180 to 180 degrees)
+
+            if (beta !== null) {
+                const roofPitch = Math.abs(beta).toFixed(1); // Round to one decimal place
+                pitchDisplay.textContent = `${roofPitch}°`;
+                pitchLabel.textContent = "Roof Pitch:";
+                statusMessage.textContent = "Place your phone flat on the roof slope.";
+                statusMessage.classList.remove('text-red-500'); // Remove error color if previously applied
+                statusMessage.classList.add('text-green-600'); // Indicate success/guidance
+            } else {
+                statusMessage.textContent = "Unable to get pitch data. Ensure your device has a gyroscope.";
+                statusMessage.classList.add('text-red-500');
+            }
+        }
+
+        // Event listener for the permission request button
+        requestPermissionBtn.addEventListener('click', async () => {
+            if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+                // iOS 13+ and some other browsers require explicit permission
+                try {
+                    const permissionState = await DeviceOrientationEvent.requestPermission();
+                    if (permissionState === 'granted') {
+                        window.addEventListener('deviceorientation', handleDeviceOrientation);
+                        requestPermissionBtn.textContent = "Measuring...";
+                        requestPermissionBtn.disabled = true;
+                        statusMessage.textContent = "Permission granted! Now, place your phone on the roof.";
+                        statusMessage.classList.remove('text-red-500');
+                        statusMessage.classList.add('text-blue-600');
+                    } else {
+                        statusMessage.textContent = "Permission denied. Cannot measure roof pitch.";
+                        statusMessage.classList.add('text-red-500');
+                    }
+                } catch (error) {
+                    statusMessage.textContent = `Error requesting permission: ${error.message}`;
+                    statusMessage.classList.add('text-red-500');
+                }
+            } else {
+                // For browsers that don't require explicit permission (or older versions)
+                window.addEventListener('deviceorientation', handleDeviceOrientation);
+                requestPermissionBtn.textContent = "Measuring...";
+                requestPermissionBtn.disabled = true;
+                statusMessage.textContent = "Measuring started! Place your phone on the roof.";
+                statusMessage.classList.remove('text-red-500');
+                statusMessage.classList.add('text-blue-600');
+            }
+        });
+
+        // Initial message on load
+        window.onload = () => {
+            statusMessage.textContent = "Click 'Start Measuring' to begin.";
+            statusMessage.classList.add('text-gray-500');
+        };
+
+    </script>
+</body>
+</html>
