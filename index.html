@@ -9,31 +9,8 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
-        .video-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: -1;
-            transition:opacity 8s ease;
-        }
 
-        .video-background video {
-            min-width: 100%;
-            min-height: 100%;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            object-fit: cover;
-            transition: opacity 4s ease-in-out;
-        }
 
-        .video-background video.hidden {
-            opacity: 0;
-        }
 
         html,
         body {
@@ -42,14 +19,12 @@
         }
 
         .main-container {
-            opacity: 0;
+
             display: flex;
             flex-direction: column;
             height: 100%;
         }
-        .container {
-            opacity: 0;
-        }
+
         #det-about .overflow-x-auto {
             /* Hide scrollbar */
             -ms-overflow-style: none;  /* For Internet Explorer 10+ */
@@ -172,18 +147,27 @@
     </style>
 </head>
 
-<body  class="text-white font-sans bg-black">
-    <div id="background-video" class="video-background max-w-full">
-        <video id="video1" autoplay muted playsinline>
-            <source src="static/3045163-hd_1920_1080_25fps(1).mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-        </video>
-    </div>
+<body  class="text-white font-sans bg-black overflow-x-hidden">
 
     <header class="fixed top-0 left-0 w-full z-50 bg-opacity-80 backdrop-blur-md text-white shadow-md">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center"  id = "header">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center" id="header">
             <h1 class="text-2xl font-bold">Raghul Babu</h1>
-            <nav class="space-x-6">
+            <nav class="hidden md:flex space-x-6">
+                <a href="#aboutSection" class="nav-link hover:text-green-300 transition">About</a>
+                <a href="#projectsSection" class="nav-link hover:text-green-300 transition">Projects</a>
+                <a href="#skillsSection" class="nav-link hover:text-green-300 transition">Skills</a>
+                <a href="#contactSection" class="nav-link hover:text-green-300 transition">Contact</a>
+            </nav>
+            <div class="md:hidden flex items-center">
+                <button id="hamburger-button" class="text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden">
+            <nav class="flex flex-col items-center space-y-4 py-4">
                 <a href="#aboutSection" class="nav-link hover:text-green-300 transition">About</a>
                 <a href="#projectsSection" class="nav-link hover:text-green-300 transition">Projects</a>
                 <a href="#skillsSection" class="nav-link hover:text-green-300 transition">Skills</a>
@@ -192,14 +176,14 @@
         </div>
     </header>
 
-    <main class="main-container xl:pt-20 2xl:pt-24" id="main-content">
+    <main class="main-container px-6 pt-20 xl:pt-20 2xl:pt-24" id="main-content">
         
         <!-- ##################  About Section ################################## -->
         <section id="aboutSection" class="2xl:py-6 2xl:px-6 xl:py-3 xl:px-3">
             <div class="max-w-full mx-auto space-y-10 ">
                 <h2 class="text-4xl font-semibold xl:mb-2  2xl:mb-4 text-center mx-auto"><u>About Me</u></About></h2>
                 
-                <div id="video-container" class="mx-auto relative xl:w-[65%] 2xl:w-[80%] flex flex-row  bg-transparent">
+                <div id="video-container" class="mx-auto relative w-full md:w-[80%] xl:w-[65%] flex flex-row bg-transparent">
                     
                     <img id="video-thumbnail" src="static/about_video/final/thumbnail.png" alt="Video Thumbnail"
                         class="rounded-lg group-hover:scale-110  object-cover w-full h-full relative inset-0 z-0">
@@ -243,11 +227,11 @@
                     </div>
                 </div>
                 
-                <div class="grid mx-auto 2xl:max-w-5xl xl:max-w-2xl xl:grid-cols-[120px_1fr] 2xl:grid-cols-[180px_1fr] items-center text-center  gap-6">
-                    <div class = "w-full">
+                <div class="mx-auto max-w-4xl flex flex-row gap-6">
+                    <div class = "w-36 md:w-48">
                         <img src = "/static/raghul.jpg"  class = "rounded-lg object-cover">
                     </div>
-                    <div class="typing-container xl:text-4xl 2xl:text-6xl h-full items-center">
+                    <div class="typing-container text-2xl sm:text-3xl xl:text-4xl 2xl:text-6xl h-full items-center">
                         <span class="static-text">I am </span>
                         <span class="dynamic-text text-green-500 justify-center" id="dynamic-text"></span>
                     </div>
@@ -260,7 +244,7 @@
                         <h2 class="text-3xl font-semibold mb-10  text-center "><u>Education</u></h2>
                         <div id="education-timeline" class="relative space-y-6">
                           <!-- Timeline line -->
-                          <div class="absolute left-1/2 transform -translate-x-1/2 h-full border-l-2 border-blue-500"></div>
+                          <div class="absolute left-1/2 transform -translate-x-1/2 h-full border-l-2 border-blue-500 hidden md:block"></div>
                         </div>
                     </div>
                   
@@ -269,7 +253,7 @@
                         <h2 class="text-3xl font-semibold mb-10 text-center "><u>Experience</u></h2>
                         <div id="experience-timeline" class="relative space-y-6 ">
                           <!-- Timeline line -->
-                          <div class="absolute left-1/2 transform -translate-x-1/2 h-full border-l-2 border-blue-500"></div>
+                          <div class="absolute left-1/2 transform -translate-x-1/2 h-full border-l-2 border-blue-500 hidden md:block"></div>
                         </div>
                     </div>
 
@@ -324,7 +308,7 @@
                 <input type="hidden" name="_captcha" value="false">
                   
                   <div class="form-group flex flex-col md:flex-row items-start md:items-center gap-4">
-                    <label for="name" class="text-lg w-40 text-left">Full Name</label>
+                    <label for="name" class="text-lg w-full md:w-40 text-left">Full Name</label>
                     <input
                       class="w-full md:flex-1 bg-transparent border border-gray-500 text-white px-4 py-2 rounded focus:outline-none focus:border-white"
                       type="text"
@@ -334,7 +318,7 @@
                   </div>
           
                   <div class="form-group flex flex-col md:flex-row items-start md:items-center gap-4">
-                    <label for="email" class="text-lg w-40 text-left">Email Address</label>
+                    <label for="email" class="text-lg w-full md:w-40 text-left">Email Address</label>
                     <input
                       class="w-full md:flex-1 bg-transparent border border-gray-500 text-white px-4 py-2 rounded focus:outline-none focus:border-white"
                       type="email"
@@ -344,7 +328,7 @@
                   </div>
           
                   <div class="form-group flex flex-col md:flex-row items-start md:items-start gap-4">
-                    <label for="message" class="text-lg w-40 text-left pt-2">Your Message</label>
+                    <label for="message" class="text-lg w-full md:w-40 text-left pt-2">Your Message</label>
                     <textarea
                       class="w-full md:flex-1 bg-transparent border border-gray-500 text-white px-4 py-2 rounded focus:outline-none focus:border-white h-40 resize-none"
                       id="message"

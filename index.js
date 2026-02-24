@@ -5,47 +5,17 @@
 // and main content appers seamlessly as the video plays
 // manages also that the video plays only once per session
 
-function background_video(){
-    const content = document.getElementById('main-content');
-    const header = document.getElementById('header');
-    const videoBackground = document.getElementById('background-video');
-    const video = document.getElementById('video1');
-    const introPlayed = sessionStorage.getItem('introPlayed');
-
-    if (introPlayed){
-        if(videoBackground){
-            videoBackground.remove();
-        }
-        content.style.opacity = 1;
-        header.style.opacity = 1;
-    }
-
-    else {// Show content after 1.65 seconds the video starts playing
-        
-        video.addEventListener("playing", () => {
-            setTimeout(() => {
-                content.style.opacity = 1;
-                header.style.opacity = 1;
-                autoDropIcons();
-                // sessionStorage.setItem('introPlayed', 'true');
-            }, 1650);
-        });
-
-
-        video.addEventListener('play', () => {
-            setTimeout(() => {
-            video.style.opacity = '0';
-            }, 10000); // 10 seconds
-        });
-    }
-}
-
-background_video();
-
 
 // ############################# Navi Bar ####################################################
 
+document.addEventListener('DOMContentLoaded', () => {
+    const hamburgerButton = document.getElementById('hamburger-button');
+    const mobileMenu = document.getElementById('mobile-menu');
 
+    hamburgerButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+});
 const sections = document.querySelectorAll("section");
 const navLinks = document.querySelectorAll(".nav-link");
 
@@ -230,63 +200,71 @@ const experienceData = [
 ];
 
 function createTimeline(containerId, data, color) {
-const container = document.getElementById(containerId);
+    const container = document.getElementById(containerId);
 
-data.forEach((item, index) => {
-    const entry = document.createElement('div');
-    const metaData = document.createElement('div');
-    const detData = document.createElement('div');
+    data.forEach((item, index) => {
+        const entry = document.createElement('div');
+        const metaData = document.createElement('div');
+        const detData = document.createElement('div');
 
-    entry.className = `relative flex items-center`;
+        // Use flex-col on small screens and flex-row on medium and larger screens
+        entry.className = `relative flex flex-col md:flex-row items-center mb-8`;
 
-    let infoList = '';
-    item.info.forEach(infoItem => {
-        infoList += `<li>${infoItem}</li>`;
-    });
+        let infoList = '';
+        item.info.forEach(infoItem => {
+            infoList += `<li>${infoItem}</li>`;
+        });
 
-    metaData.className = 'w-1/2 pr-8 text-right fade-slide-left';
-    metaData.innerHTML = `<!-- Time on left -->
-        <p class="text-md text-white">${item.time}</p>
-        <p class="text-md text-${color}-300">${item.inst}</p>
-        <p class="text-md text-white">${item.place}</p>`;
+        // For small screens, both divs take full width. For medium and up, they take half.
+        // The order of divs is swapped for alternating entries on larger screens.
+        const isOdd = index % 2 !== 0;
+        const metaOrder = isOdd ? 'md:order-2' : '';
+        const detOrder = isOdd ? 'md:order-1' : '';
 
-    detData.className = `w-1/2 pl-8 fade-slide-right`;
-    detData.innerHTML = `<!-- Text on right -->
-        <h3 class="text-lg font-semibold text-${color}-300">${item.title}</h3>
-        <ul class="list-disc list-inside text-lg leading-relaxed pl-4">${infoList}</ul>`;
+        metaData.className = `w-full md:w-1/2 px-4 py-2 text-left md:text-right fade-slide-left ${metaOrder}`;
+        metaData.innerHTML = `<!-- Time -->
+            <p class="text-md text-white">${item.time}</p>
+            <p class="text-md text-${color}-300">${item.inst}</p>
+            <p class="text-md text-white">${item.place}</p>`;
 
-    entry.appendChild(metaData);
+        detData.className = `w-full md:w-1/2 px-4 py-2 fade-slide-right ${detOrder}`;
+        detData.innerHTML = `<!-- Text -->
+            <h3 class="text-lg font-semibold text-${color}-300">${item.title}</h3>
+            <ul class="list-disc list-inside text-lg leading-relaxed pl-4">${infoList}</ul>`;
 
-    const dot = document.createElement('div');
-    dot.className = `relative z-10`;
-    dot.innerHTML = `
-    <div class="w-4 h-4 bg-${color}-300 rounded-full absolute top-0 left-1/2 transform -translate-x-1/2"></div>
-    `;
-    entry.appendChild(dot);
+        entry.appendChild(metaData);
 
-    entry.appendChild(detData);
+        const dot = document.createElement('div');
+        // The dot is hidden on small screens and visible on medium and up
+        dot.className = `relative z-10 hidden md:block`;
+        dot.innerHTML = `
+        <div class="w-4 h-4 bg-${color}-300 rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
+        `;
+        entry.appendChild(dot);
 
-    container.appendChild(entry);
+        entry.appendChild(detData);
 
-    // Add scroll-trigger animation
-    observeVisibility(metaData);
-    observeVisibility(detData);
+        container.appendChild(entry);
 
-    // Function to handle adding classes for animation
-    function observeVisibility(element) {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+        // Add scroll-trigger animation
+        observeVisibility(metaData);
+        observeVisibility(detData);
+
+        // Function to handle adding classes for animation
+        function observeVisibility(element) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+                else {
+                    entry.target.classList.remove('visible');}
+                });
+            }, { threshold: 0.1 });
+            
+            observer.observe(element);
             }
-            else {
-                entry.target.classList.remove('visible');}
-            });
-        }, { threshold: 0.1 });
-        
-        observer.observe(element);
-        }
-});
+    });
 }
 
 
@@ -368,39 +346,41 @@ const projectsContainer = document.getElementById('projects-container');
 
 projects.forEach((project, index)=> {
   const isImageLeft = project.layout === "image-left";
-  const gridCols = isImageLeft ? "grid-cols-[39%_2%_59%]" : "grid-cols-[59%_2%_39%]";
-    // alternate slide direction
+  // alternate slide direction
   const slideClass = index % 2 === 0 ? 'fade-slide-left' : 'fade-slide-right';
   const projectDiv = document.createElement('div');
   projectDiv.id = project.id;
   projectDiv.className = `mx-auto max-w-5xl p-4 bg-gray-700 rounded-lg hover:scale-105 ${slideClass}`;
 
+  const detailsHtml = Object.entries(project.details).map(([key, value]) => `
+    <div class="font-semibold text-blue-300 text-left">${key}</div>
+    <div class="text-left">${value}</div>
+  `).join('');
+
+  const imageHtml = `
+    <div class="w-full">
+      <img src="${project.imgSrc}" class="w-full rounded-lg">
+    </div>
+  `;
+
+  const detailsContainerHtml = `
+    <div class="grid grid-cols-[80px_1fr] gap-4 p-4">
+      ${detailsHtml}
+    </div>
+  `;
+
+  const imageOrder = isImageLeft ? 'md:order-1' : 'md:order-2';
+  const detailsOrder = isImageLeft ? 'md:order-2' : 'md:order-1';
+
   projectDiv.innerHTML = `
     <h2 class="text-3xl font-semibold mb-4 text-center mx-auto">${project.title}</h2>
-    <div class="mx-auto grid ${gridCols}">
-      ${isImageLeft ? `
-        <div>
-          <img src="${project.imgSrc}" class="w-full rounded-lg">
-        </div>
-        <div></div>
-        <div class="grid grid-cols-[80px_1fr] gap-4 p-4">
-          ${Object.entries(project.details).map(([key, value]) => `
-            <div class="font-semibold text-blue-300 text-left">${key}</div>
-            <div class="text-left">${value}</div>
-          `).join('')}
-        </div>
-      ` : `
-        <div class="grid grid-cols-[80px_1fr] gap-4 p-4">
-          ${Object.entries(project.details).map(([key, value]) => `
-            <div class="font-semibold text-blue-300 text-left">${key}</div>
-            <div class="text-left">${value}</div>
-          `).join('')}
-        </div>
-        <div></div>
-        <div>
-          <img src="${project.imgSrc}" class="w-full rounded-lg">
-        </div>
-      `}
+    <div class="mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="${imageOrder}">
+        ${imageHtml}
+      </div>
+      <div class="${detailsOrder}">
+        ${detailsContainerHtml}
+      </div>
     </div>
   `;
   
