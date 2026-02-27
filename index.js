@@ -290,6 +290,18 @@ createTimeline("experience-timeline", experienceData, "blue");
 // ###################################### Projects ##############################################################
 
 const projects = [
+      {
+      id: "pvf-container",
+      title: "PV Freund (PV Calculator)",
+      imgSrc: "static/projects_images/roof_top_pv.jpg",
+      layout: "image-right",
+      details: {
+        Aim: "Planing PV-Battery installation",
+        Description: "Created an user-friendly webapp <b><a class='text-blue-400' href='https://pvfreund.com/'> PV Freund </a></b> where Home owners can Plan their PV-Battery installation and also analyse the profitablity of their installation",
+        Outcome: "Deployed in GCP",
+        "Applied Skills": "Python, GCP, three.js, "
+      }
+    },
     {
       id: "dt-container",
       title: "Deutsche Telekom CO 2030",
@@ -302,6 +314,7 @@ const projects = [
         "Applied Skills": "Python, Energy Market, Energy Modelling, SQL"
       }
     },
+
     {
       id: "ihack-container",
       title: "Transport Hub of Future",
