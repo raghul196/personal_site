@@ -23,6 +23,7 @@
             display: flex;
             flex-direction: column;
             height: 100%;
+            overflow-x: clip; /* Prevent horizontal scroll from translateX animations */
         }
 
         #det-about .overflow-x-auto {
@@ -149,7 +150,7 @@
 
 <body  class="text-white font-sans bg-black overflow-x-hidden">
 
-    <header class="fixed top-0 left-0 w-full z-50 bg-opacity-80 backdrop-blur-md text-white shadow-md">
+    <header class="fixed top-0 left-0 w-full z-50 bg-black bg-opacity-80 backdrop-blur-md text-white shadow-md">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center" id="header">
             <h1 class="text-2xl font-bold">Raghul Babu</h1>
             <nav class="hidden md:flex space-x-6">
@@ -183,21 +184,21 @@
             <div class="max-w-full mx-auto space-y-10 ">
                 <h2 class="text-4xl font-semibold xl:mb-2  2xl:mb-4 text-center mx-auto"><u>About Me</u></About></h2>
                 
-                <div id="video-container" class="mx-auto relative w-full md:w-[80%] xl:w-[65%] flex flex-row bg-transparent">
-                    
+                <div id="video-container" class="mx-auto relative w-full md:w-[80%] xl:w-[65%] aspect-video bg-transparent overflow-hidden rounded-lg">
+
                     <img id="video-thumbnail" src="static/about_video/final/thumbnail.png" alt="Video Thumbnail"
-                        class="rounded-lg group-hover:scale-110  object-cover w-full h-full relative inset-0 z-0">
-                
-                    
+                        class="absolute inset-0 object-cover w-full h-full z-0 rounded-lg">
+
+
                     <button id="play-button" class="absolute inset-0 flex items-center text-center justify-center w-full h-full z-10">
                         <svg class="w-20 h-20 text-white opacity-80 hover:opacity-100" fill="currentColor" viewBox="0 0 84 84">
                             <circle cx="42" cy="42" r="42" fill="rgba(0,10,0,0.)"/>
                             <polygon points="33,24 63,42 33,60" fill="black"/>
                         </svg>
                     </button>
-                
-                    
-                    <video id="about_video" class="hidden w-full h-full object-cover rounded-lg inset-0 relative z-0" autoplay muted playsinline>
+
+
+                    <video id="about_video" class="hidden absolute inset-0 w-full h-full object-cover rounded-lg z-0" autoplay muted playsinline>
                         <source src="static/about_video/final/intro_video.mp4" type="video/mp4" />
                         Your browser does not support the video tag.
                     </video>
@@ -227,11 +228,11 @@
                     </div>
                 </div>
                 
-                <div class="mx-auto max-w-4xl flex flex-row gap-6">
-                    <div class = "w-36 md:w-48">
-                        <img src = "/static/raghul.jpg"  class = "rounded-lg object-cover">
+                <div class="mx-auto max-w-4xl flex flex-row gap-6 items-center">
+                    <div class="flex-shrink-0  w-36 md:w-48">
+                        <img src="/static/raghul.jpg" class="rounded-lg object-cover w-full h-48 md:h-64">
                     </div>
-                    <div class="typing-container text-2xl sm:text-3xl xl:text-4xl 2xl:text-6xl h-full items-center">
+                    <div class="flex flex-col md:flex-row text-2xl sm:text-3xl xl:text-4xl 2xl:text-6xl h-full ">
                         <span class="static-text">I am </span>
                         <span class="dynamic-text text-green-500 justify-center" id="dynamic-text"></span>
                     </div>
@@ -281,7 +282,7 @@
         <!-- ##################  End of Projects Section ################################## -->
 
         <!-- ##################  Skills Section ################################## -->
-        <section id = "skillsSection" class = "bg-trasparent w-full flex justify-center items-center text-white mx-auto">
+        <section id = "skillsSection" class = "bg-trasparent w-full hidden md:flex justify-center items-center text-white mx-auto">
             <div class = "w-full  mx-auto" >
                 <h2 class="text-4xl font-semibold  mb-8 text-center"><u>Skills</u></h2> 
 

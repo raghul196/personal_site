@@ -174,7 +174,7 @@ const educationData = [
         inst:"TH Bingen", place :"Bingen, Germany",
         info :["Power Electronics and Components" ]
     },
-    { title: "B.Tech. - Electrical and Electronics Engineering", inst: "2014 - 2017" , 
+    { title: "B.Tech. - Electrical and Electronics Engineering", time: "2014 - 2017" , 
         inst:"SRM University", place : "Chennai, India",
         info :["Fundamentals of Electric Motors and Transformers", "Electrical Circuits and Components",
             "Digital Signal Processing", "Statistics"
@@ -208,7 +208,7 @@ function createTimeline(containerId, data, color) {
         const detData = document.createElement('div');
 
         // Use flex-col on small screens and flex-row on medium and larger screens
-        entry.className = `relative flex flex-col md:flex-row items-center mb-8`;
+        entry.className = `relative flex flex-col md:flex-row md:items-center mb-8`;
 
         let infoList = '';
         item.info.forEach(infoItem => {
@@ -217,17 +217,27 @@ function createTimeline(containerId, data, color) {
 
         // For small screens, both divs take full width. For medium and up, they take half.
         // The order of divs is swapped for alternating entries on larger screens.
+        // IMPORTANT: dot must always have md:order-2 so it stays centered between the two panels.
         const isOdd = index % 2 !== 0;
-        const metaOrder = isOdd ? 'md:order-2' : '';
-        const detOrder = isOdd ? 'md:order-1' : '';
+        const metaOrder = isOdd ? 'md:order-3' : 'md:order-1';
+        const dotOrder  = 'md:order-2'; // always center
+        const detOrder  = isOdd ? 'md:order-1' : 'md:order-3';
 
-        metaData.className = `w-full md:w-1/2 px-4 py-2 text-left md:text-right fade-slide-left ${metaOrder}`;
+        // Text alignment: content points toward the center dot
+        const metaTextAlign = isOdd ? 'text-left' : 'text-left md:text-right';
+        const detTextAlign  = isOdd ? 'text-left md:text-right' : 'text-left';
+
+        // Animation direction matches visual position
+        const metaAnim = isOdd ? 'fade-slide-right' : 'fade-slide-left';
+        const detAnim  = isOdd ? 'fade-slide-left'  : 'fade-slide-right';
+
+        metaData.className = `w-full md:w-1/2 px-4 py-2 ${metaTextAlign} ${metaAnim} ${metaOrder}`;
         metaData.innerHTML = `<!-- Time -->
             <p class="text-md text-white">${item.time}</p>
             <p class="text-md text-${color}-300">${item.inst}</p>
             <p class="text-md text-white">${item.place}</p>`;
 
-        detData.className = `w-full md:w-1/2 px-4 py-2 fade-slide-right ${detOrder}`;
+        detData.className = `w-full md:w-1/2 px-4 py-2 ${detTextAlign} ${detAnim} ${detOrder}`;
         detData.innerHTML = `<!-- Text -->
             <h3 class="text-lg font-semibold text-${color}-300">${item.title}</h3>
             <ul class="list-disc list-inside text-lg leading-relaxed pl-4">${infoList}</ul>`;
@@ -236,9 +246,9 @@ function createTimeline(containerId, data, color) {
 
         const dot = document.createElement('div');
         // The dot is hidden on small screens and visible on medium and up
-        dot.className = `relative z-10 hidden md:block`;
+        dot.className = `z-10 hidden md:flex md:items-center md:justify-center flex-shrink-0 ${dotOrder}`;
         dot.innerHTML = `
-        <div class="w-4 h-4 bg-${color}-300 rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="w-4 h-4 bg-${color}-300 rounded-full"></div>
         `;
         entry.appendChild(dot);
 
@@ -358,13 +368,13 @@ projects.forEach((project, index)=> {
   `).join('');
 
   const imageHtml = `
-    <div class="w-full">
-      <img src="${project.imgSrc}" class="w-full rounded-lg">
+    <div class="w-full aspect-video overflow-hidden rounded-lg">
+      <img src="${project.imgSrc}" class="w-full h-full object-cover rounded-lg">
     </div>
   `;
 
   const detailsContainerHtml = `
-    <div class="grid grid-cols-[80px_1fr] gap-4 p-4">
+    <div class="flex flex-col md:grid md:grid-cols-[80px_1fr] gap-4 p-4">
       ${detailsHtml}
     </div>
   `;
