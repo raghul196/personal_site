@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — DecodeHer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background-color: #0D0F14; color: #E5E7EB; font-family: system-ui, sans-serif; }
+    .accent { color: #F5A623; }
+    .surface { background-color: #13161D; }
+    .card { background-color: #1A1E28; }
+    h2 { color: #F5A623; font-size: 1.2rem; font-weight: 700; margin-top: 2.5rem; margin-bottom: 0.75rem; }
+    h3 { color: #E5E7EB; font-size: 1rem; font-weight: 600; margin-top: 1.25rem; margin-bottom: 0.4rem; }
+    p { color: #9CA3AF; line-height: 1.75; margin-bottom: 0.75rem; }
+    ul, ol { color: #9CA3AF; line-height: 1.75; padding-left: 1.5rem; margin-bottom: 0.75rem; }
+    ul { list-style: disc; }
+    ol { list-style: decimal; }
+    li { margin-bottom: 0.35rem; }
+    table { width: 100%; border-collapse: collapse; margin-top: 0.75rem; margin-bottom: 1rem; font-size: 0.875rem; }
+    th { background-color: #1A1E28; color: #F5A623; padding: 0.6rem 1rem; text-align: left; font-weight: 600; }
+    td { background-color: #13161D; color: #9CA3AF; padding: 0.6rem 1rem; border-top: 1px solid #ffffff0d; vertical-align: top; }
+    a { color: #F5A623; text-decoration: underline; }
+    strong { color: #E5E7EB; }
+    .chip { display: inline-block; background-color: #1A1E28; color: #9CA3AF; font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 9999px; margin: 0.15rem; }
+    .notice { background-color: #1C1720; border-left: 3px solid #F5A623; padding: 1rem 1.25rem; border-radius: 0 0.75rem 0.75rem 0; margin: 1rem 0; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- Nav -->
+  <nav class="surface px-6 py-4 flex items-center justify-between border-b border-white/5">
+    <a href="index.html" class="flex items-center gap-3">
+      <img src="logo.png" alt="DecodeHer" class="w-9 h-9 rounded-xl" />
+      <span class="text-white font-bold text-lg">Decode<span class="accent">Her</span></span>
+    </a>
+  </nav>
+
+  <main class="flex-1 max-w-2xl mx-auto px-6 py-16">
+
+    <h1 class="text-3xl font-bold text-white">Privacy Policy</h1>
+    <p class="mt-2 text-gray-500 text-sm">Last updated: May 2025 &nbsp;·&nbsp; Effective: May 2025</p>
+
+    <p class="mt-6">
+      This Privacy Policy describes how DecodeHer ("we", "our", or "us") collects, uses, and protects your information when you use the DecodeHer Android application. Please read it carefully.
+    </p>
+
+    <div class="notice">
+      <strong>Key principle:</strong> All your conversation data — profiles, messages, decoded results — is stored exclusively on your device. We never store your conversations on our servers.
+    </div>
+
+    <!-- 1 -->
+    <h2>1. Who We Are</h2>
+    <p>
+      DecodeHer is an Android application that uses AI to help users understand communication patterns. The app is operated by Raghul Babu. For privacy-related inquiries, contact us at <a href="mailto:contact@pvfreund.com">contact@pvfreund.com</a>.
+    </p>
+
+    <!-- 2 -->
+    <h2>2. Data We Collect</h2>
+
+    <h3>2.1 Account Data (via Firebase Authentication)</h3>
+    <p>When you sign in with Google, we receive and store in Firebase:</p>
+    <ul>
+      <li>Your Google email address</li>
+      <li>Your Google display name</li>
+      <li>Your Google profile photo URL</li>
+      <li>A unique Firebase User ID (UID) assigned to your account</li>
+    </ul>
+    <p>This data is used solely to identify your account and associate it with your subscription tier.</p>
+
+    <h3>2.2 Subscription & Usage Data (via Firestore)</h3>
+    <p>We store the following in Google Firestore, keyed to your Firebase UID:</p>
+    <ul>
+      <li>Your current subscription tier (free, plus, or pro)</li>
+      <li>Your daily decode count (resets at midnight UTC)</li>
+    </ul>
+    <p>This data is used to enforce tier limits and is updated in real time when you purchase or cancel a subscription.</p>
+
+    <h3>2.3 Subscription & Payment Data (via RevenueCat)</h3>
+    <p>
+      In-app purchases are processed by Google Play Billing. Subscription state is managed by RevenueCat. RevenueCat may collect:
+    </p>
+    <ul>
+      <li>Your Firebase UID (used as their app user ID)</li>
+      <li>Purchase receipts and transaction IDs from Google Play</li>
+      <li>Subscription status, renewal dates, and entitlements</li>
+    </ul>
+    <p>We do not receive or store your payment card details. See <a href="https://www.revenuecat.com/privacy" target="_blank">RevenueCat's Privacy Policy</a> for details.</p>
+
+    <h3>2.4 Message Content (Transient — Not Stored)</h3>
+    <p>
+      When you decode a message, the following is sent to our backend API (hosted on Google Cloud Run) for AI processing:
+    </p>
+    <ul>
+      <li>The message text you entered</li>
+      <li>The relationship type you selected (e.g., girlfriend, new match)</li>
+      <li>Optional context you provided (notes, age, culture)</li>
+      <li>A window of recent conversation history for context</li>
+      <li>Your AI-generated profile summary (if available)</li>
+    </ul>
+    <p>
+      <strong>This data is passed directly to the AI model and is not logged, stored, or retained by our backend.</strong> Our API is stateless — no conversation data touches a database on our servers.
+    </p>
+
+    <h3>2.5 Screenshots (OCR — Transient)</h3>
+    <p>
+      If you use the screenshot import feature, the image is sent to our backend and processed by Google Gemini to extract message text and contact names. The image and extracted text are not stored on our servers after processing.
+    </p>
+
+    <h3>2.6 Voice Notes (Transient — Plus/Pro only)</h3>
+    <p>
+      If you import a voice note, the audio file is sent to our backend and transcribed by Google Gemini. The audio and transcript are not stored on our servers after processing.
+    </p>
+
+    <!-- 3 -->
+    <h2>3. Data Stored on Your Device</h2>
+    <p>
+      The following data is stored in an SQLite database <strong>on your device only</strong>. We have no access to it, and it is never transmitted to our servers:
+    </p>
+
+    <table>
+      <tr><th>Data Type</th><th>What's Stored</th></tr>
+      <tr><td>Profiles</td><td>Name, relationship type, age, culture, notes, avatar, AI-generated communication summary</td></tr>
+      <tr><td>Messages</td><td>Her messages, your messages, decoded translations, tone, watch-for warnings, reply suggestions, your ratings (👍/👎)</td></tr>
+      <tr><td>Ask Sessions</td><td>Questions you asked and AI answers (Plus/Pro feature)</td></tr>
+      <tr><td>Contact Mappings</td><td>App name + contact name linked to a profile (for auto-routing screenshot imports)</td></tr>
+    </table>
+
+    <p>Uninstalling the app permanently deletes all of this data from your device.</p>
+
+    <!-- 4 -->
+    <h2>4. Third-Party Services & Data Sharing</h2>
+    <p>We share data with the following third parties only to the extent necessary to operate the app:</p>
+
+    <table>
+      <tr><th>Service</th><th>Purpose</th><th>Data Shared</th><th>Their Policy</th></tr>
+      <tr>
+        <td>Firebase Auth (Google)</td>
+        <td>Sign-in</td>
+        <td>Google account info</td>
+        <td><a href="https://firebase.google.com/support/privacy" target="_blank">Firebase Privacy</a></td>
+      </tr>
+      <tr>
+        <td>Firestore (Google)</td>
+        <td>Tier & usage tracking</td>
+        <td>UID, tier, decode count</td>
+        <td><a href="https://firebase.google.com/support/privacy" target="_blank">Firebase Privacy</a></td>
+      </tr>
+      <tr>
+        <td>RevenueCat</td>
+        <td>Subscription management</td>
+        <td>UID, purchase receipts</td>
+        <td><a href="https://www.revenuecat.com/privacy" target="_blank">RevenueCat Privacy</a></td>
+      </tr>
+      <tr>
+        <td>Anthropic (Claude AI)</td>
+        <td>Message decoding, Q&A, summaries</td>
+        <td>Message text, context (transient)</td>
+        <td><a href="https://www.anthropic.com/privacy" target="_blank">Anthropic Privacy</a></td>
+      </tr>
+      <tr>
+        <td>Google (Gemini)</td>
+        <td>Screenshot OCR, voice transcription</td>
+        <td>Image/audio files (transient)</td>
+        <td><a href="https://policies.google.com/privacy" target="_blank">Google Privacy</a></td>
+      </tr>
+      <tr>
+        <td>Google Cloud Run</td>
+        <td>API hosting</td>
+        <td>Request data (not logged)</td>
+        <td><a href="https://cloud.google.com/terms/cloud-privacy-notice" target="_blank">GCP Privacy</a></td>
+      </tr>
+    </table>
+
+    <p>We do not sell, rent, or share your data with any third parties for advertising or marketing purposes.</p>
+
+    <!-- 5 -->
+    <h2>5. Data We Do Not Collect</h2>
+    <p>We do not collect or access:</p>
+    <ul>
+      <li>Your device contacts or phone book</li>
+      <li>Your location</li>
+      <li>Your camera or microphone directly (files are picked by you via system file picker)</li>
+      <li>Any data from other apps on your device</li>
+      <li>Crash reports or analytics (no third-party analytics SDK is integrated)</li>
+      <li>Advertising identifiers</li>
+    </ul>
+
+    <!-- 6 -->
+    <h2>6. Data Security</h2>
+    <ul>
+      <li>All data in transit between the app and our backend is encrypted using HTTPS/TLS.</li>
+      <li>Firebase and Firestore access is protected by Firebase security rules and authenticated Firebase tokens.</li>
+      <li>Our backend verifies your Firebase ID token on every request.</li>
+      <li>Local SQLite data is protected by your device's operating system security.</li>
+    </ul>
+
+    <!-- 7 -->
+    <h2>7. Data Retention</h2>
+
+    <table>
+      <tr><th>Data Type</th><th>Retention Period</th></tr>
+      <tr><td>Firebase account (email, name, UID)</td><td>Until you delete your account</td></tr>
+      <tr><td>Firestore tier & usage data</td><td>Until you delete your account</td></tr>
+      <tr><td>RevenueCat subscription records</td><td>Up to 90 days after cancellation (for billing disputes)</td></tr>
+      <tr><td>Message content sent to AI</td><td>Not retained — processed and discarded immediately</td></tr>
+      <tr><td>Local device data (SQLite)</td><td>Until you uninstall the app or use in-app delete</td></tr>
+    </table>
+
+    <!-- 8 -->
+    <h2>8. Your Rights & Account Deletion</h2>
+    <p>You have the right to:</p>
+    <ul>
+      <li><strong>Access:</strong> Request a summary of what account data we hold about you.</li>
+      <li><strong>Delete:</strong> Request deletion of your Firebase account and associated Firestore data.</li>
+      <li><strong>Portability:</strong> Your local data (profiles, messages) is stored in SQLite on your device and is under your full control.</li>
+    </ul>
+    <p>
+      To delete your account, visit our <a href="delete-account.html">Delete Account</a> page or email us at <a href="mailto:contact@pvfreund.com">contact@pvfreund.com</a>.
+      We will process deletion requests within 7 days.
+    </p>
+
+    <!-- 9 -->
+    <h2>9. Children's Privacy</h2>
+    <p>
+      DecodeHer is intended exclusively for users aged 18 and over. We do not knowingly collect personal data from anyone under 18. If you believe a minor has created an account, contact us immediately at <a href="mailto:contact@pvfreund.com">contact@pvfreund.com</a> and we will delete the account.
+    </p>
+
+    <!-- 10 -->
+    <h2>10. Changes to This Policy</h2>
+    <p>
+      We may update this policy as the app evolves. When we make significant changes, we will update the "Last updated" date at the top of this page. Continued use of the app after changes constitutes acceptance of the updated policy.
+    </p>
+
+    <!-- 11 -->
+    <h2>11. Contact</h2>
+    <p>
+      For any privacy-related questions or requests, contact us at:<br />
+      <a href="mailto:contact@pvfreund.com">contact@pvfreund.com</a>
+    </p>
+
+  </main>
+
+  <footer class="surface border-t border-white/5 py-6 text-center text-sm text-gray-500 flex flex-wrap justify-center gap-4">
+    <a href="privacy-policy.html" class="hover:text-white transition">Privacy Policy</a>
+    <a href="terms.html" class="hover:text-white transition">Terms of Service</a>
+    <a href="delete-account.html" class="hover:text-white transition">Delete Account</a>
+    <a href="mailto:contact@pvfreund.com" class="hover:text-white transition">Contact</a>
+  </footer>
+
+</body>
+</html>

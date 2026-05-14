@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DecodeHer — Understand Her, Actually</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background-color: #0D0F14; color: #E5E7EB; font-family: system-ui, sans-serif; }
+    .accent { color: #F5A623; }
+    .btn-accent { background-color: #F5A623; color: #0D0F14; font-weight: 700; }
+    .btn-accent:hover { background-color: #d48f1a; }
+    .card { background-color: #1A1E28; }
+    .surface { background-color: #13161D; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- Nav -->
+  <nav class="surface px-6 py-4 flex items-center justify-between border-b border-white/5">
+    <div class="flex items-center gap-3">
+      <img src="logo.png" alt="DecodeHer" class="w-9 h-9 rounded-xl" />
+      <span class="text-white font-bold text-lg">Decode<span class="accent">Her</span></span>
+    </div>
+    <div class="flex gap-6 text-sm text-gray-400">
+      <a href="privacy-policy.html" class="hover:text-white transition">Privacy</a>
+      <a href="terms.html" class="hover:text-white transition">Terms</a>
+      <a href="delete-account.html" class="hover:text-white transition">Delete Account</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <main class="flex-1 flex flex-col items-center justify-center text-center px-6 py-24 gap-8">
+    <img src="logo.png" alt="DecodeHer logo" class="w-24 h-24 rounded-3xl shadow-2xl" />
+    <div>
+      <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight">
+        Understand <span class="accent">Her</span>, Actually.
+      </h1>
+      <p class="mt-4 text-gray-400 text-lg max-w-lg mx-auto">
+        DecodeHer translates what she said into what she meant — with tone, context, and reply suggestions.
+      </p>
+    </div>
+
+    <a href="https://play.google.com/store/apps/details?id=com.decodeher.decodeher"
+       class="btn-accent px-8 py-3 rounded-xl text-sm transition inline-block">
+      Download on Google Play
+    </a>
+
+    <!-- Feature pills -->
+    <div class="flex flex-wrap justify-center gap-3 mt-4">
+      <span class="card text-sm text-gray-300 px-4 py-2 rounded-full">AI Translation</span>
+      <span class="card text-sm text-gray-300 px-4 py-2 rounded-full">Tone Detection</span>
+      <span class="card text-sm text-gray-300 px-4 py-2 rounded-full">Reply Suggestions</span>
+      <span class="card text-sm text-gray-300 px-4 py-2 rounded-full">100% Private</span>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="surface border-t border-white/5 py-6 text-center text-sm text-gray-500 flex flex-wrap justify-center gap-4">
+    <a href="privacy-policy.html" class="hover:text-white transition">Privacy Policy</a>
+    <a href="terms.html" class="hover:text-white transition">Terms of Service</a>
+    <a href="delete-account.html" class="hover:text-white transition">Delete Account</a>
+    <a href="mailto:contact@pvfreund.com" class="hover:text-white transition">Contact</a>
+  </footer>
+
+</body>
+</html>
