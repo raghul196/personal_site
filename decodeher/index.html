@@ -4,64 +4,257 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DecodeHer — Understand Her, Actually</title>
+  <link rel="icon" type="image/png" href="favicon.png" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body { background-color: #0D0F14; color: #E5E7EB; font-family: system-ui, sans-serif; }
+    body { background-color: #1d1b25; color: #E5E7EB; font-family: system-ui, sans-serif; }
     .accent { color: #F5A623; }
-    .btn-accent { background-color: #F5A623; color: #0D0F14; font-weight: 700; }
-    .btn-accent:hover { background-color: #d48f1a; }
-    .card { background-color: #1A1E28; }
-    .surface { background-color: #13161D; }
+    .bg-accent { background-color: #F5A623; }
+    .btn-gplay { background-color: #F0F0F0; color: #0D0D0D; font-weight: 600; border: none; display: inline-flex; align-items: center; gap: 10px; }
+    .btn-gplay:hover { background-color: #DCDCDC; }
+    .btn-accent { background-color: #F0F0F0; color: #0D0D0D; font-weight: 600; border: none; display: inline-flex; align-items: center; gap: 10px; }
+    .btn-accent:hover { background-color: #DCDCDC; }
+    .surface { background-color: #11131A; }
+    .step-divider { border-top: 1px solid #2a2e3a; }
+    .phone-shadow { filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5)); }
+    .how-it-works-bg { background-color: #1d1b25; }
+    .phone-glow-right { border: 1px solid rgba(255,255,255,0.15); border-radius: 1rem; box-shadow: 0 30px 60px rgba(0,0,0,0.6), 0 0 50px rgba(245,166,35,0.3); }
+    .phone-glow-left { border: 1px solid rgba(255,255,255,0.15); border-radius: 1rem; box-shadow: 0 30px 60px rgba(0,0,0,0.6), 0 0 50px rgba(245,166,35,0.3); }
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes snapIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    .hero-line {
+      display: inline-block;
+      opacity: 0;
+      animation: fadeSlideUp 0.6s ease forwards;
+    }
+    .hero-punchline {
+      display: inline-block;
+      opacity: 0;
+      animation: snapIn 0.8s ease forwards;
+    }
+    .hero-after {
+      opacity: 0;
+      animation: snapIn 0.8s ease forwards;
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
 <body class="min-h-screen flex flex-col">
 
   <!-- Nav -->
-  <nav class="surface px-6 py-4 flex items-center justify-between border-b border-white/5">
+  <nav class="surface px-6 py-4 flex items-center justify-between border-b border-white/5 sticky top-0 z-10">
     <div class="flex items-center gap-3">
-      <img src="logo.png" alt="DecodeHer" class="w-9 h-9 rounded-xl" />
+      <img src="logo.png" alt="DecodeHer" class="w-8 h-8 rounded-xl" />
       <span class="text-white font-bold text-lg">Decode<span class="accent">Her</span></span>
     </div>
-    <div class="flex gap-6 text-sm text-gray-400">
-      <a href="privacy-policy.html" class="hover:text-white transition">Privacy</a>
-      <a href="terms.html" class="hover:text-white transition">Terms</a>
-      <a href="delete-account.html" class="hover:text-white transition">Delete Account</a>
+    <div class="flex items-center gap-6">
+      <div class="hidden md:flex gap-6 text-sm text-gray-400">
+        <a href="privacy-policy.html" class="hover:text-white transition">Privacy</a>
+        <a href="terms.html" class="hover:text-white transition">Terms</a>
+        <a href="delete-account.html" class="hover:text-white transition">Delete Account</a>
+        <a href="mailto:ligerragul@gmail.com" class="hover:text-white transition">Contact</a>
+      </div>
+      <a href="https://play.google.com/store/apps/details?id=com.decodeher.decodeher"
+         class="btn-accent px-4 py-2 rounded-lg text-sm transition">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3.18 23.5c-.37-.2-.6-.58-.6-1.02V1.52C2.58 1.08 2.81.7 3.18.5L13.5 12 3.18 23.5z" fill="#EA4335"/>
+          <path d="M17.5 8.5l-4 2.3L3.18.5 17.5 8.5z" fill="#FBBC04"/>
+          <path d="M17.5 15.5L3.18 23.5l10.32-11.5 4 3.5z" fill="#34A853"/>
+          <path d="M21.6 13.2c.27-.35.4-.73.4-1.2s-.13-.85-.4-1.2L17.5 8.5l-4 3.5 4 3.5 4.1-2.3z" fill="#4285F4"/>
+        </svg>
+        Download
+      </a>
     </div>
   </nav>
 
   <!-- Hero -->
-  <main class="flex-1 flex flex-col items-center justify-center text-center px-6 py-24 gap-8">
-    <img src="logo.png" alt="DecodeHer logo" class="w-24 h-24 rounded-3xl shadow-2xl" />
-    <div>
-      <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight">
-        Understand <span class="accent">Her</span>, Actually.
-      </h1>
-      <p class="mt-4 text-gray-400 text-lg max-w-lg mx-auto">
-        DecodeHer translates what she said into what she meant — with tone, context, and reply suggestions.
-      </p>
-    </div>
-
+  <section class="flex flex-col items-center text-center px-6 pt-32 pb-32 gap-10">
+    <h1 class="text-5xl md:text-6xl font-bold tracking-tight text-white" style="line-height: 1.4;">
+      <span class="hero-line" style="animation-delay: 0s;">She speaks fluent emotion.</span><br/>
+      <span class="hero-line" style="animation-delay: 1.2s;">You speak caveman.</span><br/>
+      <span class="hero-punchline" style="animation-delay: 2.4s; color: #F5A623;">We translate.</span>
+    </h1>
+    <p class="text-gray-400 text-lg max-w-md mx-auto leading-relaxed hero-after" style="animation-delay: 3.6s;">
+      Every woman has her own language. DecodeHer decodes hers into plain language you can actually understand.
+    </p>
     <a href="https://play.google.com/store/apps/details?id=com.decodeher.decodeher"
-       class="btn-accent px-8 py-3 rounded-xl text-sm transition inline-block">
-      Download on Google Play
+       class="btn-accent px-9 py-3.5 rounded-xl text-base transition hero-after" style="animation-delay: 3.9s;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3.18 23.5c-.37-.2-.6-.58-.6-1.02V1.52C2.58 1.08 2.81.7 3.18.5L13.5 12 3.18 23.5z" fill="#EA4335"/>
+        <path d="M17.5 8.5l-4 2.3L3.18.5 17.5 8.5z" fill="#FBBC04"/>
+        <path d="M17.5 15.5L3.18 23.5l10.32-11.5 4 3.5z" fill="#34A853"/>
+        <path d="M21.6 13.2c.27-.35.4-.73.4-1.2s-.13-.85-.4-1.2L17.5 8.5l-4 3.5 4 3.5 4.1-2.3z" fill="#4285F4"/>
+      </svg>
+      <span class="flex flex-col items-start leading-tight">
+        <span class="text-xs font-normal opacity-80">Get it on</span>
+        <span class="text-sm font-bold">Google Play</span>
+      </span>
     </a>
+  </section>
 
-    <!-- Feature pills -->
-    <div class="flex flex-wrap justify-center gap-3 mt-4">
-      <span class="card text-sm text-gray-300 px-4 py-2 rounded-full">AI Translation</span>
-      <span class="card text-sm text-gray-300 px-4 py-2 rounded-full">Tone Detection</span>
-      <span class="card text-sm text-gray-300 px-4 py-2 rounded-full">Reply Suggestions</span>
-      <span class="card text-sm text-gray-300 px-4 py-2 rounded-full">100% Private</span>
+  <!-- Ideology -->
+  <section class="px-6 py-24 max-w-2xl mx-auto w-full">
+    <div class="flex flex-col gap-16">
+
+      <div class="reveal" style="position: relative; padding-top: 2rem; transition-delay: 4.5s;">
+        <span style="position: absolute; top: 0rem; right: -1rem; font-size: 5rem; font-weight: 900; line-height: 1; color: #F5A623; opacity: 0.25; user-select: none; z-index: 0;">01</span>
+        <div style="position: relative; z-index: 1;" class="flex flex-col gap-4">
+          <h3 class="text-3xl font-bold text-white">Understanding, not manipulation.</h3>
+          <p class="text-gray-400 text-lg leading-relaxed">When you understand what she actually means, everything changes. Fewer arguments that go nowhere. Less guessing. More connection. DecodeHer exists to help you build something real with her.</p>
+        </div>
+      </div>
+
+      <div class="reveal" style="position: relative; padding-top: 2rem; transition-delay: 5s;">
+        <span style="position: absolute; top: 0rem; right: -1rem; font-size: 5rem; font-weight: 900; line-height: 1; color: #F5A623; opacity: 0.25; user-select: none; z-index: 0;">02</span>
+        <div style="position: relative; z-index: 1;" class="flex flex-col gap-4">
+          <h3 class="text-3xl font-bold text-white">Her language is hers alone.</h3>
+          <p class="text-gray-400 text-lg leading-relaxed">No two women communicate the same way. DecodeHer learns her language — her tone, her patterns, the way she expresses her feelings. The more you use it, the more it understands her language. When the app understands her language, you understand her.</p>
+        </div>
+      </div>
+
+      <div class="reveal" style="position: relative; padding-top: 2rem; transition-delay: 5.5s;">
+        <span style="position: absolute; top: 0rem; right: -1rem; font-size: 5rem; font-weight: 900; line-height: 1; color: #F5A623; opacity: 0.25; user-select: none; z-index: 0;">03</span>
+        <div style="position: relative; z-index: 1;" class="flex flex-col gap-4">
+          <h3 class="text-3xl font-bold text-white">Your data is yours. Full stop.</h3>
+          <p class="text-gray-400 text-lg leading-relaxed">You're sharing private, vulnerable moments in this app. That deserves real privacy — not a privacy policy nobody reads. Your conversations never leave your phone. No server sees them. No one mines them.</p>
+        </div>
+      </div>
+
     </div>
-  </main>
+  </section>
+
+  <!-- How it works -->
+  <section class="how-it-works-bg px-6 py-20">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-3xl font-bold text-white mb-16 reveal">How it works</h2>
+
+      <div class="flex flex-col md:flex-row items-center gap-16">
+
+        <!-- Screenshot -->
+        <div class="flex-1 flex justify-center reveal">
+          <img src="screenshots/03.png" alt="Decode result" class="w-64 rounded-2xl phone-glow-right" />
+        </div>
+
+        <!-- Steps -->
+        <div class="flex-1 flex flex-col reveal" style="position: relative;">
+
+          <!-- Vertical line -->
+          <div style="position: absolute; left: 15px; top: 32px; bottom: 32px; width: 1px; background: linear-gradient(to bottom, #F5A623, rgba(245,166,35,0.15));"></div>
+
+          <!-- Step 01 -->
+          <div class="flex gap-6" style="padding-bottom: 3rem;">
+            <div style="flex-shrink: 0; width: 31px; height: 31px; border-radius: 50%; background: #F5A623; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1;">
+              <span style="font-size: 0.7rem; font-weight: 700; color: #0D0D0D;">01</span>
+            </div>
+            <div class="flex flex-col gap-2">
+              <h3 class="text-xl font-bold text-white">Set the scene.</h3>
+              <p class="text-gray-400 text-base leading-relaxed">Something was already going on before she sent that. Tell the app what it was — a conversation, a plan, something that happened between you. The more it knows, the more accurate the read.</p>
+            </div>
+          </div>
+
+          <!-- Step 02 -->
+          <div class="flex gap-6" style="padding-bottom: 3rem;">
+            <div style="flex-shrink: 0; width: 31px; height: 31px; border-radius: 50%; background: #F5A623; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1;">
+              <span style="font-size: 0.7rem; font-weight: 700; color: #0D0D0D;">02</span>
+            </div>
+            <div class="flex flex-col gap-2">
+              <h3 class="text-xl font-bold text-white">What she said.</h3>
+              <p class="text-gray-400 text-base leading-relaxed">Type it out or drop in a screenshot — from your camera roll or shared directly from your messaging app.</p>
+            </div>
+          </div>
+
+          <!-- Step 03 -->
+          <div class="flex gap-6">
+            <div style="flex-shrink: 0; width: 31px; height: 31px; border-radius: 50%; background: #F5A623; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1;">
+              <span style="font-size: 0.7rem; font-weight: 700; color: #0D0D0D;">03</span>
+            </div>
+            <div class="flex flex-col gap-2">
+              <h3 class="text-xl font-bold text-white">What she meant.</h3>
+              <p class="text-gray-400 text-base leading-relaxed">Her tone. The real meaning behind the words. What she left unsaid. And how to respond without making it worse.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="px-6 py-24 flex flex-col items-center text-center gap-5">
+    <h2 class="text-3xl md:text-4xl font-bold text-white">Ready to actually understand her?</h2>
+    <p class="text-gray-400 text-base">Free to download. No commitment.</p>
+    <a href="https://play.google.com/store/apps/details?id=com.decodeher.decodeher"
+       class="btn-accent px-10 py-3.5 rounded-xl text-base transition mt-2">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3.18 23.5c-.37-.2-.6-.58-.6-1.02V1.52C2.58 1.08 2.81.7 3.18.5L13.5 12 3.18 23.5z" fill="#EA4335"/>
+        <path d="M17.5 8.5l-4 2.3L3.18.5 17.5 8.5z" fill="#FBBC04"/>
+        <path d="M17.5 15.5L3.18 23.5l10.32-11.5 4 3.5z" fill="#34A853"/>
+        <path d="M21.6 13.2c.27-.35.4-.73.4-1.2s-.13-.85-.4-1.2L17.5 8.5l-4 3.5 4 3.5 4.1-2.3z" fill="#4285F4"/>
+      </svg>
+      <span class="flex flex-col items-start leading-tight">
+        <span class="text-xs font-normal opacity-80">Get it on</span>
+        <span class="text-sm font-bold">Google Play</span>
+      </span>
+    </a>
+  </section>
 
   <!-- Footer -->
-  <footer class="surface border-t border-white/5 py-6 text-center text-sm text-gray-500 flex flex-wrap justify-center gap-4">
+  <footer class="surface border-t border-white/5 py-6 text-center text-sm text-gray-500 flex flex-wrap justify-center gap-6 mt-auto">
     <a href="privacy-policy.html" class="hover:text-white transition">Privacy Policy</a>
     <a href="terms.html" class="hover:text-white transition">Terms of Service</a>
     <a href="delete-account.html" class="hover:text-white transition">Delete Account</a>
-    <a href="mailto:contact@pvfreund.com" class="hover:text-white transition">Contact</a>
+    <a href="mailto:ligerragul@gmail.com" class="hover:text-white transition">Contact</a>
   </footer>
 
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    // re-check after hero animation completes
+    setTimeout(() => {
+      document.querySelectorAll('.reveal').forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight) el.classList.add('visible');
+      });
+    }, 5500);
+
+    function revealAll() {
+      document.querySelectorAll('.hero-line, .hero-punchline, .hero-after').forEach(el => {
+        el.style.transition = 'none';
+        el.style.animation = 'none';
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      });
+      document.querySelectorAll('.reveal').forEach(el => {
+        el.style.transitionDelay = '0s';
+        el.style.transition = 'none';
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+        el.classList.add('visible');
+      });
+      window.removeEventListener('scroll', revealAll);
+    }
+    window.addEventListener('scroll', revealAll, { passive: true });
+  </script>
 </body>
 </html>
