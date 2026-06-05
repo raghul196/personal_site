@@ -99,27 +99,76 @@
   <!-- Philosophy — sticky stacking cards -->
   <section id="philosophy" style="position: relative;">
 
+    <!-- Card 01: Understanding — amber theme, chat bubbles SVG -->
     <div style="position: sticky; top: 88px; z-index: 3; height: calc(100vh - 88px); display: flex; align-items: center; justify-content: center; padding: 0 1.5rem; background: #1d1b25;">
-      <div style="width: 100%; max-width: 720px; background: #252330; border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 3.5rem; box-shadow: 0 24px 64px rgba(0,0,0,0.6);">
-        <span style="font-size: 4rem; font-weight: 900; color: #F5A623; opacity: 0.2; line-height: 1; display: block; margin-bottom: 1.5rem; user-select: none;">01</span>
-        <h3 style="font-size: 2rem; font-weight: 700; color: #fff; margin-bottom: 1rem;">Understanding, not manipulation.</h3>
-        <p style="color: #9CA3AF; font-size: 1.1rem; line-height: 1.75;">When you understand what she actually means, everything changes. Fewer arguments that go nowhere. Less guessing. More connection. DecodeHer exists to help you build something real with her.</p>
+      <div style="width: 100%; max-width: 860px; background: #1e1508; border: 1px solid rgba(245,166,35,0.25); border-radius: 24px; box-shadow: 0 24px 64px rgba(0,0,0,0.6); display: flex; align-items: stretch; overflow: hidden; min-height: 340px;">
+        <!-- Text -->
+        <div style="flex: 1; padding: 3.5rem; display: flex; flex-direction: column; justify-content: center; gap: 1rem; min-width: 0;">
+          <span style="font-size: 3.5rem; font-weight: 900; color: #F5A623; opacity: 0.18; line-height: 1; user-select: none;">01</span>
+          <h3 style="font-size: 1.9rem; font-weight: 700; color: #fff; margin: 0;">Understanding, not manipulation.</h3>
+          <p style="color: #9CA3AF; font-size: 1.05rem; line-height: 1.75; margin: 0;">When you understand what she actually means, everything changes. Fewer arguments that go nowhere. Less guessing. More connection. DecodeHer exists to help you build something real with her.</p>
+        </div>
+        <!-- SVG panel -->
+        <div style="width: 280px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; padding: 2rem; position: relative;">
+          <svg viewBox="0 0 200 200" width="220" height="220" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity: 0.18;">
+            <!-- Left bubble -->
+            <rect x="10" y="40" width="120" height="72" rx="20" fill="#F5A623"/>
+            <polygon points="30,112 20,138 58,112" fill="#F5A623"/>
+            <!-- Right bubble -->
+            <rect x="70" y="90" width="120" height="72" rx="20" fill="#F5A623"/>
+            <polygon points="162,162 180,188 142,162" fill="#F5A623"/>
+            <!-- Heart in right bubble -->
+            <path d="M118 120 c0-6 8-10 12-4 4-6 12-2 12 4 0 4-12 14-12 14s-12-10-12-14z" fill="#fff" opacity="0.7"/>
+          </svg>
+        </div>
       </div>
     </div>
 
+    <!-- Card 02: Her language — rose theme, fingerprint SVG -->
     <div style="position: sticky; top: 88px; z-index: 4; height: calc(100vh - 88px); display: flex; align-items: center; justify-content: center; padding: 0 1.5rem; background: #1d1b25;">
-      <div style="width: 100%; max-width: 720px; background: #1d1b25; border: 1px solid rgba(245,166,35,0.12); border-radius: 24px; padding: 3.5rem; box-shadow: 0 24px 64px rgba(0,0,0,0.6);">
-        <span style="font-size: 4rem; font-weight: 900; color: #F5A623; opacity: 0.2; line-height: 1; display: block; margin-bottom: 1.5rem; user-select: none;">02</span>
-        <h3 style="font-size: 2rem; font-weight: 700; color: #fff; margin-bottom: 1rem;">Her language is hers alone.</h3>
-        <p style="color: #9CA3AF; font-size: 1.1rem; line-height: 1.75;">No two women communicate the same way. DecodeHer learns her tone, her patterns, the way she expresses her feelings. The more you use it, the sharper it gets. When the app understands her language, you understand her.</p>
+      <div style="width: 100%; max-width: 860px; background: #1c0f16; border: 1px solid rgba(232,121,160,0.25); border-radius: 24px; box-shadow: 0 24px 64px rgba(0,0,0,0.6); display: flex; align-items: stretch; overflow: hidden; min-height: 340px;">
+        <!-- Text -->
+        <div style="flex: 1; padding: 3.5rem; display: flex; flex-direction: column; justify-content: center; gap: 1rem; min-width: 0;">
+          <span style="font-size: 3.5rem; font-weight: 900; color: #E879A0; opacity: 0.18; line-height: 1; user-select: none;">02</span>
+          <h3 style="font-size: 1.9rem; font-weight: 700; color: #fff; margin: 0;">Her language is hers alone.</h3>
+          <p style="color: #9CA3AF; font-size: 1.05rem; line-height: 1.75; margin: 0;">No two women communicate the same way. DecodeHer learns her tone, her patterns, the way she expresses her feelings. The more you use it, the sharper it gets. When the app understands her language, you understand her.</p>
+        </div>
+        <!-- SVG panel: fingerprint-like concentric arcs -->
+        <div style="width: 280px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; padding: 2rem;">
+          <svg viewBox="0 0 200 200" width="220" height="220" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity: 0.18;">
+            <path d="M100 180 C50 180 20 145 20 100 C20 55 55 20 100 20 C145 20 180 55 180 100" stroke="#E879A0" stroke-width="6" stroke-linecap="round"/>
+            <path d="M100 162 C62 162 38 136 38 100 C38 64 64 38 100 38 C136 38 162 64 162 100" stroke="#E879A0" stroke-width="6" stroke-linecap="round"/>
+            <path d="M100 144 C74 144 56 127 56 100 C56 73 73 56 100 56 C127 56 144 73 144 100" stroke="#E879A0" stroke-width="6" stroke-linecap="round"/>
+            <path d="M100 126 C86 126 74 118 74 100 C74 82 86 74 100 74 C114 74 126 82 126 100" stroke="#E879A0" stroke-width="6" stroke-linecap="round"/>
+            <path d="M100 108 C95 108 92 105 92 100 C92 95 95 92 100 92 C105 92 108 95 108 100" stroke="#E879A0" stroke-width="6" stroke-linecap="round"/>
+          </svg>
+        </div>
       </div>
     </div>
 
+    <!-- Card 03: Privacy — teal theme, shield+lock SVG -->
     <div style="position: sticky; top: 88px; z-index: 5; height: calc(100vh - 88px); display: flex; align-items: center; justify-content: center; padding: 0 1.5rem; background: #1d1b25;">
-      <div style="width: 100%; max-width: 720px; background: #252330; border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 3.5rem; box-shadow: 0 24px 64px rgba(0,0,0,0.6);">
-        <span style="font-size: 4rem; font-weight: 900; color: #F5A623; opacity: 0.2; line-height: 1; display: block; margin-bottom: 1.5rem; user-select: none;">03</span>
-        <h3 style="font-size: 2rem; font-weight: 700; color: #fff; margin-bottom: 1rem;">Your data is yours. Full stop.</h3>
-        <p style="color: #9CA3AF; font-size: 1.1rem; line-height: 1.75;">You're sharing private, vulnerable moments in this app. That deserves real privacy — not a policy nobody reads. Your conversations never leave your phone. No server sees them. No one mines them.</p>
+      <div style="width: 100%; max-width: 860px; background: #081a16; border: 1px solid rgba(52,211,153,0.25); border-radius: 24px; box-shadow: 0 24px 64px rgba(0,0,0,0.6); display: flex; align-items: stretch; overflow: hidden; min-height: 340px;">
+        <!-- Text -->
+        <div style="flex: 1; padding: 3.5rem; display: flex; flex-direction: column; justify-content: center; gap: 1rem; min-width: 0;">
+          <span style="font-size: 3.5rem; font-weight: 900; color: #34D399; opacity: 0.18; line-height: 1; user-select: none;">03</span>
+          <h3 style="font-size: 1.9rem; font-weight: 700; color: #fff; margin: 0;">Your data is yours. Full stop.</h3>
+          <p style="color: #9CA3AF; font-size: 1.05rem; line-height: 1.75; margin: 0;">You're sharing private, vulnerable moments in this app. That deserves real privacy — not a policy nobody reads. Your conversations never leave your phone. No server sees them. No one mines them.</p>
+        </div>
+        <!-- SVG panel: shield with lock -->
+        <div style="width: 280px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; padding: 2rem;">
+          <svg viewBox="0 0 200 200" width="220" height="220" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity: 0.18;">
+            <!-- Shield -->
+            <path d="M100 20 L170 50 L170 110 C170 150 100 185 100 185 C100 185 30 150 30 110 L30 50 Z" fill="#34D399"/>
+            <!-- Lock body -->
+            <rect x="78" y="105" width="44" height="36" rx="7" fill="#081a16"/>
+            <!-- Lock shackle -->
+            <path d="M86 105 L86 92 C86 80 114 80 114 92 L114 105" stroke="#081a16" stroke-width="8" stroke-linecap="round" fill="none"/>
+            <!-- Keyhole -->
+            <circle cx="100" cy="121" r="6" fill="#34D399" opacity="0.6"/>
+            <rect x="97" y="121" width="6" height="10" rx="2" fill="#34D399" opacity="0.6"/>
+          </svg>
+        </div>
       </div>
     </div>
 
