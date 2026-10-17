@@ -123,7 +123,7 @@ about_video();
 
 // typed Text
 
-const words = ["Data Scientist", "Data Analyst", "AI Engineer", "ML Developer", "Energy Model Developer"];
+const words = ["Energy Trading Analyst", "Energy Market Analyst", "Data Scientist", "Energy Model Developer"];
   let wordIndex = 0;
   let charIndex = 0;
   const typingSpeed = 150;
